@@ -3,61 +3,62 @@ body {
     margin: 20px;
   }
   
-  ol, ul {
-    padding-left: 30px;
-  }
-  
-  .board-row:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
+ol, ul {
+  padding-left: 30px;
+}
 
-  .game-board {
-    padding: 0 15vw 5vh 15vw;
-  }
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
 
-  .status {
-    margin-bottom: 10px;
-  }
-  
-  .square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 74px;
-    font-weight: bold;
-    line-height: 74px;
-    height: 74px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 74px;
-  }
+.game-board {
+  padding: 0 15vw 5vh 15vw;
+}
 
- 
-  .square:focus {
-    outline: none;
-  }
-  
-  .kbd-navigation .square:focus {
-    background: #ddd;
-  }
-  
-  .game {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-  }
+.status {
+  margin-bottom: 10px;
+}
 
-  .game-mobile-header {
-    display: none;
-  }
-  
-  .game-info {
-    margin-left: 20px;
-  }
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 74px;
+  font-weight: bold;
+  line-height: 120px;
+  height: 120px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 120px;
+}
+
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.game-mobile-header {
+  display: none;
+}
+
+.game-info {
+  margin-left: 20px;
+}
+
 
 @media only screen and (max-width: 400px) {
 

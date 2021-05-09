@@ -1,8 +1,12 @@
 import { createStore, combineReducers } from 'redux';
-import { BOARD_SIZE } from './constants.js';
+import { BOARD_SIZE, MAGE_START_POS, IDLE_IMG } from './constants.js';
 import { getInitState } from './utils.js';
 
-const initState = getInitState(BOARD_SIZE);
+const initState = getInitState(
+    BOARD_SIZE,
+    MAGE_START_POS,
+    IDLE_IMG
+);
 
 
 // each square calls this and gets updated state

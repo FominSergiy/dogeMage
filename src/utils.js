@@ -1,15 +1,24 @@
-export const getInitState = (size) => {
+export const getInitState = (size, startingPos, mage_img) => {
     const boardSize = Math.pow(size, 2);
     const initObj = {};
 
     const initState = Array(boardSize).fill(null).reduce(
         (obj, item, index) => {
+
+            const setMagePos = startingPos === index
+                ? mage_img
+                : null;
+
+            const squareObj = {
+                value: null,
+                id: index,
+                mage: setMagePos,
+                matter: null
+            };
+
             return {
                 ...obj,
-                [index]: {
-                    value: null,
-                    id: index
-                }
+                [index]: squareObj
             };
         }, initObj
     );
@@ -31,7 +40,7 @@ export const generateBoard = (squaresObj, Square, rowLength) => {
                 <Square
                     key={j}
                     id={j}
-                    value={squaresObj[j]['value']}
+                    squareObj={squaresObj[j]}
                 />
             );
         };
