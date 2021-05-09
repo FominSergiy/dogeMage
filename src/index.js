@@ -1,21 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import { store } from './app/store';
+
+import { store } from './reducer.js'
 import { Provider } from 'react-redux';
-import * as serviceWorker from './serviceWorker';
+import { useSelector, useDispatch } from 'react-redux';
+
+import * as Utils from './utils.js';
+import { BOARD_SIZE } from './constants.js';
+import { Square } from './features/square/square.js';
+
+
+const Board = (props) => {
+    const board = Utils.generateBoard(
+        props.squares,
+        Square,
+        BOARD_SIZE
+    );
+
+    return (
+        <div>
+            {board}
+        </div>
+    );
+}
+
+
+const Game = () => {
+    const squares = useSelector(store => store);
+    return (
+        <div className="game">
+            <div className="game-board">
+                <Board squares={squares} />
+            </div>
+        </div>
+    );
+}
+
+// ========================================
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+        <Game />
+    </Provider>,
+    document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
