@@ -7,8 +7,8 @@ import { store } from './reducer.js'
 import { Provider } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 
-import * as Utils from './utils.js';
-import { BOARD_SIZE } from './constants.js';
+import * as Utils from './utils/initState.js';
+import * as Constants from './constants.js';
 import { Square } from './features/square/square.js';
 import { Buttons } from './features/button-controls/buttons.js';
 
@@ -17,7 +17,7 @@ const Board = (props) => {
     const board = Utils.generateBoard(
         props.squares,
         Square,
-        BOARD_SIZE
+        Constants.BOARD_SIZE
     );
 
     return (
@@ -29,12 +29,19 @@ const Board = (props) => {
 
 
 const Game = () => {
-    const squares = useSelector(store => store);
+    const squares = useSelector(store => store.squares);
+    const currentPos = useSelector(store => store.currentPos);
+    console.log(currentPos);
+
     return (
         <div className="game">
             <div className="game-board">
                 <Board class="board" squares={squares} />
-                <Buttons />
+                <Buttons
+                    squares={squares}
+                    currentPos={currentPos}
+                    img={Constants.IMG}
+                />
             </div>
         </div>
     );

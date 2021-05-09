@@ -1,18 +1,25 @@
-export const Buttons = () => {
+import { useDispatch } from "react-redux"
+import * as Utils from "../../utils/buttonsSetup.js"
 
-    // const buttonSetUp = ['']
+export const Buttons = (props) => {
+    const buttons = Utils.buttonSetUp(Button, props);
 
     return (
         <div className='controls'>
-            <div className='button'>
-                Turn Left
-            </div>
-            <div className='button'>
-                Move
-            </div>
-            <div className='button'>
-                Turn Right
-            </div>
+            {buttons}
+        </div>
+    )
+}
+
+const Button = (props) => {
+    const dispatch = useDispatch();
+    return (
+        <div className={props.class} onClick={() => props.makeMove(
+            props.squares,
+            props.buttonObj,
+            dispatch
+        )}>
+            {props.value}
         </div>
     )
 }
