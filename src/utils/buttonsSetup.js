@@ -1,7 +1,7 @@
 import { BUTTON_SETUP } from "../constants.js"
 
 
-export const buttonSetUp = (Button, squares) => {
+export const buttonSetUp = (Button, props) => {
     const buttons = Object.keys(BUTTON_SETUP).map(key => {
         const buttonObj = BUTTON_SETUP[key];
 
@@ -11,8 +11,9 @@ export const buttonSetUp = (Button, squares) => {
                 class='button'
                 value={key}
                 makeMove={makeMove}
-                squares={squares}
+                currentPos={props.currentPos}
                 buttonObj={buttonObj}
+                img={props.img}
             />
         )
     })
@@ -20,20 +21,18 @@ export const buttonSetUp = (Button, squares) => {
     return buttons;
 }
 
-const makeMove = (props, buttonObj, dispatch) => {
-
+const makeMove = (currentPos, img, buttonObj, dispatch) => {
     const posChange = buttonObj['posChange'];
     const type = buttonObj['type'];
 
     dispatch({
         type: type,
-        currentPos: props.currentPos,
-        newPos: props.currentPos - posChange,
-        img: props.img
+        currentPos: currentPos,
+        newPos: currentPos - posChange,
+        img: img
     });
     dispatch({
         type: 'UPDATE_POSITION',
-        position: props.currentPos - posChange
+        position: currentPos - posChange
     });
-
 }

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import * as Utils from "../../utils/buttonsSetup.js"
 
-export const Buttons = (props) => {
+export const ButtonPanel = (props) => {
     const buttons = Utils.buttonSetUp(Button, props);
 
     return (
@@ -15,7 +15,8 @@ const Button = (props) => {
     const dispatch = useDispatch();
     return (
         <div className={props.class} onClick={() => props.makeMove(
-            props.squares,
+            props.currentPos,
+            props.img,
             props.buttonObj,
             dispatch
         )}>

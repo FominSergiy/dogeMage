@@ -11,7 +11,6 @@ const initState = getInitState(
 
 // each square calls this and gets updated state
 const squares = (state = initState, action) => {
-    console.log(state);
     switch (action.type) {
         case "MOVE_UP":
         case "MOVE_DOWN":

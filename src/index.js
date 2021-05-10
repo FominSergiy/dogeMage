@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as Utils from './utils/initState.js';
 import * as Constants from './constants.js';
 import { Square } from './features/square/square.js';
-import { Buttons } from './features/button-controls/buttons.js';
+import { ButtonPanel } from './features/button-controls/buttons.js';
 
 
 const Board = (props) => {
@@ -37,8 +37,7 @@ const Game = () => {
         <div className="game">
             <div className="game-board">
                 <Board class="board" squares={squares} />
-                <Buttons
-                    squares={squares}
+                <ButtonPanel
                     currentPos={currentPos}
                     img={Constants.IMG}
                 />
