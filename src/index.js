@@ -11,6 +11,7 @@ import * as Utils from './utils/initState.js';
 import * as Constants from './constants.js';
 import { Square } from './features/square/square.js';
 import { ButtonPanel } from './features/button-controls/buttons.js';
+import { gameReset } from './utils/indexUtils.js';
 
 
 const Board = (props) => {
@@ -29,19 +30,22 @@ const Board = (props) => {
 
 
 const Game = () => {
+    const dispatch = useDispatch();
+    const isGameOver = useSelector(store => store.gameOver);
     const squares = useSelector(store => store.squares);
     const currentPos = useSelector(store => store.currentPos);
-    console.log(currentPos);
+
+
+    const render = renderBoard(
+        dispatch,
+        isGameOver,
+        squares,
+        currentPos
+    )
 
     return (
         <div className="game">
-            <div className="game-board">
-                <Board class="board" squares={squares} />
-                <ButtonPanel
-                    currentPos={currentPos}
-                    img={Constants.IMG}
-                />
-            </div>
+            {render}
         </div>
     );
 }
@@ -55,3 +59,28 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
+function renderBoard(dispatch, isGameOver, squares, currentPos) {
+    if (isGameOver) {
+        return (
+            <div className="game-board">
+                <div className="board lost">YOU LOST YOU FILTY COW!</div>
+                <button onClick={() =>
+                    gameReset(
+                        dispatch,
+                        Constants.MAGE_START_POS
+                    )
+                }>restart</button>
+            </div>
+        )
+    } else {
+        return (
+            <div className="game-board">
+                <Board class="board" squares={squares} />
+                <ButtonPanel
+                    currentPos={currentPos}
+                    img={Constants.IMG}
+                />
+            </div>
+        )
+    }
+}

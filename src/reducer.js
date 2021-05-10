@@ -12,6 +12,8 @@ const initState = getInitState(
 // each square calls this and gets updated state
 const squares = (state = initState, action) => {
     switch (action.type) {
+        case "RESET":
+            return initState;
         case "MOVE_UP":
         case "MOVE_DOWN":
         case "MOVE_RIGHT":
@@ -41,11 +43,21 @@ const currentPos = (state = Constants.MAGE_START_POS, action) => {
     };
 }
 
+const gameOver = (state = false, action) => {
+    switch (action.type) {
+        case "GAME_OVER":
+            return action.isOver;
+        default:
+            return state
+    };
+}
+
 
 
 const rootReducer = combineReducers({
     squares: squares,
-    currentPos: currentPos
+    currentPos: currentPos,
+    gameOver: gameOver
 });
 
 const store = createStore(rootReducer);

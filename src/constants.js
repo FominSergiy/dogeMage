@@ -21,3 +21,12 @@ export const BUTTON_SETUP = {
         posChange: -5
     }
 }
+
+//range of indexes moving from which
+//we will get out of range and game will be over
+export const OUT_OF_RANGE_SETUP = {
+    "1": [0, 5, 10, 15, 20],
+    "5": [0, 1, 2, 3, 4],
+    "-1": [4, 9, 14, 19, 24],
+    "-5": [20, 21, 22, 23, 24]
+};

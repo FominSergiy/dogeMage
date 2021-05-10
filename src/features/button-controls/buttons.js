@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import * as Utils from "../../utils/buttonsSetup.js"
+import * as Utils from "../../utils/buttonUtils.js"
 
 export const ButtonPanel = (props) => {
     const buttons = Utils.buttonSetUp(Button, props);
