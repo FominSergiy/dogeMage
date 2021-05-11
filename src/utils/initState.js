@@ -1,19 +1,26 @@
-export const getInitState = (size, startingPos, mage_img) => {
+import { generateCoinPos } from './indexUtils.js';
+
+export const getInitState = (size, startingPos, mage, coin) => {
+    const coinPos = generateCoinPos(startingPos, size);
     const boardSize = Math.pow(size, 2);
     const initObj = {};
 
     const initState = Array(boardSize).fill(null).reduce(
         (obj, item, index) => {
 
-            const setMagePos = startingPos === index
-                ? mage_img
+            const setMage = startingPos === index
+                ? mage
+                : null;
+
+            const setCoin = coinPos === index
+                ? coin
                 : null;
 
             const squareObj = {
                 value: null,
                 id: index,
-                mage: setMagePos,
-                matter: null
+                mage: setMage,
+                coin: setCoin
             };
 
             return {

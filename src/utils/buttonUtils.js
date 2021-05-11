@@ -25,11 +25,8 @@ const makeMove = (currentPos, img, buttonObj, dispatch) => {
     const posChange = buttonObj['posChange'];
     const type = buttonObj['type'];
 
-    console.log(`current: ${currentPos}`);
-    console.log(`change: ${posChange}`);
 
     const isGameOver = isOutOfRange(currentPos, posChange);
-
     if (isGameOver) {
         dispatch({
             type: 'GAME_OVER',

@@ -5,7 +5,8 @@ import { getInitState } from './utils/initState.js';
 const initState = getInitState(
     Constants.BOARD_SIZE,
     Constants.MAGE_START_POS,
-    Constants.IMG
+    Constants.IMG,
+    Constants.COIN
 );
 
 
