@@ -34,14 +34,14 @@ const Game = () => {
     const dispatch = useDispatch();
     const isGameOver = useSelector(store => store.gameOver);
     const squares = useSelector(store => store.squares);
-    const currentPos = useSelector(store => store.currentPos);
+    const coinAndMagePos = useSelector(store => store.coinAndMagePos);
 
 
     const render = renderBoard(
         dispatch,
         isGameOver,
         squares,
-        currentPos,
+        coinAndMagePos,
         score
     )
 
@@ -61,7 +61,7 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-function renderBoard(dispatch, isGameOver, squares, currentPos, score) {
+function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score) {
     if (isGameOver) {
         return (
             <div className="game-board">
@@ -81,7 +81,7 @@ function renderBoard(dispatch, isGameOver, squares, currentPos, score) {
                 <div className="score">Score: {score}</div>
                 <Board class="board" squares={squares} />
                 <ButtonPanel
-                    currentPos={currentPos}
+                    coinAndMagePos={coinAndMagePos}
                     img={Constants.IMG}
                 />
             </div>

@@ -30,7 +30,7 @@ export const getInitState = (size, startingPos, mage, coin) => {
         }, initObj
     );
 
-    return initState;
+    return [initState, coinPos]
 }
 
 export const generateBoard = (squaresObj, Square, rowLength) => {

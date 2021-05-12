@@ -1,4 +1,4 @@
-import { BUTTON_SETUP, OUT_OF_RANGE_SETUP } from "../constants.js"
+import { BUTTON_SETUP, OUT_OF_RANGE_SETUP } from "../../constants.js"
 
 export const buttonSetUp = (Button, props) => {
     const buttons = Object.keys(BUTTON_SETUP).map(key => {
@@ -10,7 +10,7 @@ export const buttonSetUp = (Button, props) => {
                 class='button'
                 value={key}
                 makeMove={makeMove}
-                currentPos={props.currentPos}
+                coinAndMagePos={props.coinAndMagePos}
                 buttonObj={buttonObj}
                 img={props.img}
             />
@@ -20,13 +20,17 @@ export const buttonSetUp = (Button, props) => {
     return buttons;
 }
 
-const makeMove = (currentPos, img, buttonObj, dispatch) => {
+const makeMove = (coinAndMagePos, img, buttonObj, dispatch) => {
+
+    const magePos = coinAndMagePos.mage;
+    const coinPos = coinAndMagePos.coin;
+
     // do a check to see if we have gone over the boarder first
     const posChange = buttonObj['posChange'];
     const type = buttonObj['type'];
 
 
-    const isGameOver = isOutOfRange(currentPos, posChange);
+    const isGameOver = isOutOfRange(magePos, posChange);
     if (isGameOver) {
         dispatch({
             type: 'GAME_OVER',
@@ -35,19 +39,20 @@ const makeMove = (currentPos, img, buttonObj, dispatch) => {
     } else {
         dispatch({
             type: type,
-            currentPos: currentPos,
-            newPos: currentPos - posChange,
+            magePos: magePos,
+            newPos: magePos - posChange,
             img: img
         });
         dispatch({
-            type: 'UPDATE_POSITION',
-            position: currentPos - posChange
+            type: 'UPDATE_MAGE_POS',
+            mage: 'mage',
+            position: magePos - posChange
         });
     }
 }
 
-const isOutOfRange = (currentPos, posChange) => {
+const isOutOfRange = (magePos, posChange) => {
     const outRangeList = OUT_OF_RANGE_SETUP[`${posChange}`];
-    return outRangeList.includes(currentPos)
+    return outRangeList.includes(magePos)
 }
 

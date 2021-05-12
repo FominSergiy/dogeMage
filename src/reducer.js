@@ -2,12 +2,19 @@ import { createStore, combineReducers } from 'redux';
 import * as Constants from './constants.js';
 import { getInitState } from './utils/initState.js';
 
-const initState = getInitState(
+// since coinPos is a random number, need to
+// return it back from InitState func
+const [initState, coinPos] = getInitState(
     Constants.BOARD_SIZE,
     Constants.MAGE_START_POS,
     Constants.IMG,
     Constants.COIN
 );
+
+const initPositions = {
+    'mage': Constants.MAGE_START_POS,
+    'coin': coinPos
+};
 
 
 // each square calls this and gets updated state
@@ -21,8 +28,8 @@ const squares = (state = initState, action) => {
         case "MOVE_LEFT":
             return {
                 ...state,
-                [action.currentPos]: {
-                    ...state[action.currentPos],
+                [action.magePos]: {
+                    ...state[action.magePos],
                     mage: null
                 },
                 [action.newPos]: {
@@ -35,10 +42,25 @@ const squares = (state = initState, action) => {
     }
 };
 
-const currentPos = (state = Constants.MAGE_START_POS, action) => {
+const coinAndMagePos = (state = initPositions, action) => {
     switch (action.type) {
-        case "UPDATE_POSITION":
-            return action.position;
+        case "UPDATE_BOTH":
+            return {
+                ...state,
+                [action.coin]: action.position,
+                [action.mage]: action.position
+            }
+        case "UPDATE_MAGE_POS":
+            console.log(action.mage);
+            return {
+                ...state,
+                [action.mage]: action.position
+            }
+        case "UPDATE_COIN_POS":
+            return {
+                ...state,
+                [action.coin]: action.position
+            }
         default:
             return state
     };
@@ -66,7 +88,7 @@ const score = (state = 0, action) => {
 
 const rootReducer = combineReducers({
     squares: squares,
-    currentPos: currentPos,
+    coinAndMagePos: coinAndMagePos,
     gameOver: gameOver,
     score: score
 });

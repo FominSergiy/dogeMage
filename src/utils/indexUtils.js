@@ -3,7 +3,8 @@ export const gameReset = (dispatch, startPos) => {
         type: 'RESET',
     });
     dispatch({
-        type: 'UPDATE_POSITION',
+        type: 'UPDATE_MAGE_POS',
+        mage: 'mage',
         position: startPos
     })
     dispatch({
