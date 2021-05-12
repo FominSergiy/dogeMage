@@ -20,8 +20,6 @@ const initPositions = {
 // each square calls this and gets updated state
 const squares = (state = initState, action) => {
     switch (action.type) {
-        case "RESET":
-            return initState;
         case "MOVE_UP":
         case "MOVE_DOWN":
         case "MOVE_RIGHT":
@@ -37,6 +35,8 @@ const squares = (state = initState, action) => {
                     mage: action.img
                 }
             }
+        case "RESET":
+            return initState;
         default:
             return state
     }
@@ -51,7 +51,6 @@ const coinAndMagePos = (state = initPositions, action) => {
                 [action.mage]: action.position
             }
         case "UPDATE_MAGE_POS":
-            console.log(action.mage);
             return {
                 ...state,
                 [action.mage]: action.position
@@ -61,6 +60,8 @@ const coinAndMagePos = (state = initPositions, action) => {
                 ...state,
                 [action.coin]: action.position
             }
+        case "RESET":
+            return initPositions;
         default:
             return state
     };
@@ -70,6 +71,8 @@ const gameOver = (state = false, action) => {
     switch (action.type) {
         case "GAME_OVER":
             return action.isOver;
+        case "RESET":
+            return false;
         default:
             return state
     };
@@ -78,7 +81,9 @@ const gameOver = (state = false, action) => {
 const score = (state = 0, action) => {
     switch (action.type) {
         case "PLUS_ONE":
-            return state++;
+            return state + action.value;
+        case "RESET":
+            return 0;
         default:
             return state;
     }

@@ -48,6 +48,10 @@ const makeMove = (coinAndMagePos, img, buttonObj, dispatch) => {
             mage: 'mage',
             position: magePos - posChange
         });
+        dispatch({
+            type: 'PLUS_ONE',
+            value: 1
+        });
     }
 }
 

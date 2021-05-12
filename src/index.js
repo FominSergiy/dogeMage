@@ -36,7 +36,6 @@ const Game = () => {
     const squares = useSelector(store => store.squares);
     const coinAndMagePos = useSelector(store => store.coinAndMagePos);
 
-
     const render = renderBoard(
         dispatch,
         isGameOver,
@@ -68,12 +67,11 @@ function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score) {
                 <div className="score">Score: {score}</div>
                 <div className="board lost">YOU LOST YOU FILTY COW!</div>
                 <button onClick={() =>
-                    gameReset(
-                        dispatch,
-                        Constants.MAGE_START_POS
-                    )
+                    dispatch({
+                        type: 'RESET',
+                    })
                 }>restart</button>
-            </div>
+            </div >
         )
     } else {
         return (
