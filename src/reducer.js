@@ -53,12 +53,22 @@ const gameOver = (state = false, action) => {
     };
 }
 
+const score = (state = 0, action) => {
+    switch (action.type) {
+        case "PLUS_ONE":
+            return state++;
+        default:
+            return state;
+    }
+}
+
 
 
 const rootReducer = combineReducers({
     squares: squares,
     currentPos: currentPos,
-    gameOver: gameOver
+    gameOver: gameOver,
+    score: score
 });
 
 const store = createStore(rootReducer);

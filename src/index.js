@@ -30,6 +30,7 @@ const Board = (props) => {
 
 
 const Game = () => {
+    const score = useSelector(store => store.score);
     const dispatch = useDispatch();
     const isGameOver = useSelector(store => store.gameOver);
     const squares = useSelector(store => store.squares);
@@ -40,7 +41,8 @@ const Game = () => {
         dispatch,
         isGameOver,
         squares,
-        currentPos
+        currentPos,
+        score
     )
 
     return (
@@ -59,10 +61,11 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-function renderBoard(dispatch, isGameOver, squares, currentPos) {
+function renderBoard(dispatch, isGameOver, squares, currentPos, score) {
     if (isGameOver) {
         return (
             <div className="game-board">
+                <div className="score">Score: {score}</div>
                 <div className="board lost">YOU LOST YOU FILTY COW!</div>
                 <button onClick={() =>
                     gameReset(
@@ -75,6 +78,7 @@ function renderBoard(dispatch, isGameOver, squares, currentPos) {
     } else {
         return (
             <div className="game-board">
+                <div className="score">Score: {score}</div>
                 <Board class="board" squares={squares} />
                 <ButtonPanel
                     currentPos={currentPos}
