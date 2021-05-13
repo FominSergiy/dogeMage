@@ -7,11 +7,10 @@ import { store } from './reducer.js'
 import { Provider } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 
-import * as Utils from './utils/initState.js';
+import * as Utils from './utils/utils.js';
 import * as Constants from './constants.js';
 import { Square } from './features/square/square.js';
 import { ButtonPanel } from './features/button-controls/buttons.js';
-import { gameReset } from './utils/indexUtils.js';
 
 
 const Board = (props) => {
@@ -81,6 +80,7 @@ function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score) {
                 <ButtonPanel
                     coinAndMagePos={coinAndMagePos}
                     img={Constants.IMG}
+                    coinImg={Constants.COIN}
                 />
             </div>
         )

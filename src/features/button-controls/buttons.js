@@ -17,6 +17,7 @@ const Button = (props) => {
         <div className={props.class} onClick={() => props.makeMove(
             props.coinAndMagePos,
             props.img,
+            props.coinImg,
             props.buttonObj,
             dispatch
         )}>

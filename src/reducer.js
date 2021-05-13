@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import * as Constants from './constants.js';
-import { getInitState } from './utils/initState.js';
+import { getInitState } from './utils/utils.js';
 
 // since coinPos is a random number, need to
 // return it back from InitState func
@@ -26,13 +26,33 @@ const squares = (state = initState, action) => {
         case "MOVE_LEFT":
             return {
                 ...state,
-                [action.magePos]: {
-                    ...state[action.magePos],
+                [action.currentMagePos]: {
+                    ...state[action.currentMagePos],
                     mage: null
                 },
-                [action.newPos]: {
-                    ...state[action.newPos],
+                [action.newMagePos]: {
+                    ...state[action.newMagePos],
                     mage: action.img
+                }
+            }
+        case "MOVE_UP_COIN_RESET":
+        case "MOVE_DOWN_COIN_RESET":
+        case "MOVE_RIGHT_COIN_RESET":
+        case "MOVE_LEFT_COIN_RESET":
+            return {
+                ...state,
+                [action.currentMagePos]: {
+                    ...state[action.currentMagePos],
+                    mage: null
+                },
+                [action.newMagePos]: {
+                    ...state[action.newMagePos],
+                    mage: action.img,
+                    coin: null
+                },
+                [action.newCoinPos]: {
+                    ...state[action.newCoinPos],
+                    coin: action.coinImg
                 }
             }
         case "RESET":
@@ -45,10 +65,11 @@ const squares = (state = initState, action) => {
 const coinAndMagePos = (state = initPositions, action) => {
     switch (action.type) {
         case "UPDATE_BOTH":
+            console.dir(action);
             return {
                 ...state,
-                [action.coin]: action.position,
-                [action.mage]: action.position
+                [action.coin]: action.coinPos,
+                [action.mage]: action.magePos
             }
         case "UPDATE_MAGE_POS":
             return {
@@ -80,7 +101,7 @@ const gameOver = (state = false, action) => {
 
 const score = (state = 0, action) => {
     switch (action.type) {
-        case "PLUS_ONE":
+        case "ADD_ONE":
             return state + action.value;
         case "RESET":
             return 0;
