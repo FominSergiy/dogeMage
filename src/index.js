@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import './styles/button-controls.css';
@@ -11,9 +11,44 @@ import * as Utils from './utils/utils.js';
 import * as Constants from './constants.js';
 import { Square } from './features/square/square.js';
 import { ButtonPanel } from './features/button-controls/buttons.js';
+import { makeMove } from './features/button-controls/buttonUtils.js';
 
 
 const Board = (props) => {
+    console.log('reset');
+    // const dispatch = useDispatch();
+
+    const handleKeyDown = (event) => {
+        const keyCodes = Object.keys(Constants.KEY_DOWN_SET_UP);
+        const isMoveMade = keyCodes.includes(`${event.keyCode}`)
+            ? true
+            : false;
+
+        if (isMoveMade) {
+            console.log(event.keyCode);
+            const keyObj = Constants.KEY_DOWN_SET_UP[`${event.keyCode}`];
+            makeMove(
+                props.coinAndMagePos,
+                props.img,
+                props.coinImg,
+                keyObj,
+                props.dispatch
+            );
+        }
+        // console.log("key was pressed", event.keyCode);
+    }
+
+    // adding here since this components unmounts if we lose the game
+    React.useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            // cleanup this component
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+
+    }, [handleKeyDown]);
+
     const board = Utils.generateBoard(
         props.squares,
         Square,
@@ -41,7 +76,7 @@ const Game = () => {
         squares,
         coinAndMagePos,
         score
-    )
+    );
 
     return (
         <div className="game">
@@ -76,7 +111,14 @@ function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score) {
         return (
             <div className="game-board">
                 <div className="score">Score: {score}</div>
-                <Board class="board" squares={squares} />
+                <Board
+                    class="board"
+                    squares={squares}
+                    coinAndMagePos={coinAndMagePos}
+                    img={Constants.IMG}
+                    coinImg={Constants.COIN}
+                    dispatch={dispatch}
+                />
                 <ButtonPanel
                     coinAndMagePos={coinAndMagePos}
                     img={Constants.IMG}
@@ -86,3 +128,12 @@ function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score) {
         )
     }
 }
+
+
+const useKeyDown = (callback, props) => {
+    useEffect(() => {
+        window.addEventListener('keydown', callback);
+        return () => window.removeEventListener('keydown', callback)
+    }, [callback]);
+}
+

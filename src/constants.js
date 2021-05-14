@@ -22,6 +22,25 @@ export const BUTTON_SETUP = {
     }
 }
 
+export const KEY_DOWN_SET_UP = {
+    '37': {
+        type: 'MOVE_LEFT',
+        posChange: 1
+    },
+    '38': {
+        type: 'MOVE_UP',
+        posChange: 5
+    },
+    '39': {
+        type: 'MOVE_RIGHT',
+        posChange: -1
+    },
+    '40': {
+        type: 'MOVE_DOWN',
+        posChange: -5
+    }
+}
+
 //range of indexes moving from which
 //we will get out of range and game will be over
 export const OUT_OF_RANGE_SETUP = {

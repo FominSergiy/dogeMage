@@ -23,13 +23,12 @@ export const buttonSetUp = (Button, props) => {
     return buttons;
 }
 
-const makeMove = (coinAndMagePos, img, coinImg, buttonObj, dispatch) => {
-
+export const makeMove = (coinAndMagePos, img, coinImg, obj, dispatch) => {
+    console.log('makeMove')
     // do a check to see if we have gone over the boarder first
     const currentMagePos = coinAndMagePos.mage;
-    const currentCoinPos = coinAndMagePos.coin;
-    const posChange = buttonObj['posChange'];
-    const type = buttonObj['type'];
+    const posChange = obj['posChange'];
+    const type = obj['type'];
 
     const newMagePos = currentMagePos - posChange;
     const isScored = hasScored(coinAndMagePos, posChange);
@@ -79,7 +78,7 @@ const makeMove = (coinAndMagePos, img, coinImg, buttonObj, dispatch) => {
 
 const isOutOfRange = (magePos, posChange) => {
     const outRangeList = Constants.OUT_OF_RANGE_SETUP[`${posChange}`];
-    return outRangeList.includes(magePos)
+    return outRangeList.includes(magePos);
 }
 
 
