@@ -1,5 +1,6 @@
 import * as Constants from "../../constants.js"
 import { generateCoinPos } from "../../utils/utils.js";
+import * as Actions from "../../actions.js"
 
 
 export const buttonSetUp = (Button, props) => {
@@ -36,43 +37,30 @@ export const makeMove = (coinAndMagePos, img, coinImg, obj, dispatch) => {
 
     const isGameOver = isOutOfRange(currentMagePos, posChange);
     if (isGameOver) {
-        dispatch({
-            type: 'GAME_OVER',
-            isOver: true
-        });
+        dispatch(
+            Actions.gameOver()
+        );
     } else if (isScored) {
         const newCoinPos = generateCoinPos(newMagePos, Constants.BOARD_SIZE);
-        dispatch({
-            type: `${type}_COIN_RESET`,
-            currentMagePos: currentMagePos,
-            newMagePos: newMagePos,
-            newCoinPos: newCoinPos,
-            img: img,
-            coinImg: coinImg
-        });
-        dispatch({
-            type: 'UPDATE_BOTH',
-            mage: 'mage',
-            magePos: newMagePos,
-            coin: 'coin',
-            coinPos: newCoinPos
-        });
-        dispatch({
-            type: 'ADD_ONE',
-            value: 1
-        });
+        dispatch(
+            Actions.updateStateWhenScored(
+                type,
+                currentMagePos,
+                newMagePos,
+                newCoinPos,
+                img,
+                coinImg
+            )
+        );
     } else {
-        dispatch({
-            type: type,
-            currentMagePos: currentMagePos,
-            newMagePos: newMagePos,
-            img: img
-        });
-        dispatch({
-            type: 'UPDATE_MAGE_POS',
-            mage: 'mage',
-            position: newMagePos
-        });
+        dispatch(
+            Actions.updateStateWhenMove(
+                type,
+                currentMagePos,
+                newMagePos,
+                img
+            )
+        );
     }
 }
 

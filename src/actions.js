@@ -1,11 +1,5 @@
 
-const gameOver = () => {
-    return {
-        type: 'GAME_OVER',
-        isOver: true
-    }
-}
-
+// ACTIONS //
 const addOne = () => {
     return {
         type: 'ADD_ONE',
@@ -30,7 +24,14 @@ const updateMagePos = (newPos) => {
     }
 }
 
-const updateCoinSquare = (type, curMagePos, newMagePos, newCoinPos, img, coinImg) => {
+const updateCoinSquare = (
+    type, 
+    curMagePos, 
+    newMagePos,
+    newCoinPos, 
+    img, 
+    coinImg
+) => {
     return {
         type: `${type}_COIN_RESET`,
         currentMagePos: curMagePos,
@@ -51,7 +52,58 @@ const updateCoinMagePos = (newMagePos, newCoinPos) => {
     }
 }
 
+// ACTION CREATORS //
+export const gameOver = () => dispatch => {
+    dispatch({
+        type: 'GAME_OVER',
+        isOver: true
+    });
+}
 
-export const updateStateWhenScored = () => {
+export const updateStateWhenScored = (
+    type, 
+    curMagePos, 
+    newMagePos, 
+    newCoinPos, 
+    img, 
+    coinImg,
+) => dispatch => {
+    dispatch(
+        updateCoinSquare(
+            type, 
+            curMagePos, 
+            newMagePos, 
+            newCoinPos, 
+            img, 
+            coinImg
+        )
+    );
+    dispatch(
+        updateCoinMagePos(
+            newMagePos,
+            newCoinPos
+        )
+    );
+    dispatch(
+        addOne()
+    );
+}
 
+export const updateStateWhenMove = (
+    type, 
+    curMagePos, 
+    newMagePos,  
+    img,
+) => dispatch => {
+    dispatch(
+        updateMageSquare(
+            type, 
+            curMagePos, 
+            newMagePos,  
+            img,
+        )
+    );
+    dispatch(
+        updateMagePos(newMagePos)
+    );
 }

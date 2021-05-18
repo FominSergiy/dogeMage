@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk'
 import * as Constants from './constants.js';
 import { getInitState } from './utils/utils.js';
 
@@ -120,5 +121,9 @@ const rootReducer = combineReducers({
     score: score
 });
 
-const store = createStore(rootReducer);
+const store = createStore(
+    rootReducer, 
+    applyMiddleware(thunkMiddleware)
+);
+
 export { store };
