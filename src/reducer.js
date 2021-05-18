@@ -52,7 +52,8 @@ const squares = (state = initState, action) => {
                 },
                 [action.newCoinPos]: {
                     ...state[action.newCoinPos],
-                    coin: action.coinImg
+                    coin: action.coinImg,
+                    mage: null
                 }
             }
         case "RESET":
