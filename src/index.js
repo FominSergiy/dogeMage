@@ -15,7 +15,6 @@ import { makeMove } from './features/button-controls/buttonUtils.js';
 
 
 const Board = (props) => {
-    console.log('reset');
 
     const handleKeyDown = (event) => {
         const keyCodes = Object.keys(Constants.KEY_DOWN_SET_UP);
@@ -24,7 +23,6 @@ const Board = (props) => {
             : false;
 
         if (isMoveMade) {
-            console.log(event.keyCode);
             const keyObj = Constants.KEY_DOWN_SET_UP[`${event.keyCode}`];
             makeMove(
                 props.coinAndMagePos,
@@ -71,9 +69,6 @@ const Game = () => {
     const timer = useSelector(store => store.timer.time);
     const timerId = useSelector(store => store.timer.timerId);
 
-    if (isGameOver) clearTimeout(timerId);
-    console.log('timerId is:' +timerId);
-
     const render = renderBoard(
         dispatch,
         isGameOver,
@@ -83,6 +78,8 @@ const Game = () => {
         timer
     );
 
+
+    if (isGameOver) clearTimeout(timerId);
     return (
         <div className="game">
             {render}

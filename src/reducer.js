@@ -72,7 +72,6 @@ const squares = (state = initState, action) => {
 const coinAndMagePos = (state = initPositions, action) => {
     switch (action.type) {
         case "UPDATE_BOTH":
-            console.dir(action);
             return {
                 ...state,
                 [action.coin]: action.coinPos,
