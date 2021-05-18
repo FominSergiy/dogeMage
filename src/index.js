@@ -16,7 +16,6 @@ import { makeMove } from './features/button-controls/buttonUtils.js';
 
 const Board = (props) => {
     console.log('reset');
-    // const dispatch = useDispatch();
 
     const handleKeyDown = (event) => {
         const keyCodes = Object.keys(Constants.KEY_DOWN_SET_UP);
@@ -32,10 +31,10 @@ const Board = (props) => {
                 props.img,
                 props.coinImg,
                 keyObj,
-                props.dispatch
+                props.dispatch,
+                props.timer
             );
         }
-        // console.log("key was pressed", event.keyCode);
     }
 
     // adding here since this components unmounts if we lose the game
@@ -69,13 +68,19 @@ const Game = () => {
     const isGameOver = useSelector(store => store.gameOver);
     const squares = useSelector(store => store.squares);
     const coinAndMagePos = useSelector(store => store.coinAndMagePos);
+    const timer = useSelector(store => store.timer.time);
+    const timerId = useSelector(store => store.timer.timerId);
+
+    if (isGameOver) clearTimeout(timerId);
+    console.log('timerId is:' +timerId);
 
     const render = renderBoard(
         dispatch,
         isGameOver,
         squares,
         coinAndMagePos,
-        score
+        score,
+        timer
     );
 
     return (
@@ -94,11 +99,12 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score) {
+function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score, timer) {
     if (isGameOver) {
         return (
             <div className="game-board">
                 <div className="score">Score: {score}</div>
+                <div className="timer">Time Left (sec): {timer}</div>
                 <div className="board lost">YOU LOST YOU FILTY COW!</div>
                 <button onClick={() =>
                     dispatch({
@@ -111,6 +117,7 @@ function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score) {
         return (
             <div className="game-board">
                 <div className="score">Score: {score}</div>
+                <div className="timer">Time Left (sec): {timer}</div>
                 <Board
                     class="board"
                     squares={squares}
@@ -118,6 +125,7 @@ function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score) {
                     img={Constants.IMG}
                     coinImg={Constants.COIN}
                     dispatch={dispatch}
+                    timer={timer}
                 />
                 <ButtonPanel
                     coinAndMagePos={coinAndMagePos}

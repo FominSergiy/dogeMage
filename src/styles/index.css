@@ -1,9 +1,10 @@
 body {
-    font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
-  }
-  
-ol, ul {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol,
+ul {
   padding-left: 30px;
 }
 
@@ -18,7 +19,7 @@ ol, ul {
 }
 
 .board {
-  background-image: url('https://i.pinimg.com/originals/50/1d/49/501d49dc37935dc5c1fa42a676f785de.gif');
+  background-image: url("https://i.pinimg.com/originals/50/1d/49/501d49dc37935dc5c1fa42a676f785de.gif");
   background-size: cover;
 }
 
@@ -39,7 +40,6 @@ ol, ul {
   text-align: center;
   width: 100px;
 }
-
 
 .square:focus {
   outline: none;
@@ -63,9 +63,10 @@ ol, ul {
   margin-left: 20px;
 }
 
+.timer {
+}
 
 @media only screen and (max-width: 400px) {
-
   .game {
     flex-direction: column;
     align-items: center;
@@ -82,7 +83,8 @@ ol, ul {
     width: 70px;
   }
 
-  ol, ul {
+  ol,
+  ul {
     padding-left: 0px;
   }
 
@@ -97,8 +99,8 @@ ol, ul {
   .moves-history {
     display: none;
   }
-  
+
   .game-mobile-header {
-    display:inline-block;
+    display: inline-block;
   }
 }

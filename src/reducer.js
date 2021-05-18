@@ -17,6 +17,11 @@ const initPositions = {
     'coin': coinPos
 };
 
+const initTimer = {
+    'time': 60,
+    'timerId': null
+};
+
 
 // each square calls this and gets updated state
 const squares = (state = initState, action) => {
@@ -112,13 +117,28 @@ const score = (state = 0, action) => {
     }
 }
 
+const timer = (state = initTimer, action) => {
+    switch(action.type) {
+        case "DECREMENT_COUNTER":
+            return {
+                ...state,
+                ['time'] : state['time'] - 1,
+                ['timerId']: action.timerId 
+            }
+        case "RESET":
+            return initTimer;
+        default:
+            return state;
+    }
+}
 
 
 const rootReducer = combineReducers({
     squares: squares,
     coinAndMagePos: coinAndMagePos,
     gameOver: gameOver,
-    score: score
+    score: score,
+    timer: timer
 });
 
 const store = createStore(

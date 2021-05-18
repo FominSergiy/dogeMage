@@ -19,7 +19,8 @@ const Button = (props) => {
             props.img,
             props.coinImg,
             props.buttonObj,
-            dispatch
+            dispatch,
+            props.timer
         )}>
             {props.value}
         </div>

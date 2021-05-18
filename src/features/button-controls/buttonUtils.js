@@ -17,6 +17,7 @@ export const buttonSetUp = (Button, props) => {
                 buttonObj={buttonObj}
                 img={props.img}
                 coinImg={props.coinImg}
+                timer={props.timer}
             />
         )
     })
@@ -24,8 +25,10 @@ export const buttonSetUp = (Button, props) => {
     return buttons;
 }
 
-export const makeMove = (coinAndMagePos, img, coinImg, obj, dispatch) => {
+export const makeMove = (coinAndMagePos, img, coinImg, obj, dispatch, timer) => {
     console.log('makeMove')
+    if (timer === 60) startDecrementCounter(timer, dispatch); // start time ticks on first move
+    
     // do a check to see if we have gone over the boarder first
     const currentMagePos = coinAndMagePos.mage;
     const posChange = obj['posChange'];
@@ -62,6 +65,28 @@ export const makeMove = (coinAndMagePos, img, coinImg, obj, dispatch) => {
             )
         );
     }
+}
+
+const startDecrementCounter = (timer, dispatch) => {
+    timer--;
+    dispatch(
+        Actions.decrementTimer()
+    );
+
+    let timerId = setTimeout(function tick() {
+        if (timer === 0) {
+            dispatch(
+                Actions.gameOver()
+            );
+        } else {
+            console.log('hi');
+            timer--;
+            timerId = setTimeout(tick, 1000);
+            dispatch(
+                Actions.decrementTimer(timerId)
+            );
+        }
+    }, 1000);
 }
 
 const isOutOfRange = (magePos, posChange) => {

@@ -60,6 +60,13 @@ export const gameOver = () => dispatch => {
     });
 }
 
+export const decrementTimer = (timerId) => dispatch => {
+    dispatch({
+        type: 'DECREMENT_COUNTER',
+        timerId: timerId
+    });
+}
+
 export const updateStateWhenScored = (
     type, 
     curMagePos, 
