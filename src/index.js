@@ -128,6 +128,7 @@ function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score, timer
                     coinAndMagePos={coinAndMagePos}
                     img={Constants.IMG}
                     coinImg={Constants.COIN}
+                    timer={timer}
                 />
             </div>
         )
