@@ -10,33 +10,30 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as Utils from './utils/utils.js';
 import * as Constants from './constants.js';
 import { Square } from './features/square/square.js';
-import { ButtonPanel } from './features/button-controls/buttons.js';
 import { makeMove } from './features/button-controls/buttonUtils.js';
 
 
 const Board = (props) => {
-
-    const handleKeyDown = (event) => {
-        const keyCodes = Object.keys(Constants.KEY_DOWN_SET_UP);
-        const isMoveMade = keyCodes.includes(`${event.keyCode}`)
-            ? true
-            : false;
-
-        if (isMoveMade) {
-            const keyObj = Constants.KEY_DOWN_SET_UP[`${event.keyCode}`];
-            makeMove(
-                props.coinAndMagePos,
-                props.img,
-                props.coinImg,
-                keyObj,
-                props.dispatch,
-                props.timer
-            );
-        }
-    }
-
     // adding here since this components unmounts if we lose the game
     React.useEffect(() => {
+        const handleKeyDown = (event) => {
+            const keyCodes = Object.keys(Constants.KEY_DOWN_SET_UP);
+            const isMoveMade = keyCodes.includes(`${event.keyCode}`)
+                ? true
+                : false;
+    
+            if (isMoveMade) {
+                const keyObj = Constants.KEY_DOWN_SET_UP[`${event.keyCode}`];
+                makeMove(
+                    props.coinAndMagePos,
+                    props.img,
+                    props.coinImg,
+                    keyObj,
+                    props.dispatch,
+                    props.timer
+                );
+            }
+        }
         window.addEventListener('keydown', handleKeyDown);
 
         return () => {
@@ -44,7 +41,7 @@ const Board = (props) => {
             window.removeEventListener('keydown', handleKeyDown);
         };
 
-    }, [handleKeyDown]);
+    }, [props]);
 
     const board = Utils.generateBoard(
         props.squares,
@@ -79,7 +76,10 @@ const Game = () => {
         timer
     );
 
-    const renderInstructions = Utils.renderInstructions(isGameOver, score);
+    const renderInstructions = Utils.renderInstructions(
+        isGameOver, 
+        score
+    );
 
 
     if (isGameOver) clearTimeout(timerId);
@@ -100,14 +100,3 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
-
-
-
-
-const useKeyDown = (callback, props) => {
-    useEffect(() => {
-        window.addEventListener('keydown', callback);
-        return () => window.removeEventListener('keydown', callback)
-    }, [callback]);
-}
-
