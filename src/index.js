@@ -69,7 +69,8 @@ const Game = () => {
     const timer = useSelector(store => store.timer.time);
     const timerId = useSelector(store => store.timer.timerId);
 
-    const render = renderBoard(
+    const render = Utils.renderBoard(
+        Board,
         dispatch,
         isGameOver,
         squares,
@@ -78,12 +79,16 @@ const Game = () => {
         timer
     );
 
+    const renderInstructions = Utils.renderInstructions(isGameOver, score);
+
 
     if (isGameOver) clearTimeout(timerId);
     return (
         <div className="game">
             {render}
+            {renderInstructions}
         </div>
+
     );
 }
 
@@ -96,44 +101,7 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-function renderBoard(dispatch, isGameOver, squares, coinAndMagePos, score, timer) {
-    if (isGameOver) {
-        return (
-            <div className="game-board">
-                <div className="score">Score: {score}</div>
-                <div className="timer">Time Left (sec): {timer}</div>
-                <div className="board lost">YOU LOST YOU FILTY COW!</div>
-                <button onClick={() =>
-                    dispatch({
-                        type: 'RESET',
-                    })
-                }>restart</button>
-            </div >
-        )
-    } else {
-        return (
-            <div className="game-board">
-                <div className="score">Score: {score}</div>
-                <div className="timer">Time Left (sec): {timer}</div>
-                <Board
-                    class="board"
-                    squares={squares}
-                    coinAndMagePos={coinAndMagePos}
-                    img={Constants.IMG}
-                    coinImg={Constants.COIN}
-                    dispatch={dispatch}
-                    timer={timer}
-                />
-                <ButtonPanel
-                    coinAndMagePos={coinAndMagePos}
-                    img={Constants.IMG}
-                    coinImg={Constants.COIN}
-                    timer={timer}
-                />
-            </div>
-        )
-    }
-}
+
 
 
 const useKeyDown = (callback, props) => {
