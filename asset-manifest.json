@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/dodgeFairy/static/css/main.9761b1e7.chunk.css",
-    "main.js": "/dodgeFairy/static/js/main.fbff07e5.chunk.js",
-    "main.js.map": "/dodgeFairy/static/js/main.fbff07e5.chunk.js.map",
+    "main.css": "/dodgeFairy/static/css/main.262aa71e.chunk.css",
+    "main.js": "/dodgeFairy/static/js/main.e670a26f.chunk.js",
+    "main.js.map": "/dodgeFairy/static/js/main.e670a26f.chunk.js.map",
     "runtime-main.js": "/dodgeFairy/static/js/runtime-main.25d1e8c4.js",
     "runtime-main.js.map": "/dodgeFairy/static/js/runtime-main.25d1e8c4.js.map",
-    "static/js/2.cf3cb028.chunk.js": "/dodgeFairy/static/js/2.cf3cb028.chunk.js",
-    "static/js/2.cf3cb028.chunk.js.map": "/dodgeFairy/static/js/2.cf3cb028.chunk.js.map",
+    "static/js/2.fdb54739.chunk.js": "/dodgeFairy/static/js/2.fdb54739.chunk.js",
+    "static/js/2.fdb54739.chunk.js.map": "/dodgeFairy/static/js/2.fdb54739.chunk.js.map",
     "index.html": "/dodgeFairy/index.html",
-    "static/css/main.9761b1e7.chunk.css.map": "/dodgeFairy/static/css/main.9761b1e7.chunk.css.map",
-    "static/js/2.cf3cb028.chunk.js.LICENSE.txt": "/dodgeFairy/static/js/2.cf3cb028.chunk.js.LICENSE.txt"
+    "static/css/main.262aa71e.chunk.css.map": "/dodgeFairy/static/css/main.262aa71e.chunk.css.map",
+    "static/js/2.fdb54739.chunk.js.LICENSE.txt": "/dodgeFairy/static/js/2.fdb54739.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.25d1e8c4.js",
-    "static/js/2.cf3cb028.chunk.js",
-    "static/css/main.9761b1e7.chunk.css",
-    "static/js/main.fbff07e5.chunk.js"
+    "static/js/2.fdb54739.chunk.js",
+    "static/css/main.262aa71e.chunk.css",
+    "static/js/main.e670a26f.chunk.js"
   ]
 }
