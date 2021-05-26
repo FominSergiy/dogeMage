@@ -121,8 +121,8 @@ const timer = (state = initTimer, action) => {
         case "DECREMENT_COUNTER":
             return {
                 ...state,
-                ['time'] : state['time'] - 1,
-                ['timerId']: action.timerId 
+                'time' : state['time'] - 1,
+                'timerId': action.timerId 
             }
         case "RESET":
             return initTimer;
