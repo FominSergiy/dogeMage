@@ -89,7 +89,7 @@ export const renderBoard = (
 ) => {
     if (isGameOver) {
         const renderScore = renderGameOver(score);
-        const img = './dodgeFairy/'+Constants.GAME_OVER_IMG;
+        const img = Constants.GAME_OVER_IMG;
 
         return (
             <GameOver
@@ -111,12 +111,12 @@ export const renderBoard = (
                     dispatch={dispatch}
                     timer={timer}
                 />
-                <ButtonPanel
+                {/* <ButtonPanel
                     coinAndMagePos={coinAndMagePos}
                     img={Constants.IMG}
                     coinImg={Constants.COIN}
                     timer={timer}
-                />
+                /> */}
             </div>
         )
     }
@@ -156,6 +156,5 @@ const getScoreMessage = (score) => {
     if (score > 50) msg='You are really good at this!';
     if (score > 100) msg='TO THE MOOOON!';
 
-    console.log(msg);
     return msg;
 }

@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import React from 'react';
-import * as Constants from "../../constants.js"
 
 export const GameOver = (props) => {
     const dispatch = useDispatch();
