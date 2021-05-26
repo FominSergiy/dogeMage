@@ -1,5 +1,6 @@
 import * as Constants from '../constants.js';
 import { ButtonPanel } from '../features/button-controls/buttons.js';
+import { GameOver } from '../features/game-over/gameOver.js';
 
 
 export const getInitState = (size, startingPos, mage, coin) => {
@@ -87,25 +88,14 @@ export const renderBoard = (
     timer
 ) => {
     if (isGameOver) {
-
         const renderScore = renderGameOver(score);
         const img = './dodgeFairy/'+Constants.GAME_OVER_IMG;
 
         return (
-            <div className="game-board">
-                <div className="board lost">
-                    <img src={img} 
-                         style={{ width: "25%", height: "25%" }} 
-                         alt='nothing'
-                    />
-                    {renderScore}
-                </div>
-                <button onClick={() =>
-                    dispatch({
-                        type: 'RESET',
-                    })
-                }>restart</button>
-            </div>
+            <GameOver
+                img={img}
+                renderScore={renderScore}
+            />
         )
     } else {
         return (
@@ -138,6 +128,7 @@ export const renderInstructions = () => {
             <h1>DOGE Fairy Game!</h1>
             <h2>Rules:</h2>
             <h3>1. Use keyboard arrows (← ↑ ↓ →) to move your Fairy</h3>
+            <h3>1. Use Enter key to restart</h3>
             <h3>2. If you move over the edge it's game over</h3>
             <h3>3. Collect as many DOGE in 60 sec to fly to the moon!</h3>
         </div>

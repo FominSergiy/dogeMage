@@ -67,6 +67,11 @@ ul {
   text-shadow: 2px 2px 2px black;
 }
 
+.resetButton {
+  margin: 10px;
+  font-size: 20px;
+}
+
 .finalScore > h2,
 .finalScore > h3 {
   font-size: 25px;

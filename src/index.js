@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import './styles/button-controls.css';
@@ -84,13 +84,12 @@ const Game = () => {
         clearTimeout(timerId);
         renderInstructions = null;
     }
-    
+
     return (
         <div className="game">
             {render}
             {renderInstructions}
         </div>
-
     );
 }
 
