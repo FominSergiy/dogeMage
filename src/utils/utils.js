@@ -87,11 +87,19 @@ export const renderBoard = (
     timer
 ) => {
     if (isGameOver) {
+
+        const renderScore = renderGameOver(score);
+        const img = './dodgeFairy/'+Constants.GAME_OVER_IMG;
+
         return (
             <div className="game-board">
-                <div className="score">Score: {score}</div>
-                <div className="timer">Time Left (sec): {timer}</div>
-                <div className="board lost">YOU LOST YOU FILTY COW!</div>
+                <div className="board lost">
+                    <img src={img} 
+                         style={{ width: "25%", height: "25%" }} 
+                         alt='nothing'
+                    />
+                    {renderScore}
+                </div>
                 <button onClick={() =>
                     dispatch({
                         type: 'RESET',
@@ -124,28 +132,27 @@ export const renderBoard = (
     }
 }
 
-export const renderInstructions = (isGameOver, score) => {
+export const renderInstructions = () => {
+    return (
+        <div className="instructions">
+            <h1>DOGE Fairy Game!</h1>
+            <h2>Rules:</h2>
+            <h3>1. Use keyboard arrows (← ↑ ↓ →) to move your Fairy</h3>
+            <h3>2. If you move over the edge it's game over</h3>
+            <h3>3. Collect as many DOGE in 60 sec to fly to the moon!</h3>
+        </div>
+    )
+}
 
+const renderGameOver = (score) => {
     const msg = getScoreMessage(score);
-    if (isGameOver) {
-        return (
-            <div className="instructions">
-                <h2>Your Score: {score}</h2>
-                <h3>{msg}</h3>
-                <h3>Dare to try again?</h3>
-            </div>
-        )
-    } else {
-        return (
-            <div className="instructions">
-                <h1>Dodge Fairy Game!</h1>
-                <h2>Rules:</h2>
-                <h3>1. Use keyboard arrows (← ↑ ↓ →) to move your Fairy</h3>
-                <h3>2. If you move over the edge it's game over</h3>
-                <h3>3. Collect as many DODG in 60 sec to fly to the moon!</h3>
-            </div>
-        )
-    }
+
+    return (
+        <div className="finalScore">
+            <h2>Your Score: {score}</h2>
+            <h3>{msg}</h3>
+        </div>
+    )
 }
 
 const getScoreMessage = (score) => {
@@ -158,5 +165,6 @@ const getScoreMessage = (score) => {
     if (score > 50) msg='You are really good at this!';
     if (score > 100) msg='TO THE MOOOON!';
 
+    console.log(msg);
     return msg;
 }

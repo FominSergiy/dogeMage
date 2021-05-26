@@ -76,13 +76,15 @@ const Game = () => {
         timer
     );
 
-    const renderInstructions = Utils.renderInstructions(
-        isGameOver, 
-        score
-    );
+
+    let renderInstructions = Utils.renderInstructions();
 
 
-    if (isGameOver) clearTimeout(timerId);
+    if (isGameOver)  {
+        clearTimeout(timerId);
+        renderInstructions = null;
+    }
+    
     return (
         <div className="game">
             {render}

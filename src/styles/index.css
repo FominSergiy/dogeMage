@@ -55,6 +55,23 @@ ul {
   flex-direction: row;
 }
 
+.lost {
+  width: 800px;
+}
+
+.finalScore {
+  float: right;
+  display: inline-block;
+  margin: 0 100px 0 0;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
+.finalScore > h2,
+.finalScore > h3 {
+  font-size: 25px;
+}
+
 .game-mobile-header {
   display: none;
 }
