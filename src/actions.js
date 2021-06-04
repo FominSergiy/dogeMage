@@ -1,3 +1,4 @@
+import { getScoreboardRows } from './requests.js'
 
 // ACTIONS //
 const addOne = () => {
@@ -113,4 +114,17 @@ export const updateStateWhenMove = (
     dispatch(
         updateMagePos(newMagePos)
     );
+}
+
+export const setScoreboard = (scoreBoardRows) => ({
+    type: "SET_SCOREBOARD",
+    scoreBoardRows: scoreBoardRows
+})
+
+export const setScoreBoardThunk = (partitionKey) => dispatch => {
+    console.log('hi')
+    getScoreboardRows(partitionKey)
+        .then(response => {
+            console.log(`data: ${response.data}`)
+            dispatch(setScoreboard(response.data))})
 }

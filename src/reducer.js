@@ -131,13 +131,23 @@ const timer = (state = initTimer, action) => {
     }
 }
 
+const scoreboard = (state = {}, action) => {
+    switch(action.type) {
+        case "SET_SCOREBOARD":
+            return action.scoreBoardRows
+        default:
+            return state;
+    }
+}
+
 
 const rootReducer = combineReducers({
     squares: squares,
     coinAndMagePos: coinAndMagePos,
     gameOver: gameOver,
     score: score,
-    timer: timer
+    timer: timer,
+    scoreboard: scoreboard
 });
 
 const store = createStore(

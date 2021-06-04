@@ -1,6 +1,7 @@
 import * as Constants from '../constants.js';
 import { ButtonPanel } from '../features/button-controls/buttons.js';
 import { GameOver } from '../features/game-over/gameOver.js';
+import { Scoreboard } from '../features/scoreboard/scoreboard.js';
 
 
 export const getInitState = (size, startingPos, mage, coin) => {
@@ -34,6 +35,10 @@ export const getInitState = (size, startingPos, mage, coin) => {
     );
 
     return [initState, coinPos]
+}
+
+export const getScoreBoard = () => {
+    
 }
 
 export const generateBoard = (squaresObj, Square, rowLength) => {
@@ -92,10 +97,13 @@ export const renderBoard = (
         const img = Constants.GAME_OVER_IMG;
 
         return (
-            <GameOver
-                img={img}
-                renderScore={renderScore}
-            />
+            <div className='lol'>
+                <GameOver
+                    img={img}
+                    renderScore={renderScore}
+                />
+                <Scoreboard />
+            </div>
         )
     } else {
         return (
