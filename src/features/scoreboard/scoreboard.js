@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setScoreBoardThunk } from '../../actions.js';
+import { getScoreBoardThunk } from '../../actions.js';
+import { getTopScores } from "./scoreboardUtils.js"
 import { PARTITION_KEY } from '../../constants.js';
 import React from 'react';
 
@@ -10,14 +11,25 @@ export const Scoreboard = (props) => {
 
     React.useEffect(() => {
         console.log('running useEffect here')
-        dispatch(setScoreBoardThunk(PARTITION_KEY));
+        dispatch(getScoreBoardThunk(PARTITION_KEY));
     }, [])
 
-    console.log(scoreBoardResults)
 
+    
+    const topScores = getTopScores(scoreBoardResults, 10);
+    console.log(topScores);
+    // const topTenScores = getTopTenScores(scoreBoardResults)
     return (
         <div className='bigBoy'>
          hi
         </div>
     )
 }
+
+
+const Score = (props) => {
+
+}
+
+
+

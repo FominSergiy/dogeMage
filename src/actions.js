@@ -121,7 +121,7 @@ export const setScoreboard = (scoreBoardRows) => ({
     scoreBoardRows: scoreBoardRows
 })
 
-export const setScoreBoardThunk = (partitionKey) => dispatch => {
+export const getScoreBoardThunk = (partitionKey) => dispatch => {
     console.log('hi')
     getScoreboardRows(partitionKey)
         .then(response => {
