@@ -26,3 +26,18 @@ export const getTopScores = (scoreBoardResults, howMany) => {
     scores.sort(compareScores);
     return scores.slice(0, howMany);
 }
+
+
+export const getRowElements = (topScores, Score) => {
+    const rows = [];
+
+    topScores.forEach((row, index) => rows.push(
+        <Score key={index + 1}
+               index={index + 1}
+               user={row.User}
+               score={row.Score}
+        />
+    ));
+
+    return rows;
+}
