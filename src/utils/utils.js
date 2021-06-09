@@ -97,7 +97,7 @@ export const renderBoard = (
         const img = Constants.GAME_OVER_IMG;
 
         return (
-            <div className='lol'>
+            <div>
                 <GameOver
                     img={img}
                     renderScore={renderScore}

@@ -69,8 +69,18 @@ ul {
 }
 
 .resetButton {
-  margin: 10px;
+  margin: 15px 0 0 0;
   font-size: 20px;
+  background-color: #794c8d;
+  color: white;
+  padding: 5px;
+  border-radius: 15%;
+}
+
+.resetButton:hover {
+  background-color: white;
+  color: #794c8d;
+  border: 2px solid #794c8d;
 }
 
 .finalScore > h2,
