@@ -1,6 +1,6 @@
 import * as Constants from "../../constants.js"
 import { generateCoinPos } from "../../utils/utils.js";
-import * as Actions from "../../actions.js"
+import * as Actions from "../../redux/actions.js"
 
 
 export const buttonSetUp = (Button, props) => {

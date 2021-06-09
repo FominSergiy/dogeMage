@@ -1,4 +1,4 @@
-import { getScoreboardRows } from './requests.js'
+import { getScoreboardRows } from '../requests.js';
 
 // ACTIONS //
 const addOne = () => {

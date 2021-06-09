@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import './styles/button-controls.css';
 
-import { store } from './reducer.js'
+import { store } from './redux/store.js'
 import { Provider } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 

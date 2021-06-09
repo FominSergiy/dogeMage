@@ -1,5 +1,4 @@
 import * as Constants from '../constants.js';
-import { ButtonPanel } from '../features/button-controls/buttons.js';
 import { GameOver } from '../features/game-over/gameOver.js';
 import { Scoreboard } from '../features/scoreboard/scoreboard.js';
 

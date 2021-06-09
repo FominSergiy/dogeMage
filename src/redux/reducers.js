@@ -1,7 +1,5 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk'
-import * as Constants from './constants.js';
-import { getInitState } from './utils/utils.js';
+import * as Constants from '../constants.js';
+import { getInitState } from '../utils/utils.js';
 
 // since coinPos is a random number, need to
 // return it back from InitState func
@@ -24,7 +22,7 @@ const initTimer = {
 
 
 // each square calls this and gets updated state
-const squares = (state = initState, action) => {
+export const squares = (state = initState, action) => {
     switch (action.type) {
         case "MOVE_UP":
         case "MOVE_DOWN":
@@ -69,7 +67,7 @@ const squares = (state = initState, action) => {
     }
 };
 
-const coinAndMagePos = (state = initPositions, action) => {
+export const coinAndMagePos = (state = initPositions, action) => {
     switch (action.type) {
         case "UPDATE_BOTH":
             return {
@@ -94,7 +92,7 @@ const coinAndMagePos = (state = initPositions, action) => {
     };
 }
 
-const gameOver = (state = false, action) => {
+export const gameOver = (state = false, action) => {
     switch (action.type) {
         case "GAME_OVER":
             return action.isOver;
@@ -105,7 +103,7 @@ const gameOver = (state = false, action) => {
     };
 }
 
-const score = (state = 0, action) => {
+export const score = (state = 0, action) => {
     switch (action.type) {
         case "ADD_ONE":
             return state + action.value;
@@ -116,7 +114,7 @@ const score = (state = 0, action) => {
     }
 }
 
-const timer = (state = initTimer, action) => {
+export const timer = (state = initTimer, action) => {
     switch(action.type) {
         case "DECREMENT_COUNTER":
             return {
@@ -131,7 +129,7 @@ const timer = (state = initTimer, action) => {
     }
 }
 
-const scoreboard = (state = {}, action) => {
+export const scoreboard = (state = {}, action) => {
     switch(action.type) {
         case "SET_SCOREBOARD":
             return action.scoreBoardRows
@@ -140,19 +138,3 @@ const scoreboard = (state = {}, action) => {
     }
 }
 
-
-const rootReducer = combineReducers({
-    squares: squares,
-    coinAndMagePos: coinAndMagePos,
-    gameOver: gameOver,
-    score: score,
-    timer: timer,
-    scoreboard: scoreboard
-});
-
-const store = createStore(
-    rootReducer, 
-    applyMiddleware(thunkMiddleware)
-);
-
-export { store };

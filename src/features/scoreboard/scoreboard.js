@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getScoreBoardThunk } from '../../actions.js';
+import { getScoreBoardThunk } from '../../redux/actions.js';
 import { getTopScores, getRowElements  } from "./scoreboardUtils.js"
 import { PARTITION_KEY } from '../../constants.js';
 import React from 'react';
@@ -20,16 +20,16 @@ export const Scoreboard = (props) => {
     return (
         <div className='table'>
             <div className='header'>scoreboard</div>
-            <div className='column-headers'>
-            <div className='row-sub' id="index">
-                Place
-            </div>
-            <div className='row-sub' id="name">
-                User
-            </div>
-            <div className='row-sub' id="score">
-                Score
-            </div>
+                <div className='column-headers'>
+                <div className='row-sub' id="index">
+                    Place
+                </div>
+                <div className='row-sub' id="name">
+                    User
+                </div>
+                <div className='row-sub' id="score">
+                    Score
+                </div>
             </div>
             {rowElements}
         </div>
