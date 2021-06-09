@@ -1,5 +1,3 @@
-
-
 const compareScores = (a, b) => {
     const scoreA = parseInt(a['Score']);
     const scoreB = parseInt(b['Score']);

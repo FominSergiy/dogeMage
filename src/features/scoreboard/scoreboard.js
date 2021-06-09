@@ -20,6 +20,17 @@ export const Scoreboard = (props) => {
     return (
         <div className='table'>
             <div className='header'>scoreboard</div>
+            <div className='column-headers'>
+            <div className='row-sub' id="index">
+                Place
+            </div>
+            <div className='row-sub' id="name">
+                User
+            </div>
+            <div className='row-sub' id="score">
+                Score
+            </div>
+            </div>
             {rowElements}
         </div>
     )
@@ -29,13 +40,13 @@ export const Scoreboard = (props) => {
 const Score = (props) => {
     return (
         <div className='row'>
-            <div className="index">
+            <div className='row-sub' id="index">
                 {props.index}
             </div>
-            <div className="row" id="name">
+            <div className='row-sub' id="name">
                 {props.user}
             </div>
-            <div className="row" id="score">
+            <div className='row-sub' id="score">
                 {props.score}
             </div>
         </div>
