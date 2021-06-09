@@ -1,4 +1,5 @@
 import { getScoreboardRows } from '../requests.js';
+import { getTopSortedScores, getOnlyScores } from '../features/scoreboard/scoreboardUtils.js';
 
 // ACTIONS //
 const addOne = () => {
@@ -116,15 +117,29 @@ export const updateStateWhenMove = (
     );
 }
 
-export const setScoreboard = (scoreBoardRows) => ({
-    type: "SET_SCOREBOARD",
-    scoreBoardRows: scoreBoardRows
-})
-
-export const getScoreBoardThunk = (partitionKey) => dispatch => {
-    console.log('hi')
-    getScoreboardRows(partitionKey)
-        .then(response => {
-            console.log(`data: ${response.data}`)
-            dispatch(setScoreboard(response.data))})
+export const setScoreboard = (scoreBoardRows) => dispatch =>  {
+    dispatch({
+        type: "SET_SCOREBOARD",
+        scoreBoardRows: scoreBoardRows
+    })
 }
+
+export const setTopScores = (topScores) => dispatch => {
+    dispatch({
+        type : 'SET_TOP_SCORES',
+        scores: topScores
+    })
+}
+
+// get the response from the api, use func to process data...
+// ...save processed data to the redux store.
+export const getScoreBoardThunk = (partitionKey, howMany) => dispatch => {
+    getScoreboardRows(partitionKey)
+        .then(response => getTopSortedScores(response.data, howMany))
+        .then(processedData => {
+            dispatch(setScoreboard(processedData));
+            return getOnlyScores(processedData);
+
+        }).then(onlyScores => dispatch(setTopScores(onlyScores)));
+}
+

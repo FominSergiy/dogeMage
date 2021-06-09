@@ -115,7 +115,7 @@ export const score = (state = 0, action) => {
 }
 
 export const timer = (state = initTimer, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case "DECREMENT_COUNTER":
             return {
                 ...state,
@@ -129,12 +129,20 @@ export const timer = (state = initTimer, action) => {
     }
 }
 
-export const scoreboard = (state = {}, action) => {
-    switch(action.type) {
+export const scoreboard = (state = [], action) => {
+    switch (action.type) {
         case "SET_SCOREBOARD":
-            return action.scoreBoardRows
+            return action.scoreBoardRows;
         default:
             return state;
     }
 }
 
+export const topScores = (state = [], action) => {
+    switch (action.type) {
+        case "SET_TOP_SCORES":
+            return action.scores;
+        default:
+            return state;
+    }
+}

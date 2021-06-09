@@ -1,4 +1,4 @@
-const compareScores = (a, b) => {
+const sortScores = (a, b) => {
     const scoreA = parseInt(a['Score']);
     const scoreB = parseInt(b['Score']);
 
@@ -8,7 +8,7 @@ const compareScores = (a, b) => {
 }
 
 
-export const getTopScores = (scoreBoardResults, howMany) => {
+export const getTopSortedScores = (scoreBoardResults, howMany) => {
     // convert into arrays and the right data format
     const scoreBoardArray = Object.entries(scoreBoardResults);
 
@@ -21,10 +21,18 @@ export const getTopScores = (scoreBoardResults, howMany) => {
             })
     );
 
-    scores.sort(compareScores);
+    scores.sort(sortScores);
     return scores.slice(0, howMany);
 }
 
+export const getOnlyScores = (scoresObj) => {
+    const onlyScores = [];
+    scoresObj.forEach(
+        row => onlyScores.push(row['Score'])
+    );
+
+    return onlyScores;
+}
 
 export const getRowElements = (topScores, Score) => {
     const rows = [];

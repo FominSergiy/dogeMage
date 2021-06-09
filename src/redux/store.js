@@ -8,7 +8,8 @@ const rootReducer = combineReducers({
     gameOver: Reducers.gameOver,
     score: Reducers.score,
     timer: Reducers.timer,
-    scoreboard: Reducers.scoreboard
+    scoreboard: Reducers.scoreboard,
+    topScores: Reducers.topScores
 });
 
 const store = createStore(

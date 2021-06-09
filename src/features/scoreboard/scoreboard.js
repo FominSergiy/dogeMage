@@ -1,22 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getScoreBoardThunk } from '../../redux/actions.js';
-import { getTopScores, getRowElements  } from "./scoreboardUtils.js"
+import { getRowElements } from "./scoreboardUtils.js"
 import { PARTITION_KEY } from '../../constants.js';
 import React from 'react';
 
 export const Scoreboard = (props) => {
     const dispatch = useDispatch();
     const scoreBoardResults = useSelector(store => store.scoreboard);
+    const onlyScores = useSelector(store => store.topScores);
 
     React.useEffect(() => {
-        dispatch(getScoreBoardThunk(PARTITION_KEY));
-    }, [])
+        // get top scores, sort then, and save in store
+        dispatch(getScoreBoardThunk(PARTITION_KEY, 10));
+    }, [dispatch])
 
- 
-    const topScores = getTopScores(scoreBoardResults, 10);
-    console.log(topScores);
-    const rowElements = getRowElements(topScores, Score);
-
+    
+    const rowElements = getRowElements(scoreBoardResults, Score);
     return (
         <div className='table'>
             <div className='header'>scoreboard</div>
