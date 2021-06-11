@@ -9,11 +9,12 @@ const rootReducer = combineReducers({
     score: Reducers.score,
     timer: Reducers.timer,
     scoreboard: Reducers.scoreboard,
-    topScores: Reducers.topScores
+    topScores: Reducers.topScores,
+    swapScoreBoard: Reducers.swapScoreBoard
 });
 
 const store = createStore(
-    rootReducer, 
+    rootReducer,
     applyMiddleware(thunkMiddleware)
 );
 

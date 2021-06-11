@@ -119,8 +119,8 @@ export const timer = (state = initTimer, action) => {
         case "DECREMENT_COUNTER":
             return {
                 ...state,
-                'time' : state['time'] - 1,
-                'timerId': action.timerId 
+                'time': state['time'] - 1,
+                'timerId': action.timerId
             }
         case "RESET":
             return initTimer;
@@ -142,6 +142,15 @@ export const topScores = (state = [], action) => {
     switch (action.type) {
         case "SET_TOP_SCORES":
             return action.scores;
+        default:
+            return state;
+    }
+}
+
+export const swapScoreBoard = (state = false, action) => {
+    switch (action.type) {
+        case "SWAP_SCOREBOARD":
+            return action.doSwap;
         default:
             return state;
     }
