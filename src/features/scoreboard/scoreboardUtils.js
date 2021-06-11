@@ -9,15 +9,14 @@ const sortScores = (a, b) => {
 
 
 export const getTopSortedScores = (scoreBoardResults, howMany) => {
-    // convert into arrays and the right data format
     const scoreBoardArray = Object.entries(scoreBoardResults);
 
     const scores = [];
     scoreBoardArray.forEach(
-        row => 
-            scores.push({ 
-                'User' : row[0], 
-                'Score' : parseInt(row[1]['Score'])
+        row =>
+            scores.push({
+                'User': row[0],
+                'Score': parseInt(row[1]['Score'])
             })
     );
 
@@ -39,11 +38,46 @@ export const getRowElements = (topScores, Score) => {
 
     topScores.forEach((row, index) => rows.push(
         <Score key={index + 1}
-               index={index + 1}
-               user={row.User}
-               score={row.Score}
+            index={index + 1}
+            user={row.User}
+            score={row.Score}
         />
     ));
 
     return rows;
+}
+
+export const checkForNewRecord = (score, topScoresArray, boardLength) => {
+    let newRecordSet = false;
+    let whichIndex;
+
+    if (score > topScoresArray[0]) {
+        newRecordSet = true;
+        whichIndex = 0;
+        return [newRecordSet, whichIndex];
+    }
+
+    for (
+        let i = 0;
+        i < topScoresArray.length - 1;
+        i++
+    ) {
+        if (
+            score < topScoresArray[i]
+            && score > topScoresArray[i + 1]
+        ) {
+            newRecordSet = true;
+            whichIndex = i + 1;
+            break;
+        }
+    }
+
+    if (
+        !newRecordSet
+        && topScoresArray.length < boardLength
+    ) {
+        newRecordSet = true;
+    }
+
+    return [newRecordSet, whichIndex];
 }

@@ -52,3 +52,5 @@ export const OUT_OF_RANGE_SETUP = {
     "-1": [4, 9, 14, 19, 24],
     "-5": [20, 21, 22, 23, 24]
 };
+
+export const scoreBoardLength = 10;
