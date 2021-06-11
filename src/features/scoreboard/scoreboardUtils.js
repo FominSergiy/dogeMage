@@ -47,9 +47,30 @@ export const getRowElements = (topScores, Score) => {
     return rows;
 }
 
+
+/**
+ * This function is used to determine if new top 10 score is achieved
+ * 
+ * @param score - user's current score for a given game played.
+ * @param topScoresArray -- an array of scores received from the back-end.
+ * It contains only scores, sorted in desc order.
+ * @param {*} boardLength -- a parameter that controls the size of the board
+ * to be displayed.
+ * @returns an array [newRecordSet, whichIndex] - [bool, integer]
+ * 
+ */
 export const checkForNewRecord = (score, topScoresArray, boardLength) => {
     let newRecordSet = false;
     let whichIndex;
+
+    if (
+        topScoresArray.length === 0
+        && score !== 0
+    ) {
+        newRecordSet = true;
+        return [newRecordSet, whichIndex];
+    }
+
 
     if (score > topScoresArray[0]) {
         newRecordSet = true;
@@ -75,6 +96,7 @@ export const checkForNewRecord = (score, topScoresArray, boardLength) => {
     if (
         !newRecordSet
         && topScoresArray.length < boardLength
+        && score !== 0
     ) {
         newRecordSet = true;
     }
