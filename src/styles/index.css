@@ -99,6 +99,7 @@ ul {
 .score {
   display: inline-block;
 }
+
 .timer {
   display: inline-block;
   float: right;
@@ -113,6 +114,17 @@ ul {
   padding: 15px 65px 15px 15px;
   font-weight: bold;
   font-size: 25px;
+  text-align: center;
+}
+
+.winner {
+  margin: 0 150px 0 210px;
+  position: relative;
+  background-color: #794c8d;
+  color: white;
+  padding: 15px 65px 15px 15px;
+  font-weight: bold;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -133,7 +145,8 @@ ul {
 }
 
 .row::before,
-.column-headers::before {
+.column-headers::before,
+.winner:before {
   display: table;
   content: " ";
   display: inline-block;
