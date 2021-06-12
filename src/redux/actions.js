@@ -5,7 +5,7 @@ import { getTopSortedScores, getOnlyScores } from '../features/scoreboard/scoreb
 const addOne = () => {
     return {
         type: 'ADD_ONE',
-        value: 1 
+        value: 1
     }
 }
 
@@ -27,11 +27,11 @@ const updateMagePos = (newPos) => {
 }
 
 const updateCoinSquare = (
-    type, 
-    curMagePos, 
+    type,
+    curMagePos,
     newMagePos,
-    newCoinPos, 
-    img, 
+    newCoinPos,
+    img,
     coinImg
 ) => {
     return {
@@ -70,20 +70,20 @@ export const decrementTimer = (timerId) => dispatch => {
 }
 
 export const updateStateWhenScored = (
-    type, 
-    curMagePos, 
-    newMagePos, 
-    newCoinPos, 
-    img, 
+    type,
+    curMagePos,
+    newMagePos,
+    newCoinPos,
+    img,
     coinImg,
 ) => dispatch => {
     dispatch(
         updateCoinSquare(
-            type, 
-            curMagePos, 
-            newMagePos, 
-            newCoinPos, 
-            img, 
+            type,
+            curMagePos,
+            newMagePos,
+            newCoinPos,
+            img,
             coinImg
         )
     );
@@ -99,16 +99,16 @@ export const updateStateWhenScored = (
 }
 
 export const updateStateWhenMove = (
-    type, 
-    curMagePos, 
-    newMagePos,  
+    type,
+    curMagePos,
+    newMagePos,
     img,
 ) => dispatch => {
     dispatch(
         updateMageSquare(
-            type, 
-            curMagePos, 
-            newMagePos,  
+            type,
+            curMagePos,
+            newMagePos,
             img,
         )
     );
@@ -117,7 +117,7 @@ export const updateStateWhenMove = (
     );
 }
 
-export const setScoreboard = (scoreBoardRows) => dispatch =>  {
+export const setScoreboard = (scoreBoardRows) => dispatch => {
     dispatch({
         type: "SET_SCOREBOARD",
         scoreBoardRows: scoreBoardRows
@@ -126,7 +126,7 @@ export const setScoreboard = (scoreBoardRows) => dispatch =>  {
 
 export const setTopScores = (topScores) => dispatch => {
     dispatch({
-        type : 'SET_TOP_SCORES',
+        type: 'SET_TOP_SCORES',
         scores: topScores
     })
 }
@@ -143,3 +143,17 @@ export const getScoreBoardThunk = (partitionKey, howMany) => dispatch => {
         }).then(onlyScores => dispatch(setTopScores(onlyScores)));
 }
 
+
+export const swapScoreBoard = () => dispatch => {
+    dispatch({
+        type: "SWAP_SCOREBOARD",
+        doSwap: true
+    })
+}
+
+export const setUserName = (userName) => dispatch => {
+    dispatch({
+        type: "SET_USER_NAME",
+        userName: userName
+    })
+}
