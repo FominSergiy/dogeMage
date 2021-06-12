@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getScoreBoardThunk } from '../../redux/actions.js';
+import { getScoreBoardThunk, swapScoreBoard, setUserName } from '../../redux/actions.js';
 import * as ScoreBoardUtils from "./scoreboardUtils.js"
 import * as Constants from '../../constants.js';
 import React from 'react';
@@ -9,6 +9,7 @@ export const Scoreboard = (props) => {
     const score = useSelector(store => store.score);
     const scoreBoardResults = useSelector(store => store.scoreboard);
     const onlyScores = useSelector(store => store.topScores);
+    const doSwap = useSelector(store => store.swapScoreBoard);
 
     React.useEffect(() => {
         // get top scores, sort then, and save in store
@@ -32,33 +33,41 @@ export const Scoreboard = (props) => {
         Constants.scoreBoardLength
     );
 
-    if (newRecordSet) {
-        if (whichIndex) {
-            console.log(`newRecordSet? ${newRecordSet}`);
-            console.log(`which index? ${whichIndex}`);
-            console.log(`who holds that record? ${scoreBoardResults[whichIndex]['User']}`)
-        } else {
-            console.log(`Just a new record: ${score}`);
-        }
-    }
+    if (newRecordSet)
+        dispatch(
+            swapScoreBoard(true)
+        );
+    
 
-    return (
-        <div className='table'>
-            <div className='header'>scoreboard</div>
-            <div className='column-headers'>
-                <div className='row-sub' id="index">
-                    Place
+    console.log('do Swap below!');
+    console.log(doSwap);
+    if (doSwap) {
+        return (
+            <NameForm
+                whichIndex={whichIndex}
+                itemAtIndex={scoreBoardResults[whichIndex]}
+                score={score}
+            />
+        )
+    } else {
+        return (
+            <div className='table'>
+                <div className='header'>scoreboard</div>
+                <div className='column-headers'>
+                    <div className='row-sub' id="index">
+                        Place
+                    </div>
+                    <div className='row-sub' id="name">
+                        User
+                    </div>
+                    <div className='row-sub' id="score">
+                        Score
+                    </div>
                 </div>
-                <div className='row-sub' id="name">
-                    User
-                </div>
-                <div className='row-sub' id="score">
-                    Score
-                </div>
+                {rowElements}
             </div>
-            {rowElements}
-        </div>
-    )
+        )
+    }
 }
 
 
@@ -74,6 +83,43 @@ const Score = (props) => {
             <div className='row-sub' id="score">
                 {props.score}
             </div>
+        </div>
+    )
+}
+
+
+
+const NameForm = (props) => {
+    const dispatch = useDispatch();
+    const userName = useSelector(store => store.userName);
+
+    return (
+        <div className='winner'>
+            <div className='congrats'>
+                <h1>Congrats on setting a new Record!</h1>
+            </div>
+            <form onSubmit={
+                event => ScoreBoardUtils.handleSubmit(
+                    event, 
+                    userName,
+                    props.whichIndex,
+                    props.itemAtIndex,
+                    props.score,
+                    dispatch
+                )}>
+                <label>
+                    How should we write you down in History?
+                    <br></br>
+                    <input 
+                        type='text' 
+                        onChange={event => dispatch(
+                            setUserName(event.target.value)
+                        )}
+                    />
+                </label>
+                <br></br>
+                <input className='submit' type='Submit' value='submit' />
+            </form>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { getScoreboardRows } from '../requests.js';
+import { getScoreboardRows, postNewScore } from '../requests.js';
 import { getTopSortedScores, getOnlyScores } from '../features/scoreboard/scoreboardUtils.js';
 
 // ACTIONS //
@@ -143,11 +143,31 @@ export const getScoreBoardThunk = (partitionKey, howMany) => dispatch => {
         }).then(onlyScores => dispatch(setTopScores(onlyScores)));
 }
 
+// set new score in the table and re-generate scoreboard
+export const setNewScoreThunk = (userName, score, partitionKey, howMany) => dispatch => {
+    console.log('hi');
+    postNewScore(userName, score)
+        .then(response => {
+            console.log(response); 
+            if (response.status === 200) return response
+        }).then(dispatch(
+            getScoreBoardThunk(
+                partitionKey, 
+                howMany
+            )
+        )).then(
+            dispatch(
+                swapScoreBoard(
+                    false
+                )
+            )
+        );
+}
 
-export const swapScoreBoard = () => dispatch => {
+export const swapScoreBoard = (isSwap) => dispatch => {
     dispatch({
         type: "SWAP_SCOREBOARD",
-        doSwap: true
+        doSwap: isSwap
     })
 }
 
@@ -157,3 +177,4 @@ export const setUserName = (userName) => dispatch => {
         userName: userName
     })
 }
+
