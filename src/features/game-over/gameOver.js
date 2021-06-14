@@ -1,8 +1,9 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React from 'react';
 
 export const GameOver = (props) => {
     const dispatch = useDispatch();
+    const isNewTopTenScore = useSelector(store => store.swapScoreBoard);
 
     React.useEffect(() => {
         const handleKeyDown = (event) => {
@@ -10,7 +11,8 @@ export const GameOver = (props) => {
                 ? true
                 : false;
     
-            if (isReset) {
+            // 
+            if (isReset && !isNewTopTenScore) {
                 dispatch({
                     type: 'RESET',
                 })
@@ -23,7 +25,7 @@ export const GameOver = (props) => {
             window.removeEventListener('keydown', handleKeyDown);
         };
 
-    }, [dispatch]);
+    }, [dispatch, isNewTopTenScore]);
 
     return (
         <div className="game-board">

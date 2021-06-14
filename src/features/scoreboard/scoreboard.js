@@ -93,6 +93,32 @@ const NameForm = (props) => {
     const dispatch = useDispatch();
     const userName = useSelector(store => store.userName);
 
+    React.useEffect(() => {
+        const handleKeyDown = (event) => {
+            const isSubmit = event.keyCode === 13
+                ? true
+                : false;
+    
+
+            if (isSubmit) {
+                ScoreBoardUtils.handleSubmit(
+                    event, 
+                    userName,
+                    props.whichIndex,
+                    props.itemAtIndex,
+                    props.score,
+                    dispatch
+                );
+            }
+        }
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            // cleanup this component
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [dispatch, props, userName]);
+
     return (
         <div className='winner'>
             <div className='congrats'>
