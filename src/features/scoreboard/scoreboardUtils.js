@@ -88,7 +88,7 @@ export const checkForNewRecord = (score, topScoresArray, boardLength) => {
     ) {
         if (
             score < topScoresArray[i]
-            && score > topScoresArray[i + 1]
+            && score >= topScoresArray[i + 1]
         ) {
             newRecordSet = true;
             whichIndex = i + 1;
