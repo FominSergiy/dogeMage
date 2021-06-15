@@ -19,7 +19,7 @@ export const Scoreboard = (props) => {
                 Constants.scoreBoardLength
             )
         );
-    }, []);
+    }, [dispatch]);
 
 
     const rowElements = ScoreBoardUtils.getRowElements(
@@ -39,8 +39,6 @@ export const Scoreboard = (props) => {
         );
     
 
-    console.log('do Swap below!');
-    console.log(doSwap);
     if (doSwap) {
         return (
             <NameForm

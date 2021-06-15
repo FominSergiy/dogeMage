@@ -66,6 +66,11 @@ export const checkForNewRecord = (score, topScoresArray, boardLength) => {
     let newRecordSet = false;
     let whichIndex;
 
+    //adding this condition to excludre run for when the board is still loading
+    if (topScoresArray === null) {
+        return [newRecordSet, whichIndex];
+    }
+
     if (
         topScoresArray.length === 0
         && score !== 0
