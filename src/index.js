@@ -8,6 +8,8 @@ import { Provider } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 
 import * as Utils from './utils/utils.js';
+import * as Constants from './constants.js';
+import { getScoreBoardThunk } from './redux/actions.js'
 import { Board } from './features/board/board.js';
 
 
@@ -20,6 +22,16 @@ const Game = () => {
     const coinAndMagePos = useSelector(store => store.coinAndMagePos);
     const timer = useSelector(store => store.timer.time);
     const timerId = useSelector(store => store.timer.timerId);
+
+    React.useEffect(() => {
+        // get top scores, sort then, and save in store
+        dispatch(
+            getScoreBoardThunk(
+                Constants.PARTITION_KEY,
+                Constants.scoreBoardLength
+            )
+        );
+    }, [dispatch]);
 
     const render = Utils.renderBoard(
         Board,

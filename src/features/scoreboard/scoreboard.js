@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getScoreBoardThunk, swapScoreBoard, setUserName } from '../../redux/actions.js';
+import { swapScoreBoard, setUserName } from '../../redux/actions.js';
 import * as ScoreBoardUtils from "./scoreboardUtils.js"
 import * as Constants from '../../constants.js';
 import React from 'react';
@@ -12,33 +12,35 @@ export const Scoreboard = (props) => {
     const doSwap = useSelector(store => store.swapScoreBoard);
 
     React.useEffect(() => {
-        // get top scores, sort then, and save in store
-        dispatch(
-            getScoreBoardThunk(
-                Constants.PARTITION_KEY,
-                Constants.scoreBoardLength
-            )
+        console.log('component re-render');
+        const resultArr = ScoreBoardUtils.checkForNewRecord(
+            score,
+            onlyScores,
+            Constants.scoreBoardLength
         );
-    }, [dispatch]);
+        const newRecordSet = resultArr[1];
 
+    
+        if (newRecordSet)
+            dispatch(
+                swapScoreBoard(true)
+            );
+        
+    }, []);
 
     const rowElements = ScoreBoardUtils.getRowElements(
         scoreBoardResults,
         Score
     );
 
-    const [newRecordSet, whichIndex] = ScoreBoardUtils.checkForNewRecord(
+    const resultArr = ScoreBoardUtils.checkForNewRecord(
         score,
         onlyScores,
         Constants.scoreBoardLength
     );
+    const whichIndex = resultArr[0];
 
-    if (newRecordSet)
-        dispatch(
-            swapScoreBoard(true)
-        );
-    
-
+    console.log(doSwap);
     if (doSwap) {
         return (
             <NameForm
