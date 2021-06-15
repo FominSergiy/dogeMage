@@ -80,7 +80,10 @@ export const checkForNewRecord = (score, topScoresArray, boardLength) => {
     }
 
 
+    console.log(topScoresArray);
     if (score > topScoresArray[0]) {
+        console.log(score);
+        console.log('hi from best score');
         newRecordSet = true;
         whichIndex = 0;
         return [newRecordSet, whichIndex];

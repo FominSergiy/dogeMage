@@ -4,7 +4,7 @@ import * as ScoreBoardUtils from "./scoreboardUtils.js"
 import * as Constants from '../../constants.js';
 import React from 'react';
 
-export const Scoreboard = (props) => {
+export const Scoreboard = () => {
     const dispatch = useDispatch();
     const score = useSelector(store => store.score);
     const scoreBoardResults = useSelector(store => store.scoreboard);
@@ -12,14 +12,12 @@ export const Scoreboard = (props) => {
     const doSwap = useSelector(store => store.swapScoreBoard);
 
     React.useEffect(() => {
-        console.log('component re-render');
         const resultArr = ScoreBoardUtils.checkForNewRecord(
             score,
             onlyScores,
             Constants.scoreBoardLength
         );
-        const newRecordSet = resultArr[1];
-
+        const newRecordSet = resultArr[0];
     
         if (newRecordSet)
             dispatch(
@@ -38,9 +36,9 @@ export const Scoreboard = (props) => {
         onlyScores,
         Constants.scoreBoardLength
     );
-    const whichIndex = resultArr[0];
+    const whichIndex = resultArr[1];
 
-    console.log(doSwap);
+
     if (doSwap) {
         return (
             <NameForm
