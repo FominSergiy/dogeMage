@@ -134,6 +134,7 @@ export const setTopScores = (topScores) => dispatch => {
 // get the response from the api, use func to process data...
 // ...save processed data to the redux store.
 export const getScoreBoardThunk = (partitionKey, howMany) => dispatch => {
+    console.log('hi there from thunk');
     getScoreboardRows(partitionKey)
         .then(response => getTopSortedScores(response.data, howMany))
         .then(processedData => {
@@ -145,23 +146,25 @@ export const getScoreBoardThunk = (partitionKey, howMany) => dispatch => {
 
 // set new score in the table and re-generate scoreboard
 export const setNewScoreThunk = (userName, score, partitionKey, howMany) => dispatch => {
-    console.log('hi');
     postNewScore(userName, score)
         .then(response => {
             console.log(response); 
             if (response.status === 200) return response
-        }).then(dispatch(
-            getScoreBoardThunk(
-                partitionKey, 
-                howMany
+        }).then( () => {
+            console.log('hi before scoreboard thunk');
+            dispatch(
+                getScoreBoardThunk(
+                    partitionKey, 
+                    howMany
             )
-        )).then(
+        )}).then( () => {
+            console.log('hi before scoreboard swap!')
             dispatch(
                 swapScoreBoard(
                     false
                 )
             )
-        );
+        });
 }
 
 export const swapScoreBoard = (isSwap) => dispatch => {
