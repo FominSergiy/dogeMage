@@ -22,16 +22,21 @@ const Game = () => {
     const coinAndMagePos = useSelector(store => store.coinAndMagePos);
     const timer = useSelector(store => store.timer.time);
     const timerId = useSelector(store => store.timer.timerId);
+    const doSwap = useSelector(store => store.doSwap);
 
     React.useEffect(() => {
         // get top scores, sort then, and save in store
-        dispatch(
-            getScoreBoardThunk(
-                Constants.PARTITION_KEY,
-                Constants.scoreBoardLength
-            )
-        );
-    }, [dispatch]);
+        // doSwap is set if a new score record is achieved
+        // it is reset to false when a record has successfully commited
+        // to store. In this case, we need results re-render.
+        if(!doSwap)
+            dispatch(
+                getScoreBoardThunk(
+                    Constants.PARTITION_KEY,
+                    Constants.scoreBoardLength
+                )
+            );
+    }, [dispatch, doSwap]);
 
     const render = Utils.renderBoard(
         Board,
