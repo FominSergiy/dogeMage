@@ -21,6 +21,16 @@ const initTimer = {
 };
 
 
+const initKeysPressed = {};
+Object.keys(Constants.KEY_DOWN_SET_UP).forEach(
+    key => {
+        initKeysPressed[key] = {
+            pressed : Constants.KEY_DOWN_SET_UP[key].pressed
+        }
+    }
+)
+
+
 // each square calls this and gets updated state
 export const squares = (state = initState, action) => {
     switch (action.type) {
@@ -169,6 +179,30 @@ export const userName = (state = '', action) => {
             return action.userName;
         case "RESET":
             return '';
+        default:
+            return state;
+    }
+}
+
+export const keysPressed = (state = initKeysPressed, action) => {
+    console.log(action);
+    switch (action.type) {
+        case "BUTTON_KEY_DOWN":
+            return {
+                ...state,
+                [action.keyId] : {
+                    pressed : true
+                }
+            }
+        case "BUTTON_KEY_UP":
+            return {
+                ...state,
+                [action.keyId] : {
+                    pressed : false
+                }
+            }
+        case "RESET":
+            return initKeysPressed;
         default:
             return state;
     }

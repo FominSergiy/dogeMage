@@ -30,7 +30,6 @@ export const Scoreboard = () => {
         scoreBoardResults,
         Score
     );
-    console.log(scoreBoardResults);
 
     const resultArr = ScoreBoardUtils.checkForNewRecord(
         score,
@@ -143,7 +142,9 @@ const NameForm = (props) => {
                     />
                 </label>
                 <br></br>
-                <input className='submit' type='Submit' value='submit' />
+                <button className='submit' type='Submit'>
+                    submit
+                </button>
             </form>
         </div>
     )

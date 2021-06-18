@@ -11,7 +11,8 @@ const rootReducer = combineReducers({
     scoreboard: Reducers.scoreboard,
     topScores: Reducers.topScores,
     swapScoreBoard: Reducers.swapScoreBoard,
-    userName: Reducers.userName
+    userName: Reducers.userName,
+    keysPressed: Reducers.keysPressed
 });
 
 const store = createStore(

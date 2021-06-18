@@ -45,7 +45,7 @@ const Game = () => {
         squares,
         coinAndMagePos,
         score,
-        timer
+        timer,
     );
 
 

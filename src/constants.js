@@ -29,19 +29,23 @@ export const BUTTON_SETUP = {
 export const KEY_DOWN_SET_UP = {
     '37': {
         type: 'MOVE_LEFT',
-        posChange: 1
+        posChange: 1,
+        pressed: false
     },
     '38': {
         type: 'MOVE_UP',
-        posChange: 5
+        posChange: 5,
+        pressed: false
     },
     '39': {
         type: 'MOVE_RIGHT',
-        posChange: -1
+        posChange: -1,
+        pressed: false
     },
     '40': {
         type: 'MOVE_DOWN',
-        posChange: -5
+        posChange: -5,
+        pressed: false
     }
 }
 

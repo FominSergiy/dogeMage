@@ -134,7 +134,6 @@ export const setTopScores = (topScores) => dispatch => {
 // get the response from the api, use func to process data...
 // ...save processed data to the redux store.
 export const getScoreBoardThunk = (partitionKey, howMany) => dispatch => {
-    console.log('hi there from thunk');
     getScoreboardRows(partitionKey)
         .then(response => getTopSortedScores(response.data, howMany))
         .then(processedData => {
@@ -148,17 +147,14 @@ export const getScoreBoardThunk = (partitionKey, howMany) => dispatch => {
 export const setNewScoreThunk = (userName, score, partitionKey, howMany) => dispatch => {
     postNewScore(userName, score)
         .then(response => {
-            console.log(response); 
             if (response.status === 200) return response
-        }).then( () => {
-            console.log('hi before scoreboard thunk');
+        }).then(() => {
             dispatch(
                 getScoreBoardThunk(
                     partitionKey, 
                     howMany
             )
-        )}).then( () => {
-            console.log('hi before scoreboard swap!')
+        )}).then(() => {
             dispatch(
                 swapScoreBoard(
                     false
@@ -181,3 +177,10 @@ export const setUserName = (userName) => dispatch => {
     })
 }
 
+export const setKeysDown = (keyId, isKeyDown) => dispatch => {
+    const type = isKeyDown ? "BUTTON_KEY_DOWN" : "BUTTON_KEY_UP";
+    dispatch({
+        type: type,
+        keyId: keyId
+    })
+}
