@@ -95,7 +95,7 @@ export const checkForNewRecord = (score, topScoresArray, boardLength) => {
     }
 
     // if this is the new highest score on the board
-    if (score > topScoresArray[0]) {
+    if (score >= topScoresArray[0]) {
         newRecordSet = true;
         whichIndex = 0;
         return [newRecordSet, whichIndex];

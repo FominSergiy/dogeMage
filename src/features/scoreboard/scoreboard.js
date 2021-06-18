@@ -24,7 +24,7 @@ export const Scoreboard = () => {
                 swapScoreBoard(true)
             );
         
-    }, []);
+    }, [dispatch, score, onlyScores]);
 
     const rowElements = ScoreBoardUtils.getRowElements(
         scoreBoardResults,
