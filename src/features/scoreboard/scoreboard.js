@@ -30,6 +30,7 @@ export const Scoreboard = () => {
         scoreBoardResults,
         Score
     );
+    console.log(scoreBoardResults);
 
     const resultArr = ScoreBoardUtils.checkForNewRecord(
         score,
