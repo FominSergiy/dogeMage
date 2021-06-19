@@ -40,12 +40,11 @@ const Game = () => {
 
     const render = Utils.renderBoard(
         Board,
-        dispatch,
         isGameOver,
         squares,
         coinAndMagePos,
         score,
-        timer,
+        timer
     );
 
 

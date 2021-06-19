@@ -26,7 +26,6 @@ export const buttonSetUp = (Button, props) => {
 }
 
 export const makeMove = (coinAndMagePos, img, coinImg, obj, dispatch, timer) => {
-    console.log('hi');
     if (timer === 60) startDecrementCounter(timer, dispatch); // start time ticks on first move
     
     // do a check to see if we have gone over the boarder first

@@ -83,8 +83,7 @@ export const generateCoinPos = (magePos, size) => {
 }
 
 export const renderBoard = (
-    Board, 
-    dispatch, 
+    Board,
     isGameOver, 
     squares, 
     coinAndMagePos, 
@@ -115,7 +114,6 @@ export const renderBoard = (
                     coinAndMagePos={coinAndMagePos}
                     img={Constants.IMG}
                     coinImg={Constants.COIN}
-                    dispatch={dispatch}
                     timer={timer}
                 />
                 {/* <ButtonPanel
