@@ -140,7 +140,8 @@ export const getScoreBoardThunk = (partitionKey, howMany) => dispatch => {
             dispatch(setScoreboard(processedData));
             return getOnlyScores(processedData);
 
-        }).then(onlyScores => dispatch(setTopScores(onlyScores)));
+        }).then(onlyScores => dispatch(setTopScores(onlyScores))
+        ).catch(err => alert(`Ops! Something is Wrong with the Scoreboard load:${err.message}`));
 }
 
 // set new score in the table and re-generate scoreboard
@@ -160,7 +161,9 @@ export const setNewScoreThunk = (userName, score, partitionKey, howMany) => disp
                     false
                 )
             )
-        });
+        }).catch(
+            err => alert(`Ops! Something is Wrong with a new score upload:${err.message}`)
+        );
 }
 
 export const swapScoreBoard = (isSwap) => dispatch => {
