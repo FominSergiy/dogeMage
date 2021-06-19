@@ -19,12 +19,13 @@ export const Scoreboard = () => {
         );
         const newRecordSet = resultArr[0];
     
-        if (newRecordSet)
+        if (newRecordSet) {
             dispatch(
                 swapScoreBoard(true)
             );
+        }
         
-    }, [dispatch, score, onlyScores]);
+    }, [dispatch, score]);
 
     const rowElements = ScoreBoardUtils.getRowElements(
         scoreBoardResults,
