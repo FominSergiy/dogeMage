@@ -1,8 +1,8 @@
 export const BOARD_SIZE = 5;
 export const MAGE_START_POS = 12;
-export const IMG = "dogeFairy/mage.gif";
-export const COIN = "dogeFairy/dodg.gif";
-export const GAME_OVER_IMG = 'dogeFairy/gameOverGirl.png';
+export const IMG = "./mage.gif";
+export const COIN = "./dodg.gif";
+export const GAME_OVER_IMG = './gameOverGirl.png';
 export const SCOREBOARD_RESULTS_ENDPOINT = process.env.REACT_APP_SCOREBOARD_RESULTS_ENDPOINT;
 export const POST_NEW_SCORE_ENDPOINT = process.env.REACT_APP_POST_NEW_SCORE_ENDPOINT;
 export const PARTITION_KEY = process.env.REACT_APP_PARTITION_KEY;
