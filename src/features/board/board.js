@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as Utils from '../../utils/utils.js';
 import * as Constants from '../../constants.js';
-import { Square } from '../../features/square/square.js';
+import Square from '../../components/Square.js';
 import { makeMove } from '../../features/button-controls/buttonUtils.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { setKeysDown } from '../../redux/actions.js';
