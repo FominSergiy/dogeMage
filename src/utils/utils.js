@@ -1,5 +1,5 @@
 import * as Constants from '../constants.js';
-import { GameOver } from '../features/game-over/gameOver.js';
+import GameOver from '../components/GameOver.js';
 import { Scoreboard } from '../features/scoreboard/scoreboard.js';
 
 
