@@ -36,39 +36,6 @@ export const getInitState = (size, startingPos, mage, coin) => {
     return [initState, coinPos]
 }
 
-export const getScoreBoard = () => {
-    
-}
-
-export const generateBoard = (squaresObj, Square, rowLength) => {
-    const keys = Object.keys(squaresObj);
-    const board = [];
-
-    for (let i = 0; i < keys.length; i += rowLength) {
-
-        const rowEndIndex = i + rowLength;
-        let row = [];
-
-        for (let j = i; j < rowEndIndex; j++) {
-            row.push(
-                <Square
-                    key={j}
-                    id={j}
-                    squareObj={squaresObj[j]}
-                />
-            );
-        };
-
-        board.push(
-            <div key={i} className="board-row">
-                {row}
-            </div>
-        );
-
-    };
-    return board;
-}
-
 export const generateCoinPos = (magePos, size) => {
     const boardSize = Math.pow(size, 2);
     const coinPos = Math.floor(Math.random() * boardSize);

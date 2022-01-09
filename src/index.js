@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as Utils from './utils/utils.js';
 import * as Constants from './constants.js';
 import { getScoreBoardThunk } from './redux/actions.js'
-import { Board } from './features/board/board.js';
+import Board from './components/Board.js';
 
 
 
