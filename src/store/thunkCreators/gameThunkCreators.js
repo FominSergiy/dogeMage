@@ -1,5 +1,5 @@
 import { setTopScores, setScoreboard } from "../../actions/gameActions";
-import { getScoreboardRows } from "../../requests";
+import { getScoreboardRows } from "../../api/api.js";
 import { getOnlyScores, getTopSortedScores } from "../../utils/gameUtils.js";
 
 // get the response from the api, use func to process data...

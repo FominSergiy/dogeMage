@@ -3,7 +3,7 @@ import {
     SCOREBOARD_RESULTS_ENDPOINT,
     POST_NEW_SCORE_ENDPOINT,
     PARTITION_KEY
-} from "./constants.js"
+} from "../constants.js"
 
 export const getScoreboardRows = (partitionKey) => {
     try {
@@ -16,7 +16,7 @@ export const getScoreboardRows = (partitionKey) => {
                 }
             )
         )
-                
+
     } catch (error) {
         console.log(`Request was not successful. Error:${error}`)
     }
@@ -29,7 +29,7 @@ export const postNewScore = (userName, score) => {
             axios.get(
                 POST_NEW_SCORE_ENDPOINT,
                 {
-                    params: { 
+                    params: {
                         'partitionKey': PARTITION_KEY,
                         'userName' : userName,
                         'score' : score
@@ -40,7 +40,6 @@ export const postNewScore = (userName, score) => {
                 }
             )
         )
-                
     } catch (error) {
         console.log(`Request was not successful. Error:${error}`)
     }

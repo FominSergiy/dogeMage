@@ -1,4 +1,4 @@
-import { postNewScore } from '../../requests.js';
+import { postNewScore } from '../../api/api.js';
 import { swapScoreBoard } from '../../actions/scoreBoardActions.js';
 import { getScoreBoardThunk } from './gameThunkCreators.js';
 
