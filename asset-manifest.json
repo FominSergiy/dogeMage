@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/dogeMage/static/css/main.8cc8a980.chunk.css",
-    "main.js": "/dogeMage/static/js/main.fa706917.chunk.js",
-    "main.js.map": "/dogeMage/static/js/main.fa706917.chunk.js.map",
+    "main.css": "/dogeMage/static/css/main.1a5c6ef1.chunk.css",
+    "main.js": "/dogeMage/static/js/main.fa601ed8.chunk.js",
+    "main.js.map": "/dogeMage/static/js/main.fa601ed8.chunk.js.map",
     "runtime-main.js": "/dogeMage/static/js/runtime-main.94d1a4af.js",
     "runtime-main.js.map": "/dogeMage/static/js/runtime-main.94d1a4af.js.map",
-    "static/js/2.b93da4f8.chunk.js": "/dogeMage/static/js/2.b93da4f8.chunk.js",
-    "static/js/2.b93da4f8.chunk.js.map": "/dogeMage/static/js/2.b93da4f8.chunk.js.map",
+    "static/js/2.a1ff8836.chunk.js": "/dogeMage/static/js/2.a1ff8836.chunk.js",
+    "static/js/2.a1ff8836.chunk.js.map": "/dogeMage/static/js/2.a1ff8836.chunk.js.map",
     "index.html": "/dogeMage/index.html",
-    "static/css/main.8cc8a980.chunk.css.map": "/dogeMage/static/css/main.8cc8a980.chunk.css.map",
-    "static/js/2.b93da4f8.chunk.js.LICENSE.txt": "/dogeMage/static/js/2.b93da4f8.chunk.js.LICENSE.txt"
+    "static/css/main.1a5c6ef1.chunk.css.map": "/dogeMage/static/css/main.1a5c6ef1.chunk.css.map",
+    "static/js/2.a1ff8836.chunk.js.LICENSE.txt": "/dogeMage/static/js/2.a1ff8836.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.94d1a4af.js",
-    "static/js/2.b93da4f8.chunk.js",
-    "static/css/main.8cc8a980.chunk.css",
-    "static/js/main.fa706917.chunk.js"
+    "static/js/2.a1ff8836.chunk.js",
+    "static/css/main.1a5c6ef1.chunk.css",
+    "static/js/main.fa601ed8.chunk.js"
   ]
 }
