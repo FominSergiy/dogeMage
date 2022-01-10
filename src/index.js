@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
-import './styles/button-controls.css';
 import { store } from './store.js'
 import { Provider } from 'react-redux';
+import './index.css';
 import Game from './components/Game';
 
 ReactDOM.render(
