@@ -1,4 +1,4 @@
-import { setNewScoreThunk } from '../../redux/actions.js';
+import { setNewScoreThunk } from '../redux/actions.js';
 
 const sortScores = (a, b) => {
     const scoreA = parseInt(a['Score']);
@@ -7,7 +7,7 @@ const sortScores = (a, b) => {
     if (scoreA > scoreB) return -1;
     if (scoreA === scoreB) return 0;
     if (scoreA < scoreB) return 1;
-}
+};
 
 
 export const getTopSortedScores = (scoreBoardResults, howMany) => {
@@ -64,14 +64,14 @@ const getCountOfMinNums = (topScoresArr) => {
 
 /**
  * This function is used to determine if new top 10 score is achieved
- * 
+ *
  * @param score - user's current score for a given game played.
  * @param topScoresArray -- an array of scores received from the back-end.
  * It contains only scores, sorted in desc order.
  * @param {*} boardLength -- a parameter that controls the size of the board
  * to be displayed.
  * @returns an array [newRecordSet, whichIndex] - [bool, integer]
- * 
+ *
  */
 export const checkForNewRecord = (score, topScoresArray, boardLength) => {
     let newRecordSet = false;
@@ -110,7 +110,7 @@ export const checkForNewRecord = (score, topScoresArray, boardLength) => {
         newRecordSet = true;
         return [newRecordSet, whichIndex];
     }
-    
+
     if (topScoresArray.length !== 0) {
         const [minNum, minNumsCount] = getCountOfMinNums(topScoresArray);
         // for everything else
@@ -127,14 +127,14 @@ export const checkForNewRecord = (score, topScoresArray, boardLength) => {
                 newRecordSet = true;
                 whichIndex = i + 1;
                 break;
-            } 
+            }
             else if  (
                 score === minNum
                 && minNumsCount < 1
             ) {
                 newRecordSet = true;
                 whichIndex = i + 1;
-                break; 
+                break;
             }
         }
     }
@@ -146,7 +146,7 @@ export const checkForNewRecord = (score, topScoresArray, boardLength) => {
 export const handleSubmit = (event, userName, whichIndex, itemAtIndex, score, dispatch) => {
     event.preventDefault();
 
-    if (userName.trim().length === 0) 
+    if (userName.trim().length === 0)
         alert('You can\'t submit a blank form!');
 
     // run through regex
@@ -163,6 +163,6 @@ export const handleSubmit = (event, userName, whichIndex, itemAtIndex, score, di
         } else if (confirmUserName.toLowerCase() === 'yes') {
             alert('sweet!');
             dispatch(setNewScoreThunk(userName, score, 'sergey', 10));
-        }   
+        }
     }
 }

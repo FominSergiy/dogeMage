@@ -1,6 +1,6 @@
 import * as Constants from '../constants.js';
 import GameOver from '../components/GameOver.js';
-import { Scoreboard } from '../features/scoreboard/scoreboard.js';
+import Scoreboard from '../components/ScoreBoard.js';
 
 
 export const getInitState = (size, startingPos, mage, coin) => {

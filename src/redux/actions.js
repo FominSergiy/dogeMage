@@ -1,5 +1,6 @@
 import { getScoreboardRows, postNewScore } from '../requests.js';
-import { getTopSortedScores, getOnlyScores } from '../features/scoreboard/scoreboardUtils.js';
+import { getTopSortedScores, getOnlyScores } from '../utils/scoreBoardUtils.js';
+import { swapScoreBoard } from '../actions/scoreBoardActions.js';
 
 
 export const setScoreboard = (scoreBoardRows) => dispatch => {
@@ -37,7 +38,7 @@ export const setNewScoreThunk = (userName, score, partitionKey, howMany) => disp
         }).then(() => {
             dispatch(
                 getScoreBoardThunk(
-                    partitionKey, 
+                    partitionKey,
                     howMany
             )
         )}).then(() => {
@@ -49,19 +50,5 @@ export const setNewScoreThunk = (userName, score, partitionKey, howMany) => disp
         }).catch(
             err => alert(`Ops! Something is Wrong with a new score upload:${err.message}`)
         );
-}
-
-export const swapScoreBoard = (isSwap) => dispatch => {
-    dispatch({
-        type: "SWAP_SCOREBOARD",
-        doSwap: isSwap
-    })
-}
-
-export const setUserName = (userName) => dispatch => {
-    dispatch({
-        type: "SET_USER_NAME",
-        userName: userName
-    })
-}
+};
 
