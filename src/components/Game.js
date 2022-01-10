@@ -10,13 +10,13 @@ import Board from './Board.js';
 
 const Game = () => {
     const score = useSelector(store => store.score);
-    const dispatch = useDispatch();
     const isGameOver = useSelector(store => store.gameOver);
     const squares = useSelector(store => store.squares);
     const coinAndMagePos = useSelector(store => store.coinAndMagePos);
     const timer = useSelector(store => store.timer.time);
     const timerId = useSelector(store => store.timer.timerId);
     const doSwap = useSelector(store => store.doSwap);
+    const dispatch = useDispatch();
 
     React.useEffect(() => {
         // get top scores, sort then, and save in store
