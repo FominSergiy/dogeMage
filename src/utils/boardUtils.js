@@ -13,6 +13,38 @@ export const checkForKeys = (keysState) => {
     return [isMoveMade];
 };
 
+export const getInitState = (size, startingPos, mage, coin) => {
+    const coinPos = generateCoinPos(startingPos, size);
+    const boardSize = Math.pow(size, 2);
+    const initObj = {};
+
+    const initState = Array(boardSize).fill(null).reduce(
+        (obj, item, index) => {
+
+            const setMage = startingPos === index
+                ? mage
+                : null;
+
+            const setCoin = coinPos === index
+                ? coin
+                : null;
+
+            const squareObj = {
+                value: null,
+                id: index,
+                mage: setMage,
+                coin: setCoin
+            };
+
+            return {
+                ...obj,
+                [index]: squareObj
+            };
+        }, initObj
+    );
+
+    return [initState, coinPos]
+}
 
 export const generateBoard = (squaresObj, Square, rowLength) => {
     const keys = Object.keys(squaresObj);

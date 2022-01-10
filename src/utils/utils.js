@@ -2,59 +2,12 @@ import * as Constants from '../constants.js';
 import GameOver from '../components/GameOver.js';
 import Scoreboard from '../components/ScoreBoard.js';
 
-
-export const getInitState = (size, startingPos, mage, coin) => {
-    const coinPos = generateCoinPos(startingPos, size);
-    const boardSize = Math.pow(size, 2);
-    const initObj = {};
-
-    const initState = Array(boardSize).fill(null).reduce(
-        (obj, item, index) => {
-
-            const setMage = startingPos === index
-                ? mage
-                : null;
-
-            const setCoin = coinPos === index
-                ? coin
-                : null;
-
-            const squareObj = {
-                value: null,
-                id: index,
-                mage: setMage,
-                coin: setCoin
-            };
-
-            return {
-                ...obj,
-                [index]: squareObj
-            };
-        }, initObj
-    );
-
-    return [initState, coinPos]
-}
-
-export const generateCoinPos = (magePos, size) => {
-    const boardSize = Math.pow(size, 2);
-    const coinPos = Math.floor(Math.random() * boardSize);
-
-    if (coinPos === magePos) {
-        const backUpPos = generateCoinPos(magePos, size);
-        return backUpPos;
-
-    } else {
-        return coinPos;
-    }
-}
-
 export const renderBoard = (
     Board,
-    isGameOver, 
-    squares, 
-    coinAndMagePos, 
-    score, 
+    isGameOver,
+    squares,
+    coinAndMagePos,
+    score,
     timer
 ) => {
     if (isGameOver) {
@@ -83,12 +36,6 @@ export const renderBoard = (
                     coinImg={Constants.COIN}
                     timer={timer}
                 />
-                {/* <ButtonPanel
-                    coinAndMagePos={coinAndMagePos}
-                    img={Constants.IMG}
-                    coinImg={Constants.COIN}
-                    timer={timer}
-                /> */}
             </div>
         )
     }

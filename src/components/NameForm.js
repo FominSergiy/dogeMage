@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { setUserName } from '../actions/scoreBoardActions.js';
-import * as ScoreBoardUtils from "../utils/scoreBoardUtils.js";
+import { handleSubmit } from '../utils/nameFormUtils.js';
 
 const NameForm = (props) => {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const NameForm = (props) => {
                 : false;
 
             if (isSubmit) {
-                ScoreBoardUtils.handleSubmit(
+                handleSubmit(
                     event,
                     userName,
                     props.whichIndex,
@@ -38,7 +38,7 @@ const NameForm = (props) => {
                 <h1>Congrats on setting a new Record!</h1>
             </div>
             <form onSubmit={
-                event => ScoreBoardUtils.handleSubmit(
+                event => handleSubmit(
                     event,
                     userName,
                     props.whichIndex,
