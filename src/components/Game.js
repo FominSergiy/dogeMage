@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import '../styles/index.css';
 import '../styles/button-controls.css';
-import * as Utils from '../utils/utils.js';
+import * as Utils from '../utils/gameUtils.js';
 import * as Constants from '../constants.js';
 import { getScoreBoardThunk } from '../store/thunkCreators/gameThunkCreators.js';
 import Board from './Board.js';
