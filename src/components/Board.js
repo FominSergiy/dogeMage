@@ -1,24 +1,22 @@
 import React from 'react';
-
-import * as Utils from '../../utils/utils.js';
-import * as Constants from '../../constants.js';
-import { Square } from '../../features/square/square.js';
-import { makeMove } from '../../features/button-controls/buttonUtils.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { setKeysDown } from '../../redux/actions.js';
+import * as Constants from '../constants.js';
+import Square from './Square.js';
+import { checkForKeys, generateBoard } from '../utils/boardUtils.js';
+import { makeMove } from '../actionCreators/boardActionCreators.js';
+import { setKeysDown } from '../actions/boardActions.js';
 
-export const Board = (props) => {
+const Board = (props) => {
     // adding here since this components unmounts if we lose the game
-    // const keysState = useSelector(store => store.keysPressed);
     const dispatch = useDispatch();
-    const keyDowns = useSelector(store => store.keysPressed); 
-    
+    const keyDowns = useSelector(store => store.keysPressed);
+
     React.useEffect(() => {
         const handleKeyDown = (e) => {
             dispatch(
                 setKeysDown(
                     e.keyCode,
-                    true    
+                    true
                 )
             );
         }
@@ -42,7 +40,7 @@ export const Board = (props) => {
             const isInCodes = Object.keys(keysFromSetUp).includes(`${event.keyCode}`)
                 ? true
                 : false;
-    
+
             if (isMoveMade && isInCodes) {
                 const keyObj = Constants.KEY_DOWN_SET_UP[`${event.keyCode}`];
                 makeMove(
@@ -67,7 +65,7 @@ export const Board = (props) => {
     }, [dispatch, props, keyDowns]);
 
 
-    const board = Utils.generateBoard(
+    const board = generateBoard(
         props.squares,
         Square,
         Constants.BOARD_SIZE
@@ -78,17 +76,6 @@ export const Board = (props) => {
             {board}
         </div>
     );
-}
+};
 
-const checkForKeys = (keysState) => {
-    let keysPressed = 0;
-    Object.keys(keysState).forEach(
-        key => {
-            if (keysState[key].pressed === true) {
-                keysPressed += 1;
-            }
-    });
-
-    const isMoveMade = keysPressed === 1 ? true : false;
-    return [isMoveMade];
-}
+export default Board;

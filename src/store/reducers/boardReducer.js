@@ -1,5 +1,5 @@
-import * as Constants from '../constants.js';
-import { getInitState } from '../utils/utils.js';
+import * as Constants from '../../constants.js';
+import { getInitState } from '../../utils/boardUtils.js';
 
 // since coinPos is a random number, need to
 // return it back from InitState func
@@ -15,12 +15,6 @@ const initPositions = {
     'coin': coinPos
 };
 
-const initTimer = {
-    'time': 60,
-    'timerId': null
-};
-
-
 const initKeysPressed = {};
 Object.keys(Constants.KEY_DOWN_SET_UP).forEach(
     key => {
@@ -28,7 +22,12 @@ Object.keys(Constants.KEY_DOWN_SET_UP).forEach(
             pressed : Constants.KEY_DOWN_SET_UP[key].pressed
         }
     }
-)
+);
+
+const initTimer = {
+    'time': 60,
+    'timerId': null
+};
 
 
 // each square calls this and gets updated state
@@ -100,6 +99,44 @@ export const coinAndMagePos = (state = initPositions, action) => {
         default:
             return state
     };
+};
+
+export const keysPressed = (state = initKeysPressed, action) => {
+    switch (action.type) {
+        case "BUTTON_KEY_DOWN":
+            return {
+                ...state,
+                [action.keyId] : {
+                    pressed : true
+                }
+            }
+        case "BUTTON_KEY_UP":
+            return {
+                ...state,
+                [action.keyId] : {
+                    pressed : false
+                }
+            }
+        case "RESET":
+            return initKeysPressed;
+        default:
+            return state;
+    }
+};
+
+export const timer = (state = initTimer, action) => {
+    switch (action.type) {
+        case "DECREMENT_COUNTER":
+            return {
+                ...state,
+                'time': state['time'] - 1,
+                'timerId': action.timerId
+            }
+        case "RESET":
+            return initTimer;
+        default:
+            return state;
+    }
 }
 
 export const gameOver = (state = false, action) => {
@@ -119,90 +156,6 @@ export const score = (state = 0, action) => {
             return state + action.value;
         case "RESET":
             return 0;
-        default:
-            return state;
-    }
-}
-
-export const timer = (state = initTimer, action) => {
-    switch (action.type) {
-        case "DECREMENT_COUNTER":
-            return {
-                ...state,
-                'time': state['time'] - 1,
-                'timerId': action.timerId
-            }
-        case "RESET":
-            return initTimer;
-        default:
-            return state;
-    }
-}
-
-export const scoreboard = (state = [], action) => {
-    switch (action.type) {
-        case "SET_SCOREBOARD":
-            return action.scoreBoardRows;
-        default:
-            return state;
-    }
-}
-
-// setting init state to null to catch..
-// when the board is loading, but the function to calc...
-// the new record has run...
-// added this handler to the checkForNewRecord func...
-// and in case the board contains no records == []
-export const topScores = (state = null, action) => {
-    switch (action.type) {
-        case "SET_TOP_SCORES":
-            return action.scores;
-        default:
-            return state;
-    }
-}
-
-export const swapScoreBoard = (state = false, action) => {
-    switch (action.type) {
-        case "SWAP_SCOREBOARD":
-            return action.doSwap;
-        case "RESET":
-            return false;
-        default:
-            return state;
-    }
-}
-
-export const userName = (state = '', action) => {
-    switch (action.type) {
-        case "SET_USER_NAME":
-            return action.userName;
-        case "RESET":
-            return '';
-        default:
-            return state;
-    }
-}
-
-export const keysPressed = (state = initKeysPressed, action) => {
-    console.log(action);
-    switch (action.type) {
-        case "BUTTON_KEY_DOWN":
-            return {
-                ...state,
-                [action.keyId] : {
-                    pressed : true
-                }
-            }
-        case "BUTTON_KEY_UP":
-            return {
-                ...state,
-                [action.keyId] : {
-                    pressed : false
-                }
-            }
-        case "RESET":
-            return initKeysPressed;
         default:
             return state;
     }
