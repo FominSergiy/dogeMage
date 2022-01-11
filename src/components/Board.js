@@ -1,10 +1,11 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import * as Constants from '../constants.js';
-import Square from './Square.js';
-import { checkForKeys, generateBoard } from '../utils/boardUtils.js';
-import { makeMove } from '../actionCreators/boardActionCreators.js';
-import { setKeysDown } from '../actions/boardActions.js';
+import React from "react";
+import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import * as Constants from "../constants.js";
+import Square from "./Square.js";
+import { checkForKeys, generateBoard } from "../utils/boardUtils.js";
+import { makeMove } from "../actionCreators/boardActionCreators.js";
+import { setKeysDown } from "../actions/boardActions.js";
 
 const Board = (props) => {
     // adding here since this components unmounts if we lose the game
@@ -19,8 +20,8 @@ const Board = (props) => {
                     true
                 )
             );
-        }
-        window.addEventListener('keydown', handleKeyDown);
+        };
+        window.addEventListener("keydown", handleKeyDown);
 
         const handleKeyUp = (e) => {
             dispatch(
@@ -29,11 +30,11 @@ const Board = (props) => {
                     false
                 )
             );
-        }
-        window.addEventListener('keyup', handleKeyUp);
+        };
+        window.addEventListener("keyup", handleKeyUp);
 
         const registerMove = (event) => {
-             // only accept single keyDown as a move made.
+            // only accept single keyDown as a move made.
             const isMoveMade = checkForKeys(keyDowns);
 
             const keysFromSetUp = Constants.KEY_DOWN_SET_UP;
@@ -52,14 +53,14 @@ const Board = (props) => {
                     props.timer
                 );
             }
-        }
-        window.addEventListener('keyup', registerMove);
+        };
+        window.addEventListener("keyup", registerMove);
 
         return () => {
             // cleanup this component
-            window.removeEventListener('keydown', handleKeyDown);
-            window.removeEventListener('keyup', registerMove);
-            window.removeEventListener('keyup', handleKeyUp);
+            window.removeEventListener("keydown", handleKeyDown);
+            window.removeEventListener("keyup", registerMove);
+            window.removeEventListener("keyup", handleKeyUp);
         };
 
     }, [dispatch, props, keyDowns]);
@@ -76,6 +77,15 @@ const Board = (props) => {
             {board}
         </div>
     );
+};
+
+Board.propTypes = {
+    coinAndMagePos : PropTypes.object,
+    img : PropTypes.string,
+    coinImg : PropTypes.string,
+    timer : PropTypes.number,
+    squares : PropTypes.array,
+    class : PropTypes.string,
 };
 
 export default Board;

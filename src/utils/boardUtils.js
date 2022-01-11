@@ -1,4 +1,5 @@
-import { OUT_OF_RANGE_SETUP } from '../constants.js';
+import React from "react";
+import { OUT_OF_RANGE_SETUP } from "../constants.js";
 
 export const checkForKeys = (keysState) => {
     let keysPressed = 0;
@@ -7,7 +8,7 @@ export const checkForKeys = (keysState) => {
             if (keysState[key].pressed === true) {
                 keysPressed += 1;
             }
-    });
+        });
 
     const isMoveMade = keysPressed === 1 ? true : false;
     return [isMoveMade];
@@ -43,8 +44,8 @@ export const getInitState = (size, startingPos, mage, coin) => {
         }, initObj
     );
 
-    return [initState, coinPos]
-}
+    return [initState, coinPos];
+};
 
 export const generateBoard = (squaresObj, Square, rowLength) => {
     const keys = Object.keys(squaresObj);
@@ -63,7 +64,7 @@ export const generateBoard = (squaresObj, Square, rowLength) => {
                     squareObj={squaresObj[j]}
                 />
             );
-        };
+        }
 
         board.push(
             <div key={i} className="board-row">
@@ -71,7 +72,7 @@ export const generateBoard = (squaresObj, Square, rowLength) => {
             </div>
         );
 
-    };
+    }
     return board;
 };
 

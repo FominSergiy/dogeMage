@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserName } from '../actions/scoreBoardActions.js';
-import { handleSubmit } from '../utils/nameFormUtils.js';
+import { setUserName } from "../actions/scoreBoardActions.js";
+import { handleSubmit } from "../utils/nameFormUtils.js";
 
 const NameForm = (props) => {
     const dispatch = useDispatch();
@@ -23,12 +24,12 @@ const NameForm = (props) => {
                     dispatch
                 );
             }
-        }
-        window.addEventListener('keydown', handleKeyDown);
+        };
+        window.addEventListener("keydown", handleKeyDown);
 
         return () => {
             // cleanup this component
-            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener("keydown", handleKeyDown);
         };
     }, [dispatch, props, userName]);
 
@@ -62,7 +63,13 @@ const NameForm = (props) => {
                 </button>
             </form>
         </div>
-    )
+    );
+};
+
+NameForm.propTypes = {
+    whichIndex : PropTypes.number,
+    itemAtIndex : PropTypes.any,
+    score : PropTypes.number,
 };
 
 export default NameForm;

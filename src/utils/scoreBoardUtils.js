@@ -1,3 +1,5 @@
+import React from "react";
+
 export const getRowElements = (topScores, Score) => {
     const rows = [];
 
@@ -10,7 +12,7 @@ export const getRowElements = (topScores, Score) => {
     ));
 
     return rows;
-}
+};
 
 const getCountOfMinNums = (topScoresArr) => {
     const minNum = Math.min(...topScoresArr);
@@ -21,7 +23,7 @@ const getCountOfMinNums = (topScoresArr) => {
         }
     );
     return [minNum , minNumsCount];
-}
+};
 
 /**
  * This function is used to determine if new top 10 score is achieved
@@ -101,4 +103,4 @@ export const checkForNewRecord = (score, topScoresArray, boardLength) => {
     }
 
     return [newRecordSet, whichIndex];
-}
+};
