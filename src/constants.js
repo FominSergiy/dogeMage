@@ -2,52 +2,52 @@ export const BOARD_SIZE = 5;
 export const MAGE_START_POS = 12;
 export const IMG = "./mage.gif";
 export const COIN = "./dodg.gif";
-export const GAME_OVER_IMG = './gameOverGirl.png';
+export const GAME_OVER_IMG = "./gameOverGirl.png";
 export const SCOREBOARD_RESULTS_ENDPOINT = process.env.REACT_APP_SCOREBOARD_RESULTS_ENDPOINT;
 export const POST_NEW_SCORE_ENDPOINT = process.env.REACT_APP_POST_NEW_SCORE_ENDPOINT;
 export const PARTITION_KEY = process.env.REACT_APP_PARTITION_KEY;
 
 export const BUTTON_SETUP = {
     left: {
-        type: 'MOVE_LEFT',
+        type: "MOVE_LEFT",
         posChange: 1
     },
     up: {
-        type: 'MOVE_UP',
+        type: "MOVE_UP",
         posChange: 5
     },
     right: {
-        type: 'MOVE_RIGHT',
+        type: "MOVE_RIGHT",
         posChange: -1
     },
     down: {
-        type: 'MOVE_DOWN',
+        type: "MOVE_DOWN",
         posChange: -5
     }
-}
+};
 
 export const KEY_DOWN_SET_UP = {
-    '37': {
-        type: 'MOVE_LEFT',
+    "37": {
+        type: "MOVE_LEFT",
         posChange: 1,
         pressed: false
     },
-    '38': {
-        type: 'MOVE_UP',
+    "38": {
+        type: "MOVE_UP",
         posChange: 5,
         pressed: false
     },
-    '39': {
-        type: 'MOVE_RIGHT',
+    "39": {
+        type: "MOVE_RIGHT",
         posChange: -1,
         pressed: false
     },
-    '40': {
-        type: 'MOVE_DOWN',
+    "40": {
+        type: "MOVE_DOWN",
         posChange: -5,
         pressed: false
     }
-}
+};
 
 //range of indexes moving from which
 //we will get out of range and game will be over

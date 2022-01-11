@@ -3,26 +3,26 @@ export const setKeysDown = (keyId, isKeyDown) => dispatch => {
     dispatch({
         type: type,
         keyId: keyId
-    })
+    });
 };
 
 export const addOne = () => {
     return {
-        type: 'ADD_ONE',
+        type: "ADD_ONE",
         value: 1
-    }
+    };
 };
 
 export const gameOver = () => dispatch => {
     dispatch({
-        type: 'GAME_OVER',
+        type: "GAME_OVER",
         isOver: true
     });
 };
 
 export const decrementTimer = (timerId) => dispatch => {
     dispatch({
-        type: 'DECREMENT_COUNTER',
+        type: "DECREMENT_COUNTER",
         timerId: timerId
     });
 };
@@ -33,15 +33,15 @@ export const updateMageSquare = (type, curPos, newPos, img) => {
         currentMagePos: curPos,
         newMagePos: newPos,
         img: img
-    }
+    };
 };
 
 export const updateMagePos = (newPos) => {
     return {
-        type: 'UPDATE_MAGE_POS',
-        mage: 'mage',
+        type: "UPDATE_MAGE_POS",
+        mage: "mage",
         position: newPos
-    }
+    };
 };
 
 export const updateCoinSquare = (
@@ -59,15 +59,15 @@ export const updateCoinSquare = (
         newCoinPos: newCoinPos,
         img: img,
         coinImg: coinImg
-    }
+    };
 };
 
 export const updateCoinMagePos = (newMagePos, newCoinPos) => {
     return {
-        type: 'UPDATE_BOTH',
-        mage: 'mage',
+        type: "UPDATE_BOTH",
+        mage: "mage",
         magePos: newMagePos,
-        coin: 'coin',
+        coin: "coin",
         coinPos: newCoinPos
-    }
+    };
 };

@@ -1,6 +1,7 @@
-import * as Constants from '../constants.js';
-import GameOver from '../components/GameOver.js';
-import Scoreboard from '../components/ScoreBoard.js';
+import React from "react";
+import * as Constants from "../constants.js";
+import GameOver from "../components/GameOver.js";
+import Scoreboard from "../components/ScoreBoard.js";
 
 export const renderBoard = (
     Board,
@@ -22,7 +23,7 @@ export const renderBoard = (
                 />
                 <Scoreboard />
             </div>
-        )
+        );
     } else {
         return (
             <div className="game-board">
@@ -37,7 +38,7 @@ export const renderBoard = (
                     timer={timer}
                 />
             </div>
-        )
+        );
     }
 };
 
@@ -51,7 +52,7 @@ export const renderInstructions = () => {
             <h3>2. If you move over the edge it's game over</h3>
             <h3>3. Collect as many DOGE in 60 sec to fly to the moon!</h3>
         </div>
-    )
+    );
 };
 
 const renderGameOver = (score) => {
@@ -62,18 +63,18 @@ const renderGameOver = (score) => {
             <h2>Your Score: {score}</h2>
             <h3>{msg}</h3>
         </div>
-    )
+    );
 };
 
 const getScoreMessage = (score) => {
     let msg = null;
 
-    if (score >= 0) msg='Try harder next time!';
-    if (score > 5) msg='Are you sure you are using keyboard?';
-    if (score > 10) msg='Your rocket crashed back on Earth!';
-    if (score > 20) msg='I can see DODG high in the sky!';
-    if (score > 50) msg='You are really good at this!';
-    if (score > 75) msg='TO THE MOOOON!';
+    if (score >= 0) msg="Try harder next time!";
+    if (score > 5) msg="Are you sure you are using keyboard?";
+    if (score > 10) msg="Your rocket crashed back on Earth!";
+    if (score > 20) msg="I can see DODG high in the sky!";
+    if (score > 50) msg="You are really good at this!";
+    if (score > 75) msg="TO THE MOOOON!";
 
     return msg;
 };
@@ -81,7 +82,7 @@ const getScoreMessage = (score) => {
 export const getOnlyScores = (scoresObj) => {
     const onlyScores = [];
     scoresObj.forEach(
-        row => onlyScores.push(row['Score'])
+        row => onlyScores.push(row["Score"])
     );
 
     return onlyScores;
@@ -94,9 +95,9 @@ export const getTopSortedScores = (scoreBoardResults, howMany) => {
     scoreBoardArray.forEach(
         row =>
             scores.push({
-                'User': row[0],
-                'Score': parseInt(row[1]['Score']),
-                'RowKey' : row[1]['TimeStamp']
+                "User": row[0],
+                "Score": parseInt(row[1]["Score"]),
+                "RowKey" : row[1]["TimeStamp"]
             })
     );
 
@@ -105,8 +106,8 @@ export const getTopSortedScores = (scoreBoardResults, howMany) => {
 };
 
 const sortScores = (a, b) => {
-    const scoreA = parseInt(a['Score']);
-    const scoreB = parseInt(b['Score']);
+    const scoreA = parseInt(a["Score"]);
+    const scoreB = parseInt(b["Score"]);
 
     if (scoreA > scoreB) return -1;
     if (scoreA === scoreB) return 0;

@@ -1,6 +1,6 @@
-import * as Actions from '../actions/boardActions.js';
-import * as Utils from '../utils/boardUtils.js';
-import * as Constants from '../constants.js';
+import * as Actions from "../actions/boardActions.js";
+import * as Utils from "../utils/boardUtils.js";
+import * as Constants from "../constants.js";
 
 export const startDecrementCounter = (timer, dispatch) => {
     timer--;
@@ -28,8 +28,8 @@ export const makeMove = (coinAndMagePos, img, coinImg, obj, dispatch, timer) => 
 
     // do a check to see if we have gone over the boarder first
     const currentMagePos = coinAndMagePos.mage;
-    const posChange = obj['posChange'];
-    const type = obj['type'];
+    const posChange = obj["posChange"];
+    const type = obj["type"];
 
     const newMagePos = currentMagePos - posChange;
     const isScored = Utils.hasScored(coinAndMagePos, posChange);

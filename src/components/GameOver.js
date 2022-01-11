@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 
 const GameOver = (props) => {
@@ -13,35 +14,40 @@ const GameOver = (props) => {
 
             if (isReset && !isNewTopTenScore) {
                 dispatch({
-                    type: 'RESET',
-                })
+                    type: "RESET",
+                });
             }
-        }
-        window.addEventListener('keydown', handleKeyDown);
+        };
+        window.addEventListener("keydown", handleKeyDown);
 
         return () => {
             // cleanup this component
-            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener("keydown", handleKeyDown);
         };
 
     }, [dispatch, isNewTopTenScore]);
 
     return (
         <div className="game-board">
-                <div className="board lost">
-                    <img src={props.img}
-                         style={{ width: "25%", height: "25%" }}
-                         alt='nothing'
-                    />
-                    {props.renderScore}
-                </div>
-                <button className="resetButton" onClick={() =>
-                    dispatch({
-                        type: 'RESET',
-                    })
-                }>restart</button>
+            <div className="board lost">
+                <img src={props.img}
+                    style={{ width: "25%", height: "25%" }}
+                    alt='nothing'
+                />
+                {props.renderScore}
+            </div>
+            <button className="resetButton" onClick={() =>
+                dispatch({
+                    type: "RESET",
+                })
+            }>restart</button>
         </div>
-    )
+    );
+};
+
+GameOver.propTypes = {
+    img : PropTypes.string,
+    renderScore : PropTypes.number,
 };
 
 export default GameOver;

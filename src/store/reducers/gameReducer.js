@@ -1,9 +1,9 @@
 export const scoreboard = (state = [], action) => {
     switch (action.type) {
-        case "SET_SCOREBOARD":
-            return action.scoreBoardRows;
-        default:
-            return state;
+    case "SET_SCOREBOARD":
+        return action.scoreBoardRows;
+    default:
+        return state;
     }
 };
 
@@ -14,10 +14,10 @@ export const scoreboard = (state = [], action) => {
 // and in case the board contains no records == []
 export const topScores = (state = null, action) => {
     switch (action.type) {
-        case "SET_TOP_SCORES":
-            return action.scores;
-        default:
-            return state;
+    case "SET_TOP_SCORES":
+        return action.scores;
+    default:
+        return state;
     }
 };
 
