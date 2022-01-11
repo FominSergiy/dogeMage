@@ -84,7 +84,7 @@ Board.propTypes = {
     img : PropTypes.string,
     coinImg : PropTypes.string,
     timer : PropTypes.number,
-    squares : PropTypes.array,
+    squares : PropTypes.object,
     class : PropTypes.string,
 };
 
