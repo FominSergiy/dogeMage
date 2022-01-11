@@ -49,7 +49,7 @@ export const renderInstructions = () => {
             <h2>Rules:</h2>
             <h3>1. Use keyboard arrows (← ↑ ↓ →) to move the character</h3>
             <h3>1. Use Enter key to restart the game</h3>
-            <h3>2. If you move over the edge it's game over</h3>
+            <h3>2. If you move over the edge it is game over</h3>
             <h3>3. Collect as many DOGE in 60 sec to fly to the moon!</h3>
         </div>
     );
