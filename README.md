@@ -1,4 +1,27 @@
 # DOGE Mage
 
-- Game created to practice React and Redux.
-- It was creting using `npm create-react-app --redux` command [read more](https://redux.js.org/introduction/getting-started)
+This project was created as a React/Redux practice. I took a fun twist on it (still while DOGE was popular). Feel free to set up a new score!
+
+## Requirements
+- [Node](https://nodejs.org/en/download/) v14.17.4
+- [Npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) v6.14.14
+
+## Setup
+
+If you want to work with this project, the first thing you would need to do is to get all the `node_modules` in your local project. From your cloned repo run: ( replace npm with yarn if that's what applies to you)
+
+```
+$ npm install
+```
+
+that will get all the modules needed for the app to run. Once all set, run the following command to check out the game locally.
+
+```
+$ npm start
+```
+
+From this point feel free to experiment with the code.
+
+## Deployed App
+
+https://fominsergiy.github.io/dogeMage/
