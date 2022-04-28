@@ -22,6 +22,13 @@ $ npm start
 
 From this point feel free to experiment with the code.
 
+## Build the App
+
+```
+npm run predeploy
+npm run deploy
+```
+
 ## Deployed App
 
 https://fominsergiy.github.io/dogeMage/
