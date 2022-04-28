@@ -32,20 +32,11 @@ From this point feel free to experiment with the code.
 
 ## Build the App
 
-<<<<<<< HEAD
 ```
 npm run predeploy
 npm run deploy
 ```
 
-=======
->>>>>>> 92351884b2b1d2b7d3d8fe4609c230fd698deeac
 ## Deployed App
-
-```
-npm run predeploy
-npm run deploy
-```
-
 
 https://fominsergiy.github.io/dogeMage/
