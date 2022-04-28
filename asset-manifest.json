@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dogeMage/static/css/main.2593da9f.chunk.css",
-    "main.js": "/dogeMage/static/js/main.ba1d66b1.chunk.js",
-    "main.js.map": "/dogeMage/static/js/main.ba1d66b1.chunk.js.map",
+    "main.js": "/dogeMage/static/js/main.40bf55a3.chunk.js",
+    "main.js.map": "/dogeMage/static/js/main.40bf55a3.chunk.js.map",
     "runtime-main.js": "/dogeMage/static/js/runtime-main.7cda20ef.js",
     "runtime-main.js.map": "/dogeMage/static/js/runtime-main.7cda20ef.js.map",
     "static/js/2.1b1d5fab.chunk.js": "/dogeMage/static/js/2.1b1d5fab.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.7cda20ef.js",
     "static/js/2.1b1d5fab.chunk.js",
     "static/css/main.2593da9f.chunk.css",
-    "static/js/main.ba1d66b1.chunk.js"
+    "static/js/main.40bf55a3.chunk.js"
   ]
 }
