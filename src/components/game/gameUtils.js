@@ -1,6 +1,6 @@
 import React from "react";
 import * as Constants from "../../constants.js";
-import GameOver from "../GameOver.js";
+import GameOver from "../gameOver/GameOver.js";
 import Scoreboard from "../ScoreBoard.js";
 
 export const renderBoard = (
