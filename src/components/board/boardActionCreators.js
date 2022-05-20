@@ -1,6 +1,6 @@
-import * as Actions from "../actions/boardActions.js";
-import * as Utils from "../utils/boardUtils.js";
-import * as Constants from "../constants.js";
+import * as Actions from "./boardActions.js";
+import * as Utils from "./boardUtils.js";
+import * as Constants from "../../constants.js";
 
 export const startDecrementCounter = (timer, dispatch) => {
     timer--;

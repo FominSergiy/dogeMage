@@ -1,5 +1,5 @@
 import React from "react";
-import { OUT_OF_RANGE_SETUP } from "../constants.js";
+import { OUT_OF_RANGE_SETUP } from "../../constants.js";
 
 export const checkForKeys = (keysState) => {
     let keysPressed = 0;

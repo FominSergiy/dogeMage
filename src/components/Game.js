@@ -4,7 +4,7 @@ import "../index.css";
 import * as Utils from "../utils/gameUtils.js";
 import * as Constants from "../constants.js";
 import { getScoreBoardThunk } from "../store/thunkCreators/gameThunkCreators.js";
-import Board from "./Board.js";
+import Board from "./board/Board.js";
 
 
 const Game = () => {

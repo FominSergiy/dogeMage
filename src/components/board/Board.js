@@ -1,11 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import * as Constants from "../constants.js";
-import Square from "./Square.js";
-import { checkForKeys, generateBoard } from "../utils/boardUtils.js";
-import { makeMove } from "../actionCreators/boardActionCreators.js";
-import { setKeysDown } from "../actions/boardActions.js";
+import * as Constants from "../../constants.js";
+import Square from "../Square.js";
+import { checkForKeys, generateBoard } from "./boardUtils.js";
+import { makeMove } from "./boardActionCreators.js";
+import { setKeysDown } from "./boardActions.js";
+
+
+const passProps = (props, keyDowns, dispatch) => {
+    return (event) => {
+        // only accept single keyDown as a move made.
+        const isMoveMade = checkForKeys(keyDowns);
+
+        const keysFromSetUp = Constants.KEY_DOWN_SET_UP;
+        const isInCodes = Object.keys(keysFromSetUp).includes(`${event.keyCode}`)
+            ? true
+            : false;
+
+        if (isMoveMade && isInCodes) {
+            const keyObj = Constants.KEY_DOWN_SET_UP[`${event.keyCode}`];
+            makeMove(
+                props.coinAndMagePos,
+                props.img,
+                props.coinImg,
+                keyObj,
+                dispatch,
+                props.timer
+            );
+        }
+    };
+};
 
 const Board = (props) => {
     // adding here since this components unmounts if we lose the game
@@ -21,7 +46,6 @@ const Board = (props) => {
                 )
             );
         };
-        window.addEventListener("keydown", handleKeyDown);
 
         const handleKeyUp = (e) => {
             dispatch(
@@ -31,29 +55,14 @@ const Board = (props) => {
                 )
             );
         };
+
+        const registerMove = passProps(props, keyDowns, dispatch);
+        console.log("little curry", registerMove);
+
+
+
+        window.addEventListener("keydown", handleKeyDown);
         window.addEventListener("keyup", handleKeyUp);
-
-        const registerMove = (event) => {
-            // only accept single keyDown as a move made.
-            const isMoveMade = checkForKeys(keyDowns);
-
-            const keysFromSetUp = Constants.KEY_DOWN_SET_UP;
-            const isInCodes = Object.keys(keysFromSetUp).includes(`${event.keyCode}`)
-                ? true
-                : false;
-
-            if (isMoveMade && isInCodes) {
-                const keyObj = Constants.KEY_DOWN_SET_UP[`${event.keyCode}`];
-                makeMove(
-                    props.coinAndMagePos,
-                    props.img,
-                    props.coinImg,
-                    keyObj,
-                    dispatch,
-                    props.timer
-                );
-            }
-        };
         window.addEventListener("keyup", registerMove);
 
         return () => {
