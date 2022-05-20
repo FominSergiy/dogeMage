@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { getImage } from "../utils/squareUtils";
+import { getImage } from "./squareUtils";
 
 const Square = (props) => {
     const squareObj = props.squareObj;

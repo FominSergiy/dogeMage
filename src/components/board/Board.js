@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import * as Constants from "../../constants.js";
-import Square from "../Square.js";
+import Square from "../square/Square.js";
 import { checkForKeys, generateBoard } from "./boardUtils.js";
 import { makeMove } from "./boardActionCreators.js";
 import { setKeysDown } from "./boardActions.js";
