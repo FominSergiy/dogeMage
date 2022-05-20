@@ -1,5 +1,5 @@
 import { postNewScore } from "../../api/api.js";
-import { swapScoreBoard } from "../../actions/scoreBoardActions.js";
+import { swapScoreBoard } from "../scoreBoard/scoreBoardActions.js";
 import { getScoreBoardThunk } from "../game/gameThunkCreators";
 
 // set new score in the table and re-generate scoreboard
