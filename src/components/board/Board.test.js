@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { unmountComponentAtNode } from 'react-dom';
 import '@testing-library/jest-dom/extend-expect';
 import { Provider } from 'react-redux';
-import { store } from '../store.js';
+import { store } from '../../store.js';
 // import * as mockData from './mock-data.json';
 import { processStudentsData } from '../utils/containerUtils';
 import { setStudents } from '../actions/containerAction';

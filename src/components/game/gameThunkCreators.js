@@ -1,6 +1,6 @@
-import { setTopScores, setScoreboard } from "../../actions/gameActions";
+import { setTopScores, setScoreboard } from "./gameActions";
 import { getScoreboardRows } from "../../api/api.js";
-import { getOnlyScores, getTopSortedScores } from "../../utils/gameUtils.js";
+import { getOnlyScores, getTopSortedScores } from "./gameUtils.js";
 
 // get the response from the api, use func to process data...
 // ...save processed data to the redux store.

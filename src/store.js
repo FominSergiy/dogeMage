@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import * as BoardReducers from "./components/board/boardReducer";
-import * as GameReducers from "./store/reducers/gameReducer.js";
+import * as GameReducers from "./components/game/gameReducer.js";
 import * as scoreBoardReducers from "./store/reducers/scoreBoardReducer.js";
 
 const rootReducer = combineReducers({
