@@ -1,6 +1,6 @@
 import { postNewScore } from "../../api/api.js";
 import { swapScoreBoard } from "../../actions/scoreBoardActions.js";
-import { getScoreBoardThunk } from "../../components/game/gameThunkCreators";
+import { getScoreBoardThunk } from "../game/gameThunkCreators";
 
 // set new score in the table and re-generate scoreboard
 export const setNewScoreThunk = (userName, score, partitionKey, howMany) => dispatch => {

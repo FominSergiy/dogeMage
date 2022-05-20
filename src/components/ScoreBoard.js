@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { swapScoreBoard } from "../actions/scoreBoardActions.js";
 import Score from "./Score.js";
-import NameForm from "./NameForm.js";
+import NameForm from "../components/nameForm/NameForm";
 import * as ScoreBoardUtils from "../utils/scoreBoardUtils.js";
 import * as Constants from "../constants.js";
 
