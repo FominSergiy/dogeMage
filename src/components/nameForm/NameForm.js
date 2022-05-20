@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserName } from "../actions/scoreBoardActions.js";
-import { handleSubmit } from "../utils/nameFormUtils.js";
+import { setUserName } from "../scoreBoard/scoreBoardActions.js";
+import { handleSubmit } from "./nameFormUtils.js";
 
 const NameForm = (props) => {
     const dispatch = useDispatch();

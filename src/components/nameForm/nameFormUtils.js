@@ -1,4 +1,4 @@
-import { setNewScoreThunk } from "../store/thunkCreators/nameFormThunkCreators";
+import { setNewScoreThunk } from "./nameFormThunkCreators";
 
 export const handleSubmit = (event, userName, whichIndex, itemAtIndex, score, dispatch) => {
     event.preventDefault();

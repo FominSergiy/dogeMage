@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { swapScoreBoard } from "../actions/scoreBoardActions.js";
-import Score from "./Score.js";
-import NameForm from "./NameForm.js";
-import * as ScoreBoardUtils from "../utils/scoreBoardUtils.js";
-import * as Constants from "../constants.js";
+import { swapScoreBoard } from "./scoreBoardActions.js";
+import Score from "../score/Score.js";
+import NameForm from "../nameForm/NameForm";
+import * as ScoreBoardUtils from "./scoreBoardUtils.js";
+import * as Constants from "../../constants.js";
 
 export const Scoreboard = () => {
     const dispatch = useDispatch();

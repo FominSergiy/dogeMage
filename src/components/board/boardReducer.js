@@ -1,5 +1,5 @@
 import * as Constants from "../../constants.js";
-import { getInitState } from "../../utils/boardUtils.js";
+import { getInitState } from "./boardUtils.js";
 
 // since coinPos is a random number, need to
 // return it back from InitState func
