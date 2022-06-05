@@ -1,8 +1,11 @@
 .theme-toggle {
     position: absolute;
-    color: white;
-    background-color: black;
+    background-color: white;
+    border-color: black;
     padding: 5 5 5 5;
     display: inline-block;
     top: 10px;
+}
+
+.sun-and-moon {
 }
