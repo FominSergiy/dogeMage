@@ -8,7 +8,10 @@ export const COIN = process.env.NODE_ENV === "production"
     ? process.env.REACT_APP_PROD_COIN_IMG_PATH
     : process.env.REACT_APP_DEV_COIN_IMG_PATH;
 
-export const GAME_OVER_IMG = "./gameOverGirl.png";
+export const GAME_OVER_IMG = process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_PROD_GAME_OVER_GIRL_PATH
+    : process.env.REACT_APP_DEV_GAME_OVER_GIRL_PATH;
+
 export const SCOREBOARD_RESULTS_ENDPOINT = process.env.REACT_APP_SCOREBOARD_RESULTS_ENDPOINT;
 export const POST_NEW_SCORE_ENDPOINT = process.env.REACT_APP_POST_NEW_SCORE_ENDPOINT;
 export const PARTITION_KEY = process.env.REACT_APP_PARTITION_KEY;
