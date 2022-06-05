@@ -5,6 +5,7 @@ import * as Utils from "./gameUtils.js";
 import * as Constants from "../../constants.js";
 import { getScoreBoardThunk } from "./gameThunkCreators.js";
 import Board from "../board/Board.js";
+import ThemeToggle from "../themeToggle/ThemeToggle";
 
 
 const Game = () => {
@@ -48,6 +49,7 @@ const Game = () => {
 
     return (
         <div className="game">
+            <ThemeToggle />
             {render}
             {renderInstructions}
         </div>
