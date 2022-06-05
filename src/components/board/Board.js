@@ -57,7 +57,6 @@ const Board = (props) => {
         };
 
         const registerMove = passProps(props, keyDowns, dispatch);
-        console.log("little curry", registerMove);
 
 
 
