@@ -72,4 +72,4 @@ export const scoreBoardLength = 10;
 export const THEMES = {
     dark: "dark",
     light: "light"
-}
+};
