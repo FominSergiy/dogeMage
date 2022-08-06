@@ -5,6 +5,13 @@
     line-height: 72px;
     display:inline-block;
     margin: 5px 10px 0 5px;
-    border: 1px solid #999;
     text-align: center;
-  }
+}
+
+.button-container > .light {
+    border: 1px solid #09194a;
+}
+
+.button-container > .dark {
+    border: 1px solid aliceblue;
+}
