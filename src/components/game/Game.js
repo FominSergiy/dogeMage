@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../../index.css";
+import "./game.css";
 import * as Utils from "./gameUtils.js";
 import * as Constants from "../../constants.js";
 import { getScoreBoardThunk } from "./gameThunkCreators.js";

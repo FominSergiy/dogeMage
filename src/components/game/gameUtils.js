@@ -11,6 +11,7 @@ export const renderBoard = (
     score,
     timer
 ) => {
+    const screenSize = getScreenSize();
     if (isGameOver) {
         const renderScore = renderGameOver(score);
         const img = Constants.GAME_OVER_IMG;
@@ -26,7 +27,7 @@ export const renderBoard = (
         );
     } else {
         return (
-            <div className="game-board">
+            <div className={`game-board ${screenSize}`}>
                 <div className="score"><h2>Score: {score}</h2></div>
                 <div className="timer"><h2>Time: {timer}</h2></div>
                 <Board
@@ -112,4 +113,21 @@ const sortScores = (a, b) => {
     if (scoreA > scoreB) return -1;
     if (scoreA === scoreB) return 0;
     if (scoreA < scoreB) return 1;
+};
+
+export const getScreenSize = () => {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const smallScrenWidth = Constants.SMALL_SCREEN.width;
+    const smallScrenHeight = Constants.SMALL_SCREEN.height;
+
+    if (
+        screenWidth <= smallScrenWidth
+        && screenHeight <= smallScrenHeight
+    ) {
+        return Constants.SCREEN_SIZES.small;
+    }
+
+    return Constants.SCREEN_SIZES.large;
 };

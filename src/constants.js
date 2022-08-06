@@ -73,3 +73,13 @@ export const THEMES = {
     dark: "dark",
     light: "light"
 };
+
+export const SMALL_SCREEN = {
+    width: 400,
+    height: 667
+};
+
+export const SCREEN_SIZES = {
+    small: "small",
+    large: "large"
+};
