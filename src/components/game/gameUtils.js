@@ -117,14 +117,10 @@ const sortScores = (a, b) => {
 
 export const getScreenSize = () => {
     const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-
     const smallScrenWidth = Constants.SMALL_SCREEN.width;
-    const smallScrenHeight = Constants.SMALL_SCREEN.height;
 
     if (
         screenWidth <= smallScrenWidth
-        && screenHeight <= smallScrenHeight
     ) {
         return Constants.SCREEN_SIZES.small;
     }

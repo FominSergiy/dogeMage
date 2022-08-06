@@ -75,7 +75,7 @@ export const THEMES = {
 };
 
 export const SMALL_SCREEN = {
-    width: 400,
+    width: 450,
     height: 667
 };
 
