@@ -5,3 +5,11 @@
 .game-board > .dark {
     border: 1px solid white;
 }
+
+.table {
+    padding: 0 15vw 5vh 15vw;
+}
+
+.game-board {
+    padding: 0 15vw 5vh 15vw;
+}

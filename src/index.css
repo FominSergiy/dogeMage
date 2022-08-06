@@ -14,9 +14,6 @@ ul {
   display: table;
 }
 
-.table {
-  padding: 0 10vw 5vh 15vw;
-}
 
 .board {
   background-image: url("https://i.pinimg.com/originals/50/1d/49/501d49dc37935dc5c1fa42a676f785de.gif");
@@ -188,10 +185,6 @@ ul {
     flex-direction: column;
     align-items: center;
     padding: 4vh 0 0 0;
-  }
-
-  .game-board {
-    padding: 0 15vw 5vh 15vw;
   }
 
   ol,
