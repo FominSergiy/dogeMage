@@ -1,24 +1,50 @@
 import React from "react";
 import "./mobileControls.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { callMakeMove } from "./mobileControlsUtils";
 
-const MobileControls = () => {
+const MobileControls = (props) => {
     const theme = useSelector(store => store.themeToggle).theme;
+    const dispatch = useDispatch();
 
     return (
-        <div className="button-container">
-            <div className={`button ${theme}`} id="button-left">
+        <div className="button-container" >
+            <button
+                className={`button ${theme}`}
+                id="button-left"
+                onClick={() =>
+                    callMakeMove(props, "37", dispatch)
+                }
+            >
                 &larr;
-            </div>
-            <div className={`button ${theme}`} id="button-up">
+            </button>
+            <button
+                className={`button ${theme}`}
+                id="button-up"
+                onClick={() =>
+                    callMakeMove(props, "40", dispatch)
+                }
+            >
                 &darr;
-            </div>
-            <div className={`button ${theme}`} id="button-down">
+            </button>
+            <button
+                className={`button ${theme}`}
+                id="button-down"
+                onClick={() =>
+                    callMakeMove(props, "38", dispatch)
+                }
+            >
                 &uarr;
-            </div>
-            <div className={`button ${theme}`} id="button-right">
+            </button>
+            <button
+                className={`button ${theme}`}
+                id="button-right"
+                onClick={() =>
+                    callMakeMove(props, "39", dispatch)
+                }
+            >
                 &rarr;
-            </div>
+            </button>
         </div>
     );
 };

@@ -55,7 +55,13 @@ const Game = () => {
 
     let renderMobileControls = null;
     if (isSmall) {
-        renderMobileControls = <MobileControls />;
+        renderMobileControls = <MobileControls
+            squares={squares}
+            coinAndMagePos={coinAndMagePos}
+            img={Constants.IMG}
+            coinImg={Constants.COIN}
+            timer={timer}
+        />;
     }
 
     return (

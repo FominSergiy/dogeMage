@@ -1,17 +1,21 @@
 .button {
     height: 72px;
     width: 66px;
-    font-size: 25px;
     line-height: 72px;
     display:inline-block;
     margin: 5px 10px 0 5px;
     text-align: center;
+    font: 25px "Century Gothic", Futura, sans-serif;
 }
 
 .button-container > .light {
     border: 1px solid #09194a;
+    background-color: rgb(103, 51, 131);
+    color: aliceblue;
 }
 
 .button-container > .dark {
     border: 1px solid aliceblue;
+    background-color: #294496;
+    color: aliceblue;
 }

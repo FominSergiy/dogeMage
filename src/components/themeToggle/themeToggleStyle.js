@@ -27,7 +27,7 @@ const styles = {
         "cy": 11,
         "r": 6,
         "fill": "#09194a",
-        "moonOverlay": "aliceblue"
+        "moonoverlay": "aliceblue"
     },
 };
 
