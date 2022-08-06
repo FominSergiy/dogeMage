@@ -20,13 +20,14 @@ const styles = {
         "cy": 12,
         "r": 6,
         "mask": "url(#moon-mask)",
-        "fill": "black",
+        "fill": "#09194a",
     },
     circleMoon: {
         "cx": 17,
         "cy": 11,
         "r": 6,
-        "fill": "white"
+        "fill": "#09194a",
+        "moonOverlay": "aliceblue"
     },
 };
 

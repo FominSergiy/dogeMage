@@ -33,10 +33,9 @@ const ThemeToggle = () => {
                 >
                     <circle
                         {...styles.circleSun}
-                        fill='black'
+                        fill={styles.circleSun.fill}
                     />
-                    {/* <circle {...styles.circleMoon} /> */}
-                    <g className="sun-beams" stroke="currentColor">
+                    <g className="sun-beams" stroke={styles.circleSun.fill}>
                         <line x1="12" y1="1" x2="12" y2="3" />
                         <line x1="12" y1="21" x2="12" y2="23" />
                         <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
@@ -53,7 +52,7 @@ const ThemeToggle = () => {
                 >
                     <circle
                         {...styles.circleSun}
-                        fill='black'
+                        fill={styles.circleMoon.moonOverlay}
                     />
                     <circle {...styles.circleMoon} />
                 </svg>
