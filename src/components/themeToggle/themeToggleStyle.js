@@ -11,6 +11,8 @@ const styles = {
         "className": "sun-and-moon",
         "aria-hidden": "true",
         "viewBox": "0 0 24 24",
+        "height": 30,
+        "width": 24,
     },
     circleSun: {
         "className": "sun",
@@ -18,8 +20,14 @@ const styles = {
         "cy": 12,
         "r": 6,
         "mask": "url(#moon-mask)",
-        "fill": "currentColor",
-    }
+        "fill": "black",
+    },
+    circleMoon: {
+        "cx": 17,
+        "cy": 11,
+        "r": 6,
+        "fill": "white"
+    },
 };
 
 export default styles;
