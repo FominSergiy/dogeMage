@@ -68,3 +68,8 @@ export const OUT_OF_RANGE_SETUP = {
 };
 
 export const scoreBoardLength = 10;
+
+export const THEMES = {
+    dark: "dark",
+    light: "light"
+};

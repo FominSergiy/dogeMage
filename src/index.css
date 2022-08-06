@@ -29,7 +29,6 @@ ul {
 }
 
 .square {
-  border: 1px solid #999;
   float: left;
   font-size: 74px;
   font-weight: bold;
@@ -142,9 +141,6 @@ ul {
 .row {
   margin: 2px 0px;
   padding: 10px;
-  color: #794c8d;
-  border: 1px solid #794c8d;
-  /* line-height: 50px; */
 }
 
 .column-headers {

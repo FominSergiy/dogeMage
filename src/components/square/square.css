@@ -1,0 +1,7 @@
+.board-row > .light {
+    border: 1px solid #999;
+}
+
+.board-row > .dark {
+    border: 1px solid #09194a;
+}

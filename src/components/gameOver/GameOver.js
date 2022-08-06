@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
+import "./gameOver.css";
 
 const GameOver = (props) => {
     const dispatch = useDispatch();
     const isNewTopTenScore = useSelector(store => store.swapScoreBoard);
+    const theme = useSelector(store => store.themeToggle).theme;
 
     React.useEffect(() => {
         const handleKeyDown = (event) => {
@@ -36,7 +38,7 @@ const GameOver = (props) => {
                 />
                 {props.renderScore}
             </div>
-            <button className="resetButton" onClick={() =>
+            <button className={`resetButton ${theme}`} onClick={() =>
                 dispatch({
                     type: "RESET",
                 })

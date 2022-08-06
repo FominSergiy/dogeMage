@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import "./score.css";
 
 const Score = (props) => {
+    const theme = useSelector(store => store.themeToggle).theme;
     return (
-        <div className="row">
+        <div className={`row ${theme}`}>
             <div className="row-sub" id="index">
                 {props.index}
             </div>

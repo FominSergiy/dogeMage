@@ -1,0 +1,7 @@
+.game-board > .light {
+    border: 1px solid #794c8d;
+}
+
+.game-board > .dark {
+    border: 1px solid white;
+}
