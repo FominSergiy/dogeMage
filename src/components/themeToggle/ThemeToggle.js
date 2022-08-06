@@ -3,6 +3,7 @@ import "./themeToggle.css";
 import styles from "./themeToggleStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { THEMES } from "../../constants";
+import { updateBodyThemeClass } from "./themeToggleUtils";
 
 const ThemeToggle = () => {
     const dispatch = useDispatch();
@@ -12,6 +13,10 @@ const ThemeToggle = () => {
         : THEMES.light;
 
     const isLight = theme === THEMES.light;
+
+    React.useEffect(() => {
+        updateBodyThemeClass(theme, switchTo);
+    },[theme]);
 
     return(
         <button

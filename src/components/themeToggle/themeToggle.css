@@ -29,3 +29,13 @@
     block-size: 100%;
     stroke-linecap: round;
 }
+
+.body-theme-dark {
+    color: aliceblue;
+    background-color:#09194a;
+}
+
+.body-theme-light {
+    color: #09194a;
+    background-color: aliceblue;
+}
