@@ -7,6 +7,7 @@ import * as Constants from "../../constants.js";
 import { getScoreBoardThunk } from "./gameThunkCreators.js";
 import Board from "../board/Board.js";
 import ThemeToggle from "../themeToggle/ThemeToggle";
+import MobileControls from "../mobileControls/MobileControls";
 
 
 const Game = () => {
@@ -33,13 +34,17 @@ const Game = () => {
             );
     }, [dispatch, doSwap]);
 
+    const screenSize = Utils.getScreenSize();
+    const isSmall = screenSize === Constants.SCREEN_SIZES.small;
+
     const render = Utils.renderBoard(
         Board,
         isGameOver,
         squares,
         coinAndMagePos,
         score,
-        timer
+        timer,
+        screenSize
     );
     let renderInstructions = Utils.renderInstructions();
 
@@ -48,10 +53,16 @@ const Game = () => {
         renderInstructions = null;
     }
 
+    let renderMobileControls = null;
+    if (isSmall) {
+        renderMobileControls = <MobileControls />;
+    }
+
     return (
         <div className="game">
             <ThemeToggle />
             {render}
+            {renderMobileControls}
             {renderInstructions}
         </div>
     );

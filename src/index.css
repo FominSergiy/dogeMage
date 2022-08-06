@@ -220,13 +220,3 @@ ul {
   align-content: center;
   padding: 0 10% 0 15%;
 }
-
-.button {
-  height: 72px;
-  width: 72px;
-  line-height: 72px;
-  display:inline-block;
-  margin: 5px 10px 0 5px;
-  border: 1px solid #999;
-  text-align: center;
-}

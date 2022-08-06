@@ -9,9 +9,9 @@ export const renderBoard = (
     squares,
     coinAndMagePos,
     score,
-    timer
+    timer,
+    screenSize
 ) => {
-    const screenSize = getScreenSize();
     if (isGameOver) {
         const renderScore = renderGameOver(score);
         const img = Constants.GAME_OVER_IMG;
