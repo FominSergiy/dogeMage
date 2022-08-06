@@ -14,7 +14,6 @@ ul {
   display: table;
 }
 
-.game-board,
 .table {
   padding: 0 10vw 5vh 15vw;
 }
@@ -30,15 +29,11 @@ ul {
 
 .square {
   float: left;
-  font-size: 74px;
   font-weight: bold;
-  line-height: 100px;
-  height: 100px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 100px;
 }
 
 .square:focus {
@@ -197,12 +192,6 @@ ul {
 
   .game-board {
     padding: 0 15vw 5vh 15vw;
-  }
-
-  .square {
-    font-size: 54px;
-    height: 70px;
-    width: 70px;
   }
 
   ol,

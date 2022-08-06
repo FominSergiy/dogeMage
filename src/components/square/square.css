@@ -5,3 +5,17 @@
 .board-row > .dark {
     border: 1px solid #09194a;
 }
+
+.board-row > .small {
+    font-size: 74px;
+    line-height: 45px;
+    height: 65px;
+    width: 65px;
+}
+
+.board-row > .large {
+    font-size: 54px;
+    line-height: 100px;
+    height: 100px;
+    width: 100px;
+}
