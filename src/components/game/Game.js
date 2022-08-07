@@ -18,9 +18,13 @@ const Game = () => {
     const timer = useSelector(store => store.timer.time);
     const timerId = useSelector(store => store.timer.timerId);
     const doSwap = useSelector(store => store.doSwap);
+    const [screenSize, setWindowSize] = React.useState(Utils.getScreenSize());
     const dispatch = useDispatch();
 
     React.useEffect(() => {
+        const handleWindowResize = () => {
+            setWindowSize((Utils.getScreenSize()));
+        };
         // get top scores, sort then, and save in store
         // doSwap is set if a new score record is achieved
         // it is reset to false when a record has successfully commited
@@ -32,9 +36,13 @@ const Game = () => {
                     Constants.scoreBoardLength
                 )
             );
-    }, [dispatch, doSwap]);
 
-    const screenSize = Utils.getScreenSize();
+        window.addEventListener("resize", handleWindowResize);
+        return () => {
+            window.removeEventListener("resize", handleWindowResize);
+        };
+    },[dispatch, doSwap]);
+
     const isSmall = screenSize === Constants.SCREEN_SIZES.small;
 
     const render = Utils.renderBoard(
@@ -47,14 +55,15 @@ const Game = () => {
         screenSize
     );
     let renderInstructions = Utils.renderInstructions();
+    let renderMobileControls = null;
 
     if (isGameOver) {
         clearTimeout(timerId);
         renderInstructions = null;
+        renderMobileControls = null;
     }
 
-    let renderMobileControls = null;
-    if (isSmall) {
+    if (isSmall && !isGameOver) {
         renderMobileControls = <MobileControls
             squares={squares}
             coinAndMagePos={coinAndMagePos}
