@@ -52,6 +52,7 @@ export const Scoreboard = (props) => {
                 whichIndex={whichIndex}
                 itemAtIndex={scoreBoardResults[whichIndex]}
                 score={score}
+                screenSize={screenSize}
             />
         );
     } else {

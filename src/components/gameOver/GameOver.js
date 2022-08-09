@@ -7,6 +7,7 @@ import styles from "./gameOverStyle";
 const GameOver = (props) => {
     const dispatch = useDispatch();
     const isNewTopTenScore = useSelector(store => store.swapScoreBoard);
+    console.log(isNewTopTenScore);
     const theme = useSelector(store => store.themeToggle).theme;
     const screenSize = props.screenSize;
 
