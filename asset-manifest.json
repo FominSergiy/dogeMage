@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/dogeMage/static/css/main.27e3ffa2.chunk.css",
+    "main.css": "/dogeMage/static/css/main.f1849c0f.chunk.css",
     "main.js": "/dogeMage/static/js/main.1e0adcfa.chunk.js",
     "main.js.map": "/dogeMage/static/js/main.1e0adcfa.chunk.js.map",
     "runtime-main.js": "/dogeMage/static/js/runtime-main.7cda20ef.js",
@@ -8,13 +8,13 @@
     "static/js/2.9fded81d.chunk.js": "/dogeMage/static/js/2.9fded81d.chunk.js",
     "static/js/2.9fded81d.chunk.js.map": "/dogeMage/static/js/2.9fded81d.chunk.js.map",
     "index.html": "/dogeMage/index.html",
-    "static/css/main.27e3ffa2.chunk.css.map": "/dogeMage/static/css/main.27e3ffa2.chunk.css.map",
+    "static/css/main.f1849c0f.chunk.css.map": "/dogeMage/static/css/main.f1849c0f.chunk.css.map",
     "static/js/2.9fded81d.chunk.js.LICENSE.txt": "/dogeMage/static/js/2.9fded81d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.7cda20ef.js",
     "static/js/2.9fded81d.chunk.js",
-    "static/css/main.27e3ffa2.chunk.css",
+    "static/css/main.f1849c0f.chunk.css",
     "static/js/main.1e0adcfa.chunk.js"
   ]
 }
