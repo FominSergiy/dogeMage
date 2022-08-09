@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../../index.css";
+import "./game.css";
 import * as Utils from "./gameUtils.js";
 import * as Constants from "../../constants.js";
 import { getScoreBoardThunk } from "./gameThunkCreators.js";
 import Board from "../board/Board.js";
 import ThemeToggle from "../themeToggle/ThemeToggle";
+import MobileControls from "../mobileControls/MobileControls";
 
 
 const Game = () => {
@@ -16,9 +18,13 @@ const Game = () => {
     const timer = useSelector(store => store.timer.time);
     const timerId = useSelector(store => store.timer.timerId);
     const doSwap = useSelector(store => store.doSwap);
+    const [screenSize, setWindowSize] = React.useState(Utils.getScreenSize());
     const dispatch = useDispatch();
 
     React.useEffect(() => {
+        const handleWindowResize = () => {
+            setWindowSize((Utils.getScreenSize()));
+        };
         // get top scores, sort then, and save in store
         // doSwap is set if a new score record is achieved
         // it is reset to false when a record has successfully commited
@@ -30,28 +36,48 @@ const Game = () => {
                     Constants.scoreBoardLength
                 )
             );
-    }, [dispatch, doSwap]);
 
-    const render = Utils.renderBoard(
-        Board,
-        isGameOver,
-        squares,
-        coinAndMagePos,
-        score,
-        timer
-    );
-    let renderInstructions = Utils.renderInstructions();
+        window.addEventListener("resize", handleWindowResize);
+        return () => {
+            window.removeEventListener("resize", handleWindowResize);
+        };
+    },[dispatch, doSwap]);
+
+    const isSmall = screenSize === Constants.SCREEN_SIZES.small;
 
     if (isGameOver) {
         clearTimeout(timerId);
-        renderInstructions = null;
     }
 
     return (
         <div className="game">
             <ThemeToggle />
-            {render}
-            {renderInstructions}
+            {!isGameOver && (
+                Utils.renderBoard(
+                    Board,
+                    squares,
+                    coinAndMagePos,
+                    score,
+                    timer,
+                    screenSize
+                )
+            )}
+            {isGameOver && (
+                Utils.renderGameOverBoard(
+                    score,
+                    screenSize
+                )
+            )}
+            {isSmall && !isGameOver && (
+                <MobileControls
+                    squares={squares}
+                    coinAndMagePos={coinAndMagePos}
+                    img={Constants.IMG}
+                    coinImg={Constants.COIN}
+                    timer={timer}
+                />
+            )}
+            {!isGameOver && (Utils.renderInstructions())}
         </div>
     );
 };

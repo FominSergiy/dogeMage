@@ -1,6 +1,6 @@
 import React from "react";
 
-export const getRowElements = (topScores, Score) => {
+export const getRowElements = (topScores, Score, screenSize) => {
     const rows = [];
 
     topScores.forEach((row, index) => rows.push(
@@ -8,6 +8,7 @@ export const getRowElements = (topScores, Score) => {
             index={index + 1}
             user={row.User}
             score={row.Score}
+            screenSize={screenSize}
         />
     ));
 

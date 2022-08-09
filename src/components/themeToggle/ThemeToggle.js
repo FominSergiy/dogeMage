@@ -52,7 +52,7 @@ const ThemeToggle = () => {
                 >
                     <circle
                         {...styles.circleSun}
-                        fill={styles.circleMoon.moonOverlay}
+                        fill={styles.circleMoon.moonoverlay}
                     />
                     <circle {...styles.circleMoon} />
                 </svg>

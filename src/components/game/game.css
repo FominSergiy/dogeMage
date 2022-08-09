@@ -1,0 +1,7 @@
+.game > .large {
+    padding: 0 10vw 5vh 15vw;
+}
+
+.game > .small {
+    padding: 0 0 5vh 0;
+}

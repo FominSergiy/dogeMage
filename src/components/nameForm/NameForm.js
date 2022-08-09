@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserName } from "../scoreBoard/scoreBoardActions.js";
 import { handleSubmit } from "./nameFormUtils.js";
+import "./nameForm.css";
 
 const NameForm = (props) => {
     const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const NameForm = (props) => {
     }, [dispatch, props, userName]);
 
     return (
-        <div className='winner'>
+        <div className={`winner-${props.screenSize}`}>
             <div className='congrats'>
                 <h1>Congrats on setting a new Record!</h1>
             </div>
@@ -70,6 +71,7 @@ NameForm.propTypes = {
     whichIndex : PropTypes.number,
     itemAtIndex : PropTypes.any,
     score : PropTypes.number,
+    screenSize: PropTypes.string
 };
 
 export default NameForm;

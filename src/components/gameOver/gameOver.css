@@ -5,3 +5,64 @@
 .game-board > .dark {
     border: 1px solid white;
 }
+
+.game-over-screen > .small {
+    width: 100%;
+}
+
+.game-over-screen > .large {
+    padding: 0 15vw 5vh 15vw;
+}
+
+.game-board > .lost-small {
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+
+.game-board > .lost-large {
+    width: 800px;
+}
+
+.finalScore-small > .small {
+    font-size: 10px;
+}
+
+.finalScore-large > .large {
+    font-size: 25px;
+}
+
+.resetButton-large {
+    margin: 15px 0 0 0;
+    font-size: 20px;
+    background-color: #794c8d;
+    color: white;
+    padding: 5px;
+    border-radius: 15%;
+}
+
+.resetButton-small {
+    margin: 10px 0px 10px 0px;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    background-color: #794c8d;
+    color: white;
+    padding: 5px;
+    border-radius: 2%;
+}
+
+.finalScore-large {
+    float: right;
+    display: inline-block;
+    margin: 0 100px 0 0;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+.finalScore-small {
+    float: right;
+    display: inline-block;
+    margin: 0 10px 0 0;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
