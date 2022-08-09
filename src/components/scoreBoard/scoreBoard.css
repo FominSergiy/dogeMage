@@ -1,0 +1,117 @@
+.table > .small {
+
+}
+
+.table > .large {
+    padding: 0 15vw 5vh 15vw;
+}
+
+.header-small {
+
+}
+
+/* SCOREBOARD STYLING */
+
+.header-large {
+    position: relative;
+    background-color: #794c8d;
+    color: white;
+    padding: 15px 65px 15px 15px;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+}
+
+.header-small {
+    position: relative;
+    background-color: #794c8d;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+}
+
+
+.winner {
+    margin: 0 150px 0 210px;
+    position: relative;
+    background-color: #794c8d;
+    color: white;
+    padding: 15px 25px 15px 15px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.row {
+    margin: 2px 0px;
+    padding: 10px;
+}
+
+.column-headers {
+    margin: 2px 0px;
+    padding: 10px;
+    background-color: #562a69;
+    color: white;
+    font-weight: bold;
+}
+
+.row::before,
+.column-headers::before,
+.winner:before {
+    display: table;
+    content: " ";
+    display: inline-block;
+    align-items: center;
+}
+
+.row-sub {
+    display: block;
+    float: left;
+}
+
+#index-large {
+    width: 150px;
+}
+
+#index-small {
+    width: 65px;
+}
+
+#name-large {
+    width: 425px;
+}
+
+#name-small {
+    width: 143px;
+}
+
+#score-large {
+    width: 150px;
+}
+
+#score-small {
+    width: 104px;
+}
+
+#name-large,
+#score-large,
+#index-large {
+    line-height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 20px;
+}
+
+#name-small,
+#score-small,
+#index-small {
+    line-height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 18px;
+}

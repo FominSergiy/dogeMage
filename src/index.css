@@ -51,24 +51,8 @@ ul {
   width: 800px;
 }
 
-.finalScore {
-  float: right;
-  display: inline-block;
-  margin: 0 100px 0 0;
-  color: white;
-  text-shadow: 2px 2px 2px black;
-}
-
-.resetButton {
-  margin: 15px 0 0 0;
-  font-size: 20px;
-  background-color: #794c8d;
-  color: white;
-  padding: 5px;
-  border-radius: 15%;
-}
-
-.resetButton:hover,
+.resetButton-small:hover,
+.resetButton-large:hover,
 .submit:hover {
   background-color: white;
   color: #794c8d;
@@ -85,10 +69,6 @@ ul {
   border: 2px solid white;
 }
 
-.finalScore > h2,
-.finalScore > h3 {
-  font-size: 25px;
-}
 
 .game-mobile-header {
   display: none;
@@ -105,79 +85,6 @@ ul {
 .timer {
   display: inline-block;
   float: right;
-}
-
-/* SCOREBOARD STYLING */
-
-.header {
-  position: relative;
-  background-color: #794c8d;
-  color: white;
-  padding: 15px 65px 15px 15px;
-  font-weight: bold;
-  font-size: 25px;
-  text-align: center;
-}
-
-.winner {
-  margin: 0 150px 0 210px;
-  position: relative;
-  background-color: #794c8d;
-  color: white;
-  padding: 15px 25px 15px 15px;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-}
-
-.row {
-  margin: 2px 0px;
-  padding: 10px;
-}
-
-.column-headers {
-  margin: 2px 0px;
-  padding: 10px;
-  background-color: #562a69;
-  color: white;
-  font-weight: bold;
-}
-
-.row::before,
-.column-headers::before,
-.winner:before {
-  display: table;
-  content: " ";
-  display: inline-block;
-  align-items: center;
-}
-
-.row-sub {
-  display: block;
-  float: left;
-}
-
-#index {
-  width: 150px;
-}
-
-#name {
-  width: 425px;
-}
-
-#score {
-  width: 150px;
-}
-
-#name,
-#score,
-#index {
-  line-height: 22px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  text-align: center;
-  font-size: 20px;
 }
 
 @media only screen and (max-width: 400px) {

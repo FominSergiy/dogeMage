@@ -5,13 +5,16 @@ import Score from "../score/Score.js";
 import NameForm from "../nameForm/NameForm";
 import * as ScoreBoardUtils from "./scoreBoardUtils.js";
 import * as Constants from "../../constants.js";
+import "./scoreBoard.css";
+import PropTypes from "prop-types";
 
-export const Scoreboard = () => {
+export const Scoreboard = (props) => {
     const dispatch = useDispatch();
     const score = useSelector(store => store.score);
     const scoreBoardResults = useSelector(store => store.scoreboard);
     const onlyScores = useSelector(store => store.topScores);
     const doSwap = useSelector(store => store.swapScoreBoard);
+    const screenSize = props.screenSize;
 
     React.useEffect(() => {
         const resultArr = ScoreBoardUtils.checkForNewRecord(
@@ -31,7 +34,8 @@ export const Scoreboard = () => {
 
     const rowElements = ScoreBoardUtils.getRowElements(
         scoreBoardResults,
-        Score
+        Score,
+        screenSize
     );
 
     const resultArr = ScoreBoardUtils.checkForNewRecord(
@@ -52,16 +56,16 @@ export const Scoreboard = () => {
         );
     } else {
         return (
-            <div className='table'>
-                <div className='header'>scoreboard</div>
+            <div className={`table ${screenSize}`}>
+                <div className={`header-${screenSize}`}>scoreboard</div>
                 <div className='column-headers'>
-                    <div className='row-sub' id="index">
+                    <div className='row-sub' id={`index-${screenSize}`}>
                         Place
                     </div>
-                    <div className='row-sub' id="name">
+                    <div className='row-sub' id={`name-${screenSize}`}>
                         User
                     </div>
-                    <div className='row-sub' id="score">
+                    <div className='row-sub' id={`score-${screenSize}`}>
                         Score
                     </div>
                 </div>
@@ -69,6 +73,10 @@ export const Scoreboard = () => {
             </div>
         );
     }
+};
+
+Scoreboard.propTypes = {
+    screenSize: PropTypes.string
 };
 
 export default Scoreboard;

@@ -28,17 +28,19 @@ export const renderBoard = (
 };
 
 export const renderGameOverBoard = (score, screenSize) => {
-    const renderScore = renderGameOver(score);
+    const renderScore = renderGameOver(score, screenSize);
     const img = Constants.GAME_OVER_IMG;
 
     return (
-        <div>
+        <div className="game-over-screen">
             <GameOver
                 img={img}
                 renderScore={renderScore}
                 screenSize={screenSize}
             />
-            <Scoreboard />
+            <Scoreboard
+                screenSize={screenSize}
+            />
         </div>
     );
 };
@@ -56,13 +58,17 @@ export const renderInstructions = () => {
     );
 };
 
-const renderGameOver = (score) => {
+const renderGameOver = (score, screenSize) => {
     const msg = getScoreMessage(score);
 
     return (
-        <div className="finalScore">
-            <h2>Your Score: {score}</h2>
-            <h3>{msg}</h3>
+        <div className={`finalScore-${screenSize}`}>
+            <h2 className={`${screenSize}`}>
+                Your Score: {score}
+            </h2>
+            <h3 className={`${screenSize}`}>
+                {msg}
+            </h3>
         </div>
     );
 };
