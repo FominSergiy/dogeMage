@@ -45,40 +45,39 @@ const Game = () => {
 
     const isSmall = screenSize === Constants.SCREEN_SIZES.small;
 
-    const render = Utils.renderBoard(
-        Board,
-        isGameOver,
-        squares,
-        coinAndMagePos,
-        score,
-        timer,
-        screenSize
-    );
-    let renderInstructions = Utils.renderInstructions();
-    let renderMobileControls = null;
-
     if (isGameOver) {
         clearTimeout(timerId);
-        renderInstructions = null;
-        renderMobileControls = null;
-    }
-
-    if (isSmall && !isGameOver) {
-        renderMobileControls = <MobileControls
-            squares={squares}
-            coinAndMagePos={coinAndMagePos}
-            img={Constants.IMG}
-            coinImg={Constants.COIN}
-            timer={timer}
-        />;
     }
 
     return (
         <div className="game">
             <ThemeToggle />
-            {render}
-            {renderMobileControls}
-            {renderInstructions}
+            {!isGameOver && (
+                Utils.renderBoard(
+                    Board,
+                    squares,
+                    coinAndMagePos,
+                    score,
+                    timer,
+                    screenSize
+                )
+            )}
+            {isGameOver && (
+                Utils.renderGameOverBoard(
+                    score,
+                    screenSize
+                )
+            )}
+            {isSmall && !isGameOver && (
+                <MobileControls
+                    squares={squares}
+                    coinAndMagePos={coinAndMagePos}
+                    img={Constants.IMG}
+                    coinImg={Constants.COIN}
+                    timer={timer}
+                />
+            )}
+            {!isGameOver && (Utils.renderInstructions())}
         </div>
     );
 };

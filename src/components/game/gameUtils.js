@@ -5,42 +5,42 @@ import Scoreboard from "../scoreBoard/ScoreBoard.js";
 
 export const renderBoard = (
     Board,
-    isGameOver,
     squares,
     coinAndMagePos,
     score,
     timer,
     screenSize
 ) => {
-    if (isGameOver) {
-        const renderScore = renderGameOver(score);
-        const img = Constants.GAME_OVER_IMG;
+    return (
+        <div className={`game-board ${screenSize}`}>
+            <div className="score"><h2>Score: {score}</h2></div>
+            <div className="timer"><h2>Time: {timer}</h2></div>
+            <Board
+                class="board"
+                squares={squares}
+                coinAndMagePos={coinAndMagePos}
+                img={Constants.IMG}
+                coinImg={Constants.COIN}
+                timer={timer}
+            />
+        </div>
+    );
+};
 
-        return (
-            <div>
-                <GameOver
-                    img={img}
-                    renderScore={renderScore}
-                />
-                <Scoreboard />
-            </div>
-        );
-    } else {
-        return (
-            <div className={`game-board ${screenSize}`}>
-                <div className="score"><h2>Score: {score}</h2></div>
-                <div className="timer"><h2>Time: {timer}</h2></div>
-                <Board
-                    class="board"
-                    squares={squares}
-                    coinAndMagePos={coinAndMagePos}
-                    img={Constants.IMG}
-                    coinImg={Constants.COIN}
-                    timer={timer}
-                />
-            </div>
-        );
-    }
+export const renderGameOverBoard = (score, screenSize) => {
+    const renderScore = renderGameOver(score);
+    const img = Constants.GAME_OVER_IMG;
+
+    return (
+        <div>
+            <GameOver
+                img={img}
+                renderScore={renderScore}
+                screenSize={screenSize}
+            />
+            <Scoreboard />
+        </div>
+    );
 };
 
 export const renderInstructions = () => {
