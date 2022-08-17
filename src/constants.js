@@ -1,16 +1,26 @@
 export const BOARD_SIZE = 5;
 export const MAGE_START_POS = 12;
-export const IMG = process.env.NODE_ENV === "production"
-    ? process.env.REACT_APP_PROD_IMG_PATH
-    : process.env.REACT_APP_DEV_IMG_PATH;
 
-export const COIN = process.env.NODE_ENV === "production"
-    ? process.env.REACT_APP_PROD_COIN_IMG_PATH
-    : process.env.REACT_APP_DEV_COIN_IMG_PATH;
-
-export const GAME_OVER_IMG = process.env.NODE_ENV === "production"
-    ? process.env.REACT_APP_PROD_GAME_OVER_GIRL_PATH
-    : process.env.REACT_APP_DEV_GAME_OVER_GIRL_PATH;
+const envMap = {
+    production : {
+        img: process.env.REACT_APP_PROD_IMG_PATH,
+        coin: process.env.REACT_APP_PROD_COIN_IMG_PATH,
+        game_over_img: process.env.REACT_APP_PROD_GAME_OVER_GIRL_PATH
+    },
+    development : {
+        img: process.env.REACT_APP_DEV_IMG_PATH,
+        coin: process.env.REACT_APP_DEV_COIN_IMG_PATH,
+        game_over_img: process.env.REACT_APP_DEV_GAME_OVER_GIRL_PATH
+    },
+    test: {
+        img: process.env.REACT_APP_TEST_IMG_PATH,
+        coin: process.env.REACT_APP_TEST_COIN_IMG_PATH,
+        game_over_img: process.env.REACT_APP_TEST_GAME_OVER_GIRL_PATH
+    }
+};
+export const IMG = envMap[process.env.NODE_ENV].img;
+export const COIN = envMap[process.env.NODE_ENV].coin;
+export const GAME_OVER_IMG = envMap[process.env.NODE_ENV].game_over_img;
 
 export const SCOREBOARD_RESULTS_ENDPOINT = process.env.REACT_APP_SCOREBOARD_RESULTS_ENDPOINT;
 export const POST_NEW_SCORE_ENDPOINT = process.env.REACT_APP_POST_NEW_SCORE_ENDPOINT;

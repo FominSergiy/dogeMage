@@ -15,7 +15,10 @@ const Square = (props) => {
     const coin = getImage("coin", squareObj.coin);
 
     return (
-        <div className={`square ${theme} ${screenSize}`} id={props.id} >
+        <div
+            className={`square ${theme} ${screenSize}`}
+            id={props.id}
+            data-testid={props.dataTestId} >
             {mage || coin}
         </div>
     );
@@ -25,7 +28,9 @@ Square.propTypes = {
     squareObj : PropTypes.object,
     mage : PropTypes.string,
     coin : PropTypes.string,
-    id : PropTypes.number
+    id : PropTypes.number,
+    dataTestId : PropTypes.number
+
 };
 
 export default Square;
