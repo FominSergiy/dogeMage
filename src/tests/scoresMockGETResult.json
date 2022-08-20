@@ -1,0 +1,79 @@
+[
+    [
+        "test_user_one",
+        {
+            "Score": 14,
+            "TimeStamp": "2021-08-10, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_two",
+        {
+            "Score": 15,
+            "TimeStamp": "2021-08-12, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_three",
+        {
+            "Score": 16,
+            "TimeStamp": "2021-08-15, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_four",
+        {
+            "Score": 17,
+            "TimeStamp": "2021-08-05, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_five",
+        {
+            "Score": 18,
+            "TimeStamp": "2021-08-21, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_six",
+        {
+            "Score": 52,
+            "TimeStamp": "2021-08-24, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_seven",
+        {
+            "Score": 76,
+            "TimeStamp": "2021-08-05, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_eight",
+        {
+            "Score": 24,
+            "TimeStamp": "2021-08-01, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_ten",
+        {
+            "Score": 54,
+            "TimeStamp": "2021-08-02, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_eleven",
+        {
+            "Score": 44,
+            "TimeStamp": "2021-08-24, 17:19:21:386405"
+        }
+    ],
+    [
+        "test_user_one",
+        {
+            "Score": 32,
+            "TimeStamp": "2021-08-29, 17:19:21:386405"
+        }
+    ]
+]
