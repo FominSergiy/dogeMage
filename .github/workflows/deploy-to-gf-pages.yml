@@ -3,7 +3,7 @@ name: build and deploy to pages 🥳
 on:
   push:
     branches:
-      - '*'
+      - 'master'
 
 jobs:
   build:
@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Build the app 👾
-        run: npm run build
+        run: npm run build # output is in the build folder
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
