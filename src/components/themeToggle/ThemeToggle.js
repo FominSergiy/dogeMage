@@ -34,6 +34,7 @@ const ThemeToggle = () => {
                     <circle
                         {...styles.circleSun}
                         fill={styles.circleSun.fill}
+                        data-testid="circleSun"
                     />
                     <g className="sun-beams" stroke={styles.circleSun.fill}>
                         <line x1="12" y1="1" x2="12" y2="3" />
@@ -53,8 +54,12 @@ const ThemeToggle = () => {
                     <circle
                         {...styles.circleSun}
                         fill={styles.circleMoon.moonoverlay}
+                        data-testid="circleSun"
                     />
-                    <circle {...styles.circleMoon} />
+                    <circle 
+                        {...styles.circleMoon}
+                        data-testid="circleMoon"
+                    />
                 </svg>
             )}
         </button>

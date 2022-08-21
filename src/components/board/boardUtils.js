@@ -62,6 +62,7 @@ export const generateBoard = (squaresObj, Square, rowLength) => {
                     key={j}
                     id={j}
                     squareObj={squaresObj[j]}
+                    dataTestId={j}
                 />
             );
         }
