@@ -30,6 +30,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install node_modules
+        run: npm ci
+
       - name: Build the app 👾
         run: npm run build
 
