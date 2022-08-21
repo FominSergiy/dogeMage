@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - '*'
+      - '!master' # covered by the pr run
   pull_request:
     branches:
       - 'master'
