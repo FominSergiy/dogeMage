@@ -36,10 +36,7 @@ jobs:
       - name: Build the app 👾
         run: npm run build
 
-      - name: Deploy the app
-        run: |
-          export $(cat .env | xargs)
-          gh-pages -d build
-
-
-
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build # The folder the action should deploy.
