@@ -3,7 +3,7 @@ name: build and deploy to pages 🥳
 on:
   push:
     branches:
-      - '*'
+      - 'master'
 
 jobs:
   build:
