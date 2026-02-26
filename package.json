@@ -16,7 +16,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "export $(cat .env | xargs) && gh-pages -d dist",
-    "start": "vite",
+    "start": "vite build && vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
