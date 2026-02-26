@@ -11,7 +11,7 @@ export const checkForKeys = (keysState) => {
         });
 
     const isMoveMade = keysPressed === 1 ? true : false;
-    return [isMoveMade];
+    return isMoveMade;
 };
 
 export const getInitState = (size, startingPos, mage, coin) => {
