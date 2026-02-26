@@ -5,29 +5,25 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
     "axios": "^1.13.5",
     "dotenv": "^17.3.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-redux": "^9.2.0",
-    "react-scripts": "5.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^3.1.0"
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "export $(cat .env | xargs) && gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "unit-test": "jest --setupFiles dotenv/config"
+    "deploy": "export $(cat .env | xargs) && gh-pages -d dist",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "unit-test": "vitest run"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "plugin:react/recommended"
   },
   "browserslist": {
     "production": [
@@ -42,12 +38,14 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^26.0.0",
     "eslint-plugin-react": "^7.37.5",
-    "gh-pages": "^6.3.0"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "^.+\\.(css|less)$": "<rootDir>/config/CSSStub.js"
-    }
+    "gh-pages": "^6.3.0",
+    "vite": "^6.3.5",
+    "vitest": "^3.0.9"
   }
 }

@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunkMiddleware from "redux-thunk";
+import { thunk as thunkMiddleware } from "redux-thunk";
 import * as BoardReducers from "./components/board/boardReducer";
 import * as GameReducers from "./components/game/gameReducer";
 import * as scoreBoardReducers from "./components/scoreBoard/scoreBoardReducer";

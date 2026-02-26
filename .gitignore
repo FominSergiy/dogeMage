@@ -8,8 +8,8 @@
 # testing
 /coverage
 
-# production
-/build
+/dist
+/.vscode
 
 # misc
 .env*
