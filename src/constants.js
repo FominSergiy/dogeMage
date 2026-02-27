@@ -2,7 +2,7 @@ export const BOARD_SIZE = 5;
 export const MAGE_START_POS = 12;
 
 export const IMG = import.meta.env.VITE_IMG_PATH;
-export const COIN = import.meta.env.VITE_COIN_PATH;
+export const COIN = import.meta.env.VITE_COIN_IMG_PATH;
 export const GAME_OVER_IMG = import.meta.env.VITE_GAME_OVER_GIRL_PATH;
 
 export const SCOREBOARD_RESULTS_ENDPOINT = import.meta.env
