@@ -3,11 +3,11 @@ name: run unit tests 📚
 on:
   push:
     branches:
-      - '*'
-      - '!master' # covered by the pr run
+      - "*"
+      - "!master" # covered by the pr run
   pull_request:
     branches:
-      - 'master'
+      - "master"
 
 jobs:
   build:
@@ -16,18 +16,18 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 14.x
+          - 22.x
 
     steps:
       - name: checkout code 💣
         uses: actions/checkout@v3
 
       - name: create .env file for tests 💫
-        run : |
+        run: |
           touch .env
-          echo REACT_APP_TEST_IMG_PATH='dogeMage/mage.gif' > .env
-          echo REACT_APP_TEST_COIN_IMG_PATH='dogeMage/dodg.gif' >> .env
-          echo REACT_APP_TEST_GAME_OVER_GIRL_PATH='dogeMage/gameOverGirl.png' >> .env
+          echo VITE_IMG_PATH='dogeMage/mage.gif' > .env
+          echo VITE_COIN_IMG_PATH='dogeMage/dodg.gif' >> .env
+          echo VITE_GAME_OVER_GIRL_PATH='dogeMage/gameOverGirl.png' >> .env
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
