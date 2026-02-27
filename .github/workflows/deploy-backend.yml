@@ -2,7 +2,7 @@ name: deploy backend to GCP 📚
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
     paths:
       - "functions/**"
       - "infra/**"
@@ -15,6 +15,7 @@ permissions:
 
 jobs:
   deploy:
+    environment: gcp-backend
     runs-on: ubuntu-latest
 
     steps:
@@ -62,6 +63,8 @@ jobs:
           gh variable set VITE_SCOREBOARD_RESULTS_ENDPOINT \
             --body "${{ steps.tf_outputs.outputs.get_scores_url }}" \
             --repo "${{ github.repository }}"
+            --env github-pages
           gh variable set VITE_POST_NEW_SCORE_ENDPOINT \
             --body "${{ steps.tf_outputs.outputs.post_score_url }}" \
             --repo "${{ github.repository }}"
+            --env github-pages
