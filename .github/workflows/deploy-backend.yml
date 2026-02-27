@@ -2,7 +2,7 @@ name: deploy backend to GCP 📚
 
 on:
   push:
-    branches: [main, ci-build-test]
+    branches: [main]
     paths:
       - "functions/**"
       - "infra/**"
