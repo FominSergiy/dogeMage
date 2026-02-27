@@ -17,8 +17,7 @@ const Square = (props) => {
     return (
         <div
             className={`square ${theme} ${screenSize}`}
-            id={props.id}
-            data-testid={props.dataTestId} >
+            id={props.id}>
             {mage || coin}
         </div>
     );
@@ -28,8 +27,7 @@ Square.propTypes = {
     squareObj : PropTypes.object,
     mage : PropTypes.string,
     coin : PropTypes.string,
-    id : PropTypes.number,
-    dataTestId : PropTypes.number
+    id : PropTypes.number
 
 };
 

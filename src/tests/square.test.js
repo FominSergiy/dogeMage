@@ -16,10 +16,9 @@ test('It renders square', () => {
             squareObj={propsObj}
             key={1}
             id={1}
-            dataTestId={1}
         />
     );
-    expect(container.getByTestId('1').className).toContain('square');
+    expect(container.container.querySelector('.square').className).toContain('square');
 });
 
 test('It renders mage when mage in props', () => {
@@ -33,7 +32,6 @@ test('It renders mage when mage in props', () => {
             squareObj={mageProps}
             key={1}
             id={1}
-            dataTestId={1}
         />
     );
     expect(container.getByRole('img')).toBeTruthy();
@@ -51,7 +49,6 @@ test('It renders coin when coin in props', () => {
             squareObj={coinProps}
             key={1}
             id={1}
-            dataTestId={1}
         />
     );
     expect(container.getByRole('img')).toBeTruthy();

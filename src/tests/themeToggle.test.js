@@ -15,16 +15,15 @@ test("It renders theme toggle", () => {
 
 test("It renders sun image when light default theme", () => {
   const container = renderWithProviders(<ThemeToggle />);
-  expect(container.getByTestId("circleSun")).toBeTruthy();
+  expect(container.container.querySelectorAll('circle')).toHaveLength(1);
 });
 
 test("It renders dark image when dark theme toggled", async () => {
   const container = renderWithProviders(<ThemeToggle />);
   const button = container.getByRole("button");
-  expect(container.getByTestId("circleSun")).toBeTruthy();
+  expect(container.container.querySelectorAll('circle')).toHaveLength(1);
 
   await userEvent.click(button);
 
-  expect(container.getByTestId("circleSun")).toBeTruthy();
-  expect(container.getByTestId("circleMoon")).toBeTruthy();
+  expect(container.container.querySelectorAll('circle')).toHaveLength(2);
 });
