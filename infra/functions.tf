@@ -7,11 +7,28 @@ resource "google_service_account" "function_runner" {
   display_name = "Cloud Functions Runtime SA"
 }
 
-resource "google_project_iam_member" "function_runner_firestore" {
+resource "google_project_iam_member" "function_runner_roles" {
+  for_each = toset([
+    "roles/datastore.user",
+    "roles/storage.objectViewer",
+    "roles/cloudfunctions.invoker",
+    "roles/logging.logWriter",
+    "roles/artifactregistry.writer",
+  ])
+
   project = var.project_id
-  role    = "roles/datastore.user"
+  role    = each.value
   member  = "serviceAccount:${google_service_account.function_runner.email}"
 }
+
+resource "google_service_account_iam_binding" "function_runner_binding" {
+  service_account_id = google_service_account.function_runner.name
+  role               = "roles/iam.serviceAccountUser"
+  members = [
+    "serviceAccount:github-deployer@doge-mage-backend.iam.gserviceaccount.com"
+  ]
+}
+
 
 # ---------------------------------------------------------------------------
 # get-scores
@@ -36,6 +53,7 @@ resource "google_cloudfunctions2_function" "get_scores" {
   build_config {
     runtime     = "nodejs20"
     entry_point = "getScores"
+    service_account = google_service_account.function_runner.id
     source {
       storage_source {
         bucket = google_storage_bucket.function_source.name
@@ -90,6 +108,7 @@ resource "google_cloudfunctions2_function" "post_score" {
   build_config {
     runtime     = "nodejs20"
     entry_point = "postScore"
+    service_account = google_service_account.function_runner.id
     source {
       storage_source {
         bucket = google_storage_bucket.function_source.name
