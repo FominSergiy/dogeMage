@@ -11,7 +11,9 @@ resource "google_project_iam_member" "function_runner_roles" {
   for_each = toset([
     "roles/datastore.user",
     "roles/storage.objectViewer",
-    "roles/cloudfunctions.invoker"
+    "roles/cloudfunctions.invoker",
+    "roles/logging.logWriter",
+    "roles/artifactregistry.writer",
   ])
 
   project = var.project_id
@@ -51,6 +53,7 @@ resource "google_cloudfunctions2_function" "get_scores" {
   build_config {
     runtime     = "nodejs20"
     entry_point = "getScores"
+    service_account = google_service_account.function_runner.id
     source {
       storage_source {
         bucket = google_storage_bucket.function_source.name
@@ -105,6 +108,7 @@ resource "google_cloudfunctions2_function" "post_score" {
   build_config {
     runtime     = "nodejs20"
     entry_point = "postScore"
+    service_account = google_service_account.function_runner.id
     source {
       storage_source {
         bucket = google_storage_bucket.function_source.name
