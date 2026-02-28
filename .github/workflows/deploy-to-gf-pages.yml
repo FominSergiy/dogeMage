@@ -1,24 +1,45 @@
 name: build and deploy to pages 🥳
-
 on:
   push:
     branches:
-      - 'master'
-      - 'main'
+      - "main"
+
+permissions:
+  contents: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: github-pages
-
     strategy:
       matrix:
         node-version:
           - 22.x
-
     steps:
       - name: checkout code 💣
         uses: actions/checkout@v4
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_DEPLOYER_SA }}
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        working-directory: infra
+        run: terraform init
+
+      - name: Get function URLs from Terraform state
+        working-directory: infra
+        run: |
+          echo "VITE_SCOREBOARD_RESULTS_ENDPOINT=$(terraform output -raw get_scores_url)" >> $GITHUB_ENV
+          echo "VITE_POST_NEW_SCORE_ENDPOINT=$(terraform output -raw post_score_url)" >> $GITHUB_ENV
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -34,8 +55,8 @@ jobs:
           VITE_COIN_IMG_PATH: /dogeMage/dodg.gif
           VITE_GAME_OVER_GIRL_PATH: /dogeMage/gameOverGirl.png
           VITE_PARTITION_KEY: ${{ vars.VITE_PARTITION_KEY }}
-          VITE_SCOREBOARD_RESULTS_ENDPOINT: ${{ vars.VITE_SCOREBOARD_RESULTS_ENDPOINT }}
-          VITE_POST_NEW_SCORE_ENDPOINT: ${{ vars.VITE_POST_NEW_SCORE_ENDPOINT }}
+          VITE_SCOREBOARD_RESULTS_ENDPOINT: ${{ env.VITE_SCOREBOARD_RESULTS_ENDPOINT }}
+          VITE_POST_NEW_SCORE_ENDPOINT: ${{ env.VITE_POST_NEW_SCORE_ENDPOINT }}
         run: npm run build
 
       - name: Deploy 🚀
