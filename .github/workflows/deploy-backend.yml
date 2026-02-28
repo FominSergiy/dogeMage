@@ -48,23 +48,3 @@ jobs:
       - name: Terraform Apply
         working-directory: infra
         run: terraform apply -auto-approve -var="project_id=${{ vars.GCP_PROJECT_ID }}"
-
-      - name: Capture Terraform outputs
-        id: tf_outputs
-        working-directory: infra
-        run: |
-          echo "get_scores_url=$(terraform output -raw get_scores_url)" >> "$GITHUB_OUTPUT"
-          echo "post_score_url=$(terraform output -raw post_score_url)" >> "$GITHUB_OUTPUT"
-
-      - name: Update GitHub Variables with function URLs
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh variable set VITE_SCOREBOARD_RESULTS_ENDPOINT \
-            --body "${{ steps.tf_outputs.outputs.get_scores_url }}" \
-            --repo "${{ github.repository }}"
-            --env github-pages
-          gh variable set VITE_POST_NEW_SCORE_ENDPOINT \
-            --body "${{ steps.tf_outputs.outputs.post_score_url }}" \
-            --repo "${{ github.repository }}"
-            --env github-pages
